@@ -16,6 +16,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * @param  array  $input
      * @return void
      */
+
+     // Update profile user
     public function update($user, array $input)
     {
         Validator::make($input, [
@@ -35,6 +37,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'phone' => $input['phone'],
+                'address' => $input['address'],
+                'gender' => $input['gender'],
             ])->save();
         }
     }

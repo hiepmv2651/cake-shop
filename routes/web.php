@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,6 @@ Route::middleware([
 Route::get('/admin', function () {
     return view('admin.home');
 });
+
+Route::get('/redirect', [HomeController::class, 'redirect']);
 

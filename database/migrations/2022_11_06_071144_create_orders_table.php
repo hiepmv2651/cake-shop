@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->date('ngaydat')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('description')->nullable();
+
+            $table->string('user_id')->nullable();
+            $table->string('trangthai_id')->nullable();
+            $table->string('tongtien')->nullable();
+
+            $table->string('payment_status')->nullable();
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_h_d_s', function (Blueprint $table) {
             $table->id();
+            $table->string('price')->nullable();
+            $table->string('quantity')->nullable();
+            $table->string('hoadon_id')->nullable();
+            $table->string('Product_id')->nullable();
             $table->timestamps();
         });
     }

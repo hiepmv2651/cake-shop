@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('trang_thais', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique()->nullable();
+
             $table->timestamps();
         });
     }

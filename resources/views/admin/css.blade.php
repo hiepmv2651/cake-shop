@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bulma.min.css">
 
 <!-- plugins:css -->
- <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
 <!-- endinject -->
 <!-- Plugin css for this page -->

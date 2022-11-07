@@ -47,7 +47,7 @@
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
+                            <div class="preview-thumbnail">
                                 <div class="preview-icon bg-dark rounded-circle">
                                     <i class="mdi mdi-layers text-danger"></i>
                                 </div>
@@ -97,7 +97,8 @@
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item"><div class="preview-thumbnail">
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
                                 <img src="admin/assets/images/faces/face3.jpg" alt="image"
                                     class="rounded-circle profile-pic">
                             </div>
@@ -147,7 +148,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
+                                <div class="preview-icon bg-dark rounded-circle">
                                     <i class="mdi mdi-link-variant text-warning"></i>
                                 </div>
                             </div>

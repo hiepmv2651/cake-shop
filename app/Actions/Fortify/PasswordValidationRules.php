@@ -13,7 +13,6 @@ trait PasswordValidationRules
      */
     protected function passwordRules()
     {
-        // Tạo luật của mật khẩu
         return ['required', 'string', (new Password)->length(10)->requireUppercase()->requireNumeric()->requireSpecialCharacter(), 'confirmed'];
     }
 }

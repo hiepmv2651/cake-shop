@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
@@ -25,7 +25,7 @@
     <!-- end arrival section -->
 
     <!-- product section -->
-
+    @include('home.product')
     <!-- end product section -->
 
     <!-- subscribe section -->
@@ -48,7 +48,7 @@
         </p>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+        document.addEventListener("DOMContentLoaded", function(event) { 
             var scrollpos = localStorage.getItem('scrollpos');
             if (scrollpos) window.scrollTo(0, scrollpos);
         });

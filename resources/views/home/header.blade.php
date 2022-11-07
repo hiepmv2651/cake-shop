@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-                    {{-- @if (Route::has('login'))
+                    @if (Route::has('login'))
 
                     @auth
 
@@ -48,7 +48,7 @@
 
                     @endauth
 
-                    @endif --}}
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('show_order')}}">Order</a>
                     </li>

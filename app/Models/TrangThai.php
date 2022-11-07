@@ -7,12 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrangThai extends Model
 {
-    use HasFactory;
     protected $fillable = ['name'];
+    use HasFactory;
 
-
-    public function orders()
-    {
+    public function orders() {
         return $this->hasOne(Order::class);
     }
 }

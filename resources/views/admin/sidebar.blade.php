@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                        <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
                         </div>
                     </a>
                 </div>

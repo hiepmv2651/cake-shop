@@ -1,4 +1,16 @@
-<section class="arrival_section">
+<section class="subscribe_section">
+    <div class="container-fuild">
+        <div class="box">
+           
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- <section class="arrival_section">
     <div class="container">
         <div class="box">
             <div class="arrival_bg_box">
@@ -12,9 +24,7 @@
                         </h2>
                     </div>
                     <p style="margin-top: 20px;margin-bottom: 30px;">
-                        Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit
-                        ullam sit earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem
-                        similique ex unde!
+                     
                     </p>
                     <a href="">
                         Shop Now
@@ -23,4 +33,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

@@ -281,4 +281,9 @@ class HomeController extends Controller
             ->paginate(10);
         return view('home.all_product', compact('product'));
     }
+
+    public function lienhe()
+    {
+        return view('home.lienhe');
+    }
 }

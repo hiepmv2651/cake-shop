@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Customer's Testimonial
+                Nhận xét của khách hàng
             </h2>
         </div>
         <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
@@ -18,15 +18,16 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                Võ Tấn Khuê
                             </h5>
                             <h6>
-                                Customer
+                                Khách Hàng
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                            🌿Điểm cộng: vận chuyển khá nhanh.
+                            ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm. (ai quen ăn kiêng hãy mua nhé)
+                            ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng (I loved it), béo nhẹ, thơm. 
+                            ✨ Granola: đậm vị choco, hạt tương đối.
                             </p>
                         </div>
                     </div>
@@ -42,15 +43,14 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                Trần Văn Khánh
                             </h5>
                             <h6>
-                                Customer
+                            Khách Hàng
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                            Bánh ngon ăn có vị hơi đắng nhẹ, nhưng khi nuốt hậu có vị ngọt, bánh dễ ăn thích hợp cho người đang ăn kiêng.
+Được đựng trong túi zip giấy, có ghi rõ thông tin kcal, thành phần và hsd. 👍👍👍
                             </p>
                         </div>
                     </div>
@@ -66,15 +66,15 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Anna Trevor
+                                Mạnh Văn Hiệp
                             </h5>
                             <h6>
-                                Customer
+                            Khách Hàng
                             </h6>
                             <p>
-                                Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde
-                                quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum
-                                ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                            Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của shop ❤️ 
+                            mình ăn rồi và đợt này mua 2 hộp để nhâm nhi. 
+                            Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình . Must try 🖤
                             </p>
                         </div>
                     </div>

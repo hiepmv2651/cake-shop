@@ -46,6 +46,8 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::get('/view_product', [AdminController::class, 'view_product']);
 
+    
+
     Route::get('/show_kh', [AdminController::class, 'show_kh']);
 
     Route::get('/show_nv', [AdminController::class, 'show_nv']);
@@ -139,4 +141,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/product', [HomeController::class, 'product']);
 
     Route::get('/search_product', [HomeController::class, 'search_product']);
+    
 });
+
+    Route::get('/lienhe', [HomeController::class, 'lienhe']);

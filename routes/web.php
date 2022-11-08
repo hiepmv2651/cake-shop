@@ -64,7 +64,29 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     
     Route::get('/delete_cthd/{id}', [AdminController::class, 'delete_cthd']);
 
+    Route::post('/add_hoadon', [AdminController::class, 'add_hoadon']);
 
+    Route::get('/update_hoadon/{id}', [AdminController::class, 'update_hoadon']);
+
+    Route::post('/edit_hoadon/{id}', [AdminController::class, 'edit_hoadon']);
+
+    Route::get('/add_cthd', [AdminController::class, 'add_cthd']);
+
+    Route::get('/add_user', [AdminController::class, 'add_user']);
+
+    Route::post('/create_user', [AdminController::class, 'create_user']);
+
+    Route::get('/update_user/{id}', [AdminController::class, 'update_user']);
+
+    Route::post('/edit_user/{id}', [AdminController::class, 'edit_user']);
+
+
+
+    Route::post('/add_cthoadon', [AdminController::class, 'add_cthoadon']);
+
+    Route::get('/update_cthoadon/{id}', [AdminController::class, 'update_cthoadon']);
+
+    Route::post('/edit_cthoadon/{id}', [AdminController::class, 'edit_cthoadon']);
 
     Route::post('/add_product', [AdminController::class, 'add_product']);
 

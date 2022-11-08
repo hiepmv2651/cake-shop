@@ -51,11 +51,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $value)
                             @php
                             $i = 1;
-
                             @endphp
+                            @foreach ($data as $value)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$value->price}}</td>
@@ -63,11 +62,9 @@
                                 <td>{{$value->orders->id}}</td>
                                 <td>{{$value->products->title}}</td>
 
-
-
-
                                 <td>
-
+                                    <a href="{{url('update_cthoadon', $value->id)}}"
+                                        class="btn btn-inverse-warning">Edit</a>
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
                                 </td>

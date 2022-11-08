@@ -11,6 +11,8 @@ class Order extends Model
     use HasFactory;
     use Notifiable;
 
+    protected $fillable = ['ngaydat', 'phone', 'address', 'description', 'tongtien', 'user_id', 'trangthai_id', 'payment_status'];
+
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }

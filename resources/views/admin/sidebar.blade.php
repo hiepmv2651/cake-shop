@@ -103,14 +103,6 @@
             </a>
         </li>
 
-        {{-- <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="menu-icon">
-                    <i class="mdi mdi-chart-bar"></i>
-                </span>
-                <span class="menu-title">Charts</span>
-            </a>
-        </li>--}}
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-icon">
@@ -141,18 +133,27 @@
                     <li class="nav-item"> <a class="nav-link" href="{{url('/show_kh')}}"> Khách Hàng
                         </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/show_nv')}}"> Nhân Viên </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}"> Thêm User </a></li>
 
                 </ul>
             </div>
         </li>
 
         <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('show_cthd')}}">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-icon">
                     <i class="mdi mdi-clipboard-text"></i>
                 </span>
                 <span class="menu-title">Chi Tiết Hóa Đơn</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_cthd')}}">Thêm Chi Tiết Hóa Đơn</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_cthd')}}">Xem Chi Tiết Hóa Đơn</a></li>
+                </ul>
+            </div>
         </li>
 
         <li class="nav-item menu-items">
@@ -163,16 +164,6 @@
                 <span class="menu-title">Giỏ hàng</span>
             </a>
         </li>
-        {{--
 
-        <li class="nav-item menu-items">
-            <a class="nav-link"
-                href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-                <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
-                </span>
-                <span class="menu-title">Documentation</span>
-            </a>
-        </li> --}}
     </ul>
 </nav>

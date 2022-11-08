@@ -51,9 +51,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $value)
                             @php
                             $i = 1;
+                            @endphp
+                            @foreach ($data as $value)
+                            @php
+
                             if($value->gender == 1)
                             $gt = 'Nam';
                             else {
@@ -71,7 +74,8 @@
                                 <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
 
                                 <td>
-
+                                    <a href="{{url('update_user', $value->id)}}"
+                                        class="btn btn-inverse-warning">Edit</a>
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Delete</a>
                                 </td>

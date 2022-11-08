@@ -13,6 +13,8 @@ use App\Models\Category;
 use App\Models\chiTietHD;
 use App\Models\TrangThai;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\SendEmailNotification;
 
 class AdminController extends Controller
@@ -108,8 +110,9 @@ class AdminController extends Controller
 
     public function add_hd()
     {
-        $data = TrangThai::all();
-        return view('admin.add_hd', compact('data'));
+        $data = User::all();
+        $index = TrangThai::all();
+        return view('admin.add_hd', compact('data', 'index'));
     }
 
     // public function order()
@@ -236,5 +239,146 @@ class AdminController extends Controller
         $data = chiTietHD::find($id);
         $data->delete();
         return redirect()->back()->with('message', 'Detail Deleted Successfully');
+    }
+
+    public function add_hoadon(Request $request) {
+        $data = $request->validate([
+            'ngaydat' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'tongtien' => 'required',
+            'user_id' => 'required',
+            'trangthai_id' => 'required',
+            'payment_status' => 'required',
+        ]);
+
+        Order::create($data);
+
+        return redirect()->back()->with('message', 'Thêm Hóa Đơn Thành Công');
+    }
+
+    public function update_hoadon($id)
+    {
+        $data = Order::find($id);
+        $value = User::all();
+        $index = TrangThai::all();
+        return view('admin.update_hd', compact('data', 'value', 'index'));
+    }
+
+    public function edit_hoadon(Request $request, $id)
+    {
+        $data = Order::find($id);
+
+        $value = $request->validate([
+            'ngaydat' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'tongtien' => 'required',
+            'user_id' => 'required',
+            'trangthai_id' => 'required',
+            'payment_status' => 'required',
+        ]);
+
+        $data->update($value);
+
+        return redirect()->back()->with('message', 'Cập Nhật Hóa Đơn Thành Công');
+    }
+
+    public function add_cthd()
+    {
+        $data = Order::all();
+        $index = Product::all();
+        return view('admin.add_cthd', compact('data', 'index'));
+    }
+
+    public function add_cthoadon(Request $request) {
+        $data = $request->validate([
+            'quantity' => 'required',
+            'hoadon_id' => 'required',
+            'Product_id' => 'required',
+            
+        ]);
+
+        $product = Product::find($data['Product_id']);
+        $data['price'] = $data['quantity'] * $product->price;
+
+        chiTietHD::create($data);
+
+        return redirect()->back()->with('message', 'Thêm Chi Tiết Hóa Đơn Thành Công');
+    }
+
+    public function update_cthoadon($id)
+    {
+        $data = chiTietHD::find($id);
+        $value = Order::all();
+        $index = Product::all();
+        return view('admin.update_cthd', compact('data', 'value', 'index'));
+    }
+
+    public function edit_cthoadon(Request $request, $id)
+    {
+        $data = chiTietHD::find($id);
+
+        $value = $request->validate([
+            'quantity' => 'required',
+            'hoadon_id' => 'required',
+            'Product_id' => 'required',
+        ]);
+
+        $product = Product::find($value['Product_id']);
+        $value['price'] = $value['quantity'] * $product->price;
+
+        $data->update($value);
+
+        return redirect()->back()->with('message', 'Cập Nhật Hóa Đơn Thành Công');
+    }
+
+    public function add_user() {
+        return view('admin.add_user');
+    }
+
+    public function create_user(Request $request) {
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'usertype' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'gender' => 'required',
+            'password' => 'required',
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
+
+        return redirect()->back()->with('message', 'Thêm User Thành Công');
+    }
+
+    public function update_user($id) {
+        $data = User::find($id);
+        return view('admin.update_user', compact('data'));
+    }
+
+    public function edit_user(Request $request, $id) {
+        $data = User::find($id);
+
+        $value = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($data)],
+            'usertype' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'gender' => 'required',
+            'password' => 'required',
+        ]);
+
+        $value['password'] = bcrypt($value['password']);
+
+        $data->update($value);
+
+        return redirect()->back()->with('message', 'Cập Nhập User Thành Công');
     }
 }

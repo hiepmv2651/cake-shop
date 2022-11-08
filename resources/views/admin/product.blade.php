@@ -79,6 +79,7 @@
                                 <x-jet-label for="image" value="{{ __('Hình') }}" />
                                 <x-jet-input id="image" class="block mt-1 w-full input_color" type="file" name="image"
                                     :value="old('image')" required />
+                                <img src="#" id="category-img-tag" width="200px" />
                                 @error('image')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -132,6 +133,23 @@
         <!-- container-scroller -->
         <!-- plugins:js -->
         @include('admin.js')
+        <script>
+            function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#category-img-tag').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#image").change(function(){
+        readURL(this);
+    });
+        </script>
         <!-- End custom js for this page -->
 </body>
 

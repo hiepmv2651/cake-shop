@@ -54,11 +54,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $value)
                             @php
                             $i = 1;
 
                             @endphp
+                            @foreach ($data as $value)
+
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$value->ngaydat}}</td>
@@ -73,7 +74,8 @@
 
 
                                 <td>
-
+                                    <a href="{{url('update_hoadon', $value->id)}}"
+                                        class="btn btn-inverse-warning">Edit</a>
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
                                 </td>

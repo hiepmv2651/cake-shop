@@ -45,23 +45,33 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Thêm Hóa Đơn</h2>
+                <h2 class="h2_font">Thêm User</h2>
 
                 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
                     <div class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                        <form action="{{url('/add_hoadon')}}" method="post">
+                        <form method="POST" action="{{ url('/create_user') }}">
                             @csrf
 
                             <div>
-                                <x-jet-label for="ngaydat" value="{{ __('Ngày Đặt') }}" />
-                                <x-jet-input id="ngaydat" class="block mt-1 w-full input_color" type="date"
-                                    name="ngaydat" :value="old('ngaydat')" required autofocus autocomplete="ngaydat" />
-                                @error('ngaydat')
+                                <x-jet-label for="name" value="{{ __('Tên') }}" />
+                                <x-jet-input id="name" class="block mt-1 w-full input_color" type="text" name="name"
+                                    :value="old('name')" required autofocus autocomplete="name" />
+                                @error('name')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
                                 </p>
                                 @enderror
+                            </div>
 
+                            <div class="mt-4">
+                                <x-jet-label for="email" value="{{ __('Email') }}" />
+                                <x-jet-input id="email" class="block mt-1 w-full input_color" type="email" name="email"
+                                    :value="old('email')" required />
+                                @error('email')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
                             </div>
 
                             <div class="mt-4">
@@ -87,41 +97,15 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-jet-label for="description" value="{{ __('Mô Tả') }}" />
-                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text"
-                                    name="description" :value="old('description')" required />
-                                @error('description')
-                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                                    {{$message}}
-                                </p>
-                                @enderror
-                            </div>
+                                <x-jet-label for="usertype" value="{{ __('Quyền Người Dùng') }}" />
 
-                            <div class="mt-4">
-                                <x-jet-label for="tongtien" value="{{ __('Tổng Tiền') }}" />
-                                <x-jet-input id="tongtien" class="block mt-1 w-full input_color" type="number"
-                                    name="tongtien" :value="old('tongtien')" required />
-                                @error('tongtien')
-                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                                    {{$message}}
-                                </p>
-                                @enderror
-                            </div>
-
-                            <div class="mt-4">
-                                <x-jet-label for="user_id" value="{{ __('Tên Người Mua') }}" />
-
-                                <select name="user_id"
+                                <select name="usertype"
                                     class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
                                     required>
-                                    @foreach ($data as $value)
-                                    <option value="{{$value->id}}">
-                                        {{$value->name}}
-                                    </option>
-                                    @endforeach
-
+                                    <option value="0">Khách Hàng</option>
+                                    <option value="2" @if (old('usertype')==2) selected @endif>Nhân Viên</option>
                                 </select>
-                                @error('user_id')
+                                @error('usertype')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
                                 </p>
@@ -129,19 +113,15 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-jet-label for="trangthai_id" value="{{ __('Trạng Thái') }}" />
+                                <x-jet-label for="gender" value="{{ __('Giới Tính') }}" />
 
-                                <select name="trangthai_id"
+                                <select name="gender"
                                     class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
                                     required>
-                                    @foreach ($index as $value)
-                                    <option value="{{$value->id}}">
-                                        {{$value->name}}
-                                    </option>
-                                    @endforeach
-
+                                    <option value="1">Nam</option>
+                                    <option value="2" @if (old('gender')==2) selected @endif>Nữ</option>
                                 </select>
-                                @error('trangthai_id')
+                                @error('gender')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
                                 </p>
@@ -149,22 +129,10 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-jet-label for="payment_status" value="{{ __('Thanh Toán') }}" />
-
-                                <select name="payment_status"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
-                                    <option value="Chưa Thanh Toán">
-                                        Chưa Thanh Toán
-                                    </option>
-                                    <option value="Đã Thanh Toán">
-                                        Đã Thanh Toán
-                                    </option>
-
-
-
-                                </select>
-                                @error('payment_status')
+                                <x-jet-label for="password" value="{{ __('Mật Khẩu') }}" />
+                                <x-jet-input id="password" class="block mt-1 w-full input_color" type="password"
+                                    name="password" required autocomplete="new-password" />
+                                @error('password')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
                                 </p>

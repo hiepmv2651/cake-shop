@@ -33,7 +33,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Xem Hóa Đơn</h2>
+                <h2 class="h2_font">Xem Chi Tiết Hóa Đơn</h2>
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 

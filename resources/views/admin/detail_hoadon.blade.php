@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="/public">
     <!-- Required meta tags -->
     @include('admin.css')
     <style>
@@ -33,7 +34,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Xem Hóa Đơn</h2>
+                <h2 class="h2_font">Xem Chi Tiết Hóa Đơn</h2>
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
@@ -41,14 +42,11 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Ngày Đặt</th>
-                                <th>SĐT</th>
-                                <th>Địa Chỉ</th>
-                                <th>Ghi Chú</th>
-                                <th>Tên Khách Hàng</th>
-                                <th>Trạng Thái</th>
-                                <th>Thanh Toán</th>
-                                <th>Tổng Tiền</th>
+                                <th>Giá Tiền</th>
+                                <th>Số Lượng</th>
+                                <th>Mã Hóa Đơn</th>
+                                <th>Tên Sản Phẩm</th>
+
 
                                 <th>Action</th>
                             </tr>
@@ -56,29 +54,20 @@
                         <tbody>
                             @php
                             $i = 1;
-
                             @endphp
                             @foreach ($data as $value)
-
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$value->ngaydat}}</td>
-                                <td>{{$value->phone}}</td>
-                                <td>{{$value->address}}</td>
-                                <td>{{$value->description}}</td>
-
-                                <td>{{$value->user->name}}</td>
-                                <td>{{$value->trangthais->name}}</td>
-                                <td>{{$value->payment_status}}</td>
-                                <td>{{$value->tongtien}}</td>
-
+                                <td>{{$value->price}}</td>
+                                <td>{{$value->quantity}}</td>
+                                <td>{{$value->orders->id}}</td>
+                                <td>{{$value->products->title}}</td>
 
                                 <td>
-                                    <a href="{{url('detail_hoadon', $value->id)}}" class="btn btn-primary">Detail</a>
-                                    <a href="{{url('update_hoadon', $value->id)}}"
+                                    <a href="{{url('update_cthoadon', $value->id)}}"
                                         class="btn btn-inverse-warning">Edit</a>
                                     <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                        href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             @php

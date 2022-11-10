@@ -7,111 +7,188 @@
                         <div class="row">
                             <div class="col-9">
                                 <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$total_products}}</h3> --}}
+                                    <h3 class="text-muted font-weight-normal">Sản phẩm tháng trước:
+                                        {{$previous_products}}</h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_products}}</p>
                                 </div>
                             </div>
+                            @if($now_products >= $previous_1products)
                             <div class="col-3">
                                 <div class="icon icon-box-success ">
                                     <span class="mdi mdi-arrow-top-right icon-item"></span>
                                 </div>
                             </div>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">Total Products</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-9">
-                                <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$total_orders}}</h3> --}}
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="icon icon-box-success">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">Total Orders</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-9">
-                                <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$total_users}}</h3> --}}
-                                </div>
-                            </div>
+                            @else
                             <div class="col-3">
                                 <div class="icon icon-box-danger">
                                     <span class="mdi mdi-arrow-bottom-left icon-item"></span>
                                 </div>
                             </div>
+                            @endif
                         </div>
-                        <h6 class="text-muted font-weight-normal">Total Customers</h6>
+                        <br>
+                        <h6 class="text-muted font-weight-normal">Sản phẩm trước đây: {{$previous_1products}}</h6>
+                        <h6 class="text-muted font-weight-normal">Tổng sản phẩm: {{$total_products}}</h6>
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
                                 <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$sum_orders}}</h3> --}}
+                                    <h3 class="text-muted font-weight-normal">Người dùng tháng trước:
+                                        {{$previous_users}}
+                                    </h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_users}}</p>
                                 </div>
                             </div>
+                            @if($now_users >= $previous_1users)
                             <div class="col-3">
                                 <div class="icon icon-box-success ">
                                     <span class="mdi mdi-arrow-top-right icon-item"></span>
                                 </div>
                             </div>
+                            @else
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                            @endif
                         </div>
-                        <h6 class="text-muted font-weight-normal">Sum price orders</h6>
+                        <br>
+                        <h6 class="text-muted font-weight-normal">Người dùng trước đây: {{$previous_1users}}</h6>
+                        <h6 class="text-muted font-weight-normal">Tổng người dùng: {{$total_users}}</h6>
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
                                 <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$total_devivered}}</h3> --}}
+                                    <h3 class="text-muted font-weight-normal">Hóa đơn tháng trước: {{$previous_orders}}
+                                    </h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_orders}}</p>
                                 </div>
                             </div>
+                            @if($now_orders >= $previous_1orders)
                             <div class="col-3">
                                 <div class="icon icon-box-success ">
                                     <span class="mdi mdi-arrow-top-right icon-item"></span>
                                 </div>
                             </div>
+                            @else
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                            @endif
                         </div>
-                        <h6 class="text-muted font-weight-normal">Order Delivered</h6>
+                        <h6 class="text-muted font-weight-normal">Hóa đơn trước đây: {{$previous_1orders}}</h6>
+                        <h6 class="text-muted font-weight-normal">Tổng hóa đơn: {{$total_orders}}</h6>
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
                                 <div class="d-flex align-items-center align-self-start">
-                                    {{-- <h3 class="mb-0">{{$total_processing}}</h3> --}}
+                                    <h3 class="text-muted font-weight-normal">Đơn hàng đã giao tháng trước:
+                                        {{$previous_devivered}}</h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_devivered}}</p>
                                 </div>
                             </div>
+                            @if($now_devivered >= $previous_1devivered)
                             <div class="col-3">
                                 <div class="icon icon-box-success ">
                                     <span class="mdi mdi-arrow-top-right icon-item"></span>
                                 </div>
                             </div>
+                            @else
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                            @endif
                         </div>
-                        <h6 class="text-muted font-weight-normal">Order Processing</h6>
+                        <h6 class="text-muted font-weight-normal">Đơn hàng đã giao trước đây: {{$previous_1devivered}}
+                        </h6>
+                        <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã giao: {{$total_devivered}}</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="text-muted font-weight-normal">Đơn hàng đã hủy tháng
+                                        trước: {{$previous_processing}}</h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_processing}}</p>
+                                </div>
+                            </div>
+                            @if($now_processing >= $previous_1processing)
+                            <div class="col-3">
+                                <div class="icon icon-box-success ">
+                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                </div>
+                            </div>
+                            @else
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Đơn hàng đã hủy trước đây: {{$previous_1processing}}
+                        </h6>
+                        <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã hủy: {{$total_processing}}</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="d-flex align-items-center align-self-start">
+                                    <h3 class="text-muted font-weight-normal">Tổng tiền tháng trước:
+                                        {{$previous_sum_orders}}</h3>
+                                    <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_sum_orders}}</p>
+                                </div>
+                            </div>
+                            @if($now_sum_orders >= $previous_1sum_orders)
+                            <div class="col-3">
+                                <div class="icon icon-box-success ">
+                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                </div>
+                            </div>
+                            @else
+                            <div class="col-3">
+                                <div class="icon icon-box-danger">
+                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Tổng tiền trước đây: {{$previous_1sum_orders}} VNĐ
+                        </h6>
+                        <h6 class="text-muted font-weight-normal">Tổng tiền kiếm được: {{$sum_orders}} VNĐ</h6>
                     </div>
                 </div>
             </div>
@@ -122,7 +199,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Visitors by Countries</h4>
+                        <h4 class="card-title">Khách Hàng Theo Khu Vực</h4>
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="table-responsive">
@@ -130,52 +207,37 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <i class="flag-icon flag-icon-us"></i>
+                                                    <i class="flag-icon flag-icon-vn"></i>
                                                 </td>
-                                                <td>USA</td>
+                                                <td>Nha Trang</td>
                                                 <td class="text-right"> 1500 </td>
                                                 <td class="text-right font-weight-medium"> 56.35% </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <i class="flag-icon flag-icon-de"></i>
+                                                    <i class="flag-icon flag-icon-vn"></i>
                                                 </td>
-                                                <td>Germany</td>
+                                                <td>Cam Ranh</td>
                                                 <td class="text-right"> 800 </td>
                                                 <td class="text-right font-weight-medium"> 33.25% </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <i class="flag-icon flag-icon-au"></i>
+                                                    <i class="flag-icon flag-icon-vn"></i>
                                                 </td>
-                                                <td>Australia</td>
+                                                <td>Hà Nội</td>
                                                 <td class="text-right"> 760 </td>
                                                 <td class="text-right font-weight-medium"> 15.45% </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <i class="flag-icon flag-icon-gb"></i>
+                                                    <i class="flag-icon flag-icon-vn"></i>
                                                 </td>
-                                                <td>United Kingdom</td>
+                                                <td>Hồ Chí Minh</td>
                                                 <td class="text-right"> 450 </td>
                                                 <td class="text-right font-weight-medium"> 25.00% </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <i class="flag-icon flag-icon-ro"></i>
-                                                </td>
-                                                <td>Romania</td>
-                                                <td class="text-right"> 620 </td>
-                                                <td class="text-right font-weight-medium"> 10.25% </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <i class="flag-icon flag-icon-br"></i>
-                                                </td>
-                                                <td>Brasil</td>
-                                                <td class="text-right"> 230 </td>
-                                                <td class="text-right font-weight-medium"> 75.00% </td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>

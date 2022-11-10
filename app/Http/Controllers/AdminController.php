@@ -182,7 +182,7 @@ class AdminController extends Controller
     public function show_kh()
     {
         $data = User::where('usertype', 0)->get();
-        
+
         return view('admin.show_kh', compact('data'));
     }
 
@@ -195,16 +195,16 @@ class AdminController extends Controller
     public function delete_user($id)
     {
         $data = User::find($id);
-        if($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
+        if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
             return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa');
         $data->delete();
-            return redirect()->back()->with('message', 'User Deleted Successfully');
+        return redirect()->back()->with('message', 'User Deleted Successfully');
     }
 
     public function view_cart()
     {
         $data = Cart::all();
-        
+
         return view('admin.show_cart', compact('data'));
     }
 
@@ -241,7 +241,8 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Detail Deleted Successfully');
     }
 
-    public function add_hoadon(Request $request) {
+    public function add_hoadon(Request $request)
+    {
         $data = $request->validate([
             'ngaydat' => 'required',
             'phone' => 'required',
@@ -293,12 +294,13 @@ class AdminController extends Controller
         return view('admin.add_cthd', compact('data', 'index'));
     }
 
-    public function add_cthoadon(Request $request) {
+    public function add_cthoadon(Request $request)
+    {
         $data = $request->validate([
             'quantity' => 'required',
             'hoadon_id' => 'required',
             'Product_id' => 'required',
-            
+
         ]);
 
         $product = Product::find($data['Product_id']);
@@ -335,11 +337,13 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Cập Nhật Hóa Đơn Thành Công');
     }
 
-    public function add_user() {
+    public function add_user()
+    {
         return view('admin.add_user');
     }
 
-    public function create_user(Request $request) {
+    public function create_user(Request $request)
+    {
         $data = $request->validate([
             'name' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -357,12 +361,14 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Thêm User Thành Công');
     }
 
-    public function update_user($id) {
+    public function update_user($id)
+    {
         $data = User::find($id);
         return view('admin.update_user', compact('data'));
     }
 
-    public function edit_user(Request $request, $id) {
+    public function edit_user(Request $request, $id)
+    {
         $data = User::find($id);
 
         $value = $request->validate([
@@ -380,5 +386,28 @@ class AdminController extends Controller
         $data->update($value);
 
         return redirect()->back()->with('message', 'Cập Nhập User Thành Công');
+    }
+
+    public function detail_hoadon($id)
+    {
+        $data = chiTietHD::where('hoadon_id', $id)->get();
+        return view('admin.detail_hoadon', compact('data'));
+    }
+
+    public function baocao(Request $request)
+    {
+        if ($request->baocao != null) {
+            $oldvalue = $request->baocao;
+            $item = Order::all();
+            $value = Order::where([['id', '=', $request->baocao], ['payment_status', 'like', '%Đã thanh toán%']])->get();
+            if($value->count() > 0) {
+                $data = chiTietHD::where('hoadon_id', '=', $request->baocao)->get();
+                return view('admin.baocao', compact('value', 'data', 'item', 'oldvalue'));
+            }
+            return view('admin.baocao', compact('value', 'item', 'oldvalue'))->with('message', 'Không có hóa đơn đã thanh toán ứng với mã hóa đơn này');
+        } else {
+            $item = Order::all();
+            return view('admin.baocao', compact('item'));
+        }
     }
 }

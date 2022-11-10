@@ -113,6 +113,10 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     Route::get('/send_email/{id}', [AdminController::class, 'send_email']);
 
     Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email']);
+
+
+   
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -149,3 +153,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
     Route::get('/lienhe', [HomeController::class, 'lienhe']);
+    Route::get('/khue', [AdminController::class, 'khue']);
+    Route::get('/thongtincanhan', [AdminController::class, 'thongtincanhan']);

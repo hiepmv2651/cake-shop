@@ -43,12 +43,12 @@
                 @endif
 
                 <div class="div_center">
-                    <h2 class="h2_font">Add Status</h2>
+                    <h2 class="h2_font">Thêm Trạng Thái Đơn Hàng</h2>
 
                     <form action="{{url('/add_status')}}" method="POST">
                         @csrf
-                        <input type="text" class="input_color" name="name" placeholder="Write the status name">
-                        <input type="submit" class="btn btn-primary" value="Add Status" name="submit">
+                        <input type="text" class="input_color" name="name" placeholder="Nhập tên...">
+                        <input type="submit" class="btn btn-primary" value="Thêm" name="submit">
                         @error('name')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
                             {{$message}}
@@ -64,21 +64,20 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Tên trạng thái</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                                <th>Action</th>
+                                <th>Thời gian tạo</th>
+                                <th>Thời gian cập nhật</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
-
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
                                 <td>{{$value->created_at}}</td>
                                 <td>{{$value->updated_at}}</td>
                                 <td><a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Delete</a>
+                                        href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @endforeach

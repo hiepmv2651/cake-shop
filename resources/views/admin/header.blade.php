@@ -2,7 +2,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg"
+            <a class="navbar-brand brand-logo-mini" href="{{url('/redirect')}}"><img src="admin/assets/images/logo-mini.svg"
                     alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -17,21 +17,26 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-lg-block">
+                    <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
+                    target="_blank" href="{{url('/thongtincanhan')}}">Thông Tin Nhóm</a>
+                </li>
                 <li class="nav-item dropdown d-none d-lg-block">
                     <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
-                        data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                        data-toggle="dropdown" aria-expanded="false" href="#">Bài Tập Thực Hành</a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="createbuttonDropdown">
-                        <h6 class="p-3 mb-0">Projects</h6>
+                        <h6 class="p-3 mb-0">Bài Tập</h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
+                        <a class="dropdown-item preview-item" href="{{url('/khue')}}"  target="_blank">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-dark rounded-circle">
                                     <i class="mdi mdi-file-outline text-primary"></i>
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Software Development</p>
+                               <p class="preview-subject ellipsis mb-1">Võ Tấn Khuê</p>
+                                
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -42,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                <p class="preview-subject ellipsis mb-1">Mạnh Văn Hiệp</p>
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -53,11 +58,9 @@
                                 </div>
                             </div>
                             <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                                <p class="preview-subject ellipsis mb-1">Trần Văn Khánh</p>
                             </div>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">See all projects</p>
                     </div>
                 </li>
                 <li class="nav-item nav-settings d-none d-lg-block">
@@ -74,41 +77,6 @@
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="messageDropdown">
                         <h6 class="p-3 mb-0">Messages</h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="admin/assets/images/faces/face4.jpg" alt="image"
-                                    class="rounded-circle profile-pic">
-                            </div>
-                            <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                <p class="text-muted mb-0"> 1 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="admin/assets/images/faces/face2.jpg" alt="image"
-                                    class="rounded-circle profile-pic">
-                            </div>
-                            <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                <p class="text-muted mb-0"> 15 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="admin/assets/images/faces/face3.jpg" alt="image"
-                                    class="rounded-circle profile-pic">
-                            </div>
-                            <div class="preview-item-content">
-                                <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                <p class="text-muted mb-0"> 18 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">4 new messages</p>
                     </div>
                 </li>
                 <li class="nav-item dropdown border-left">
@@ -120,7 +88,7 @@
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                         aria-labelledby="notificationDropdown">
                         <h6 class="p-3 mb-0">Notifications</h6>
-                        <div class="dropdown-divider"></div>
+                        <!-- <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-dark rounded-circle">
@@ -158,7 +126,7 @@
                             </div>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <p class="p-3 mb-0 text-center">See all notifications</p>
+                        <p class="p-3 mb-0 text-center">See all notifications</p> -->
                     </div>
                 </li>
                 <li>
@@ -166,6 +134,5 @@
                     </x-app-layout>
                 </li>
             </ul>
-
         </div>
     </nav>

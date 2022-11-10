@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <!-- <x-jet-authentication-card-logo /> -->
+            <a href="{{url('')}}">
+            <img width="90px" height="120px" src="https://img.upanh.tv/2022/11/10/favicon.png" alt="favicon.png">
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -10,7 +13,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-label for="name" value="{{ __('Tên') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                     autofocus autocomplete="name" />
             </div>
@@ -22,25 +25,25 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="phone" value="{{ __('Phone') }}" />
+                <x-jet-label for="phone" value="{{ __('Số điện thoại') }}" />
                 <x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')"
                     required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="address" value="{{ __('Address') }}" />
+                <x-jet-label for="address" value="{{ __('Địa Chỉ') }}" />
                 <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
                     required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="gender" value="{{ __('Gender') }}" />
+                <x-jet-label for="gender" value="{{ __('Giới Tính') }}" />
 
                 <select name="gender"
                     class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     required>
-                    <option value="1">Male</option>
-                    <option value="2" @if (old('gender')==2) selected @endif>Female</option>
+                    <option value="1">Nam</option>
+                    <option value="2" @if (old('gender')==2) selected @endif>Nữ</option>
                 </select>
             </div>
 
@@ -51,7 +54,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-label for="password_confirmation" value="{{ __('Nhập lại Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
                     name="password_confirmation" required autocomplete="new-password" />
             </div>
@@ -79,11 +82,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Đã có tài khoản?') }}
                 </a>
 
                 <x-jet-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Đăng Ký') }}
                 </x-jet-button>
             </div>
         </form>

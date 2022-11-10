@@ -13,13 +13,8 @@
         <!-- header section strats -->
         @include('home.header')
         <!-- end header section -->
-        <div style="width: 15%; margin-left: 50px;">
-            <a class="btn btn-danger" href="{{url('history_order')}}">Lịch Sử Mua Hàng</a>
-        </div>
-        <br>
 
         <div style="width: 90%; margin-left: auto; margin-right: auto;">
-
             <table id="example" class="table is-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -36,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($order as $value)
+                    @foreach ($history as $value)
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->ngaydat}}</td>

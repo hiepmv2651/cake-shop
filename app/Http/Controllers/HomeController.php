@@ -284,13 +284,25 @@ class HomeController extends Controller
     }
 
     public function show_order()
+    {  
+        if (Auth::id()) {
+            $user = Auth::user();
+            $userId = $user->id;
+            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=' , 8], ['payment_status', '!=', '%Đã thanh toán%']])->latest()->get();
+            return view('home.order', compact('order'));
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function history_order()
     {
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
+            $history = Order::where([['user_id', $userId], ['trangthai_id', 8], ['payment_status', 'like', '%Đã thanh toán%']])->latest()->get();
 
-            $order = Order::where('user_id', $userId)->latest()->get();
-            return view('home.order', compact('order'));
+            return view('home.history_order', compact('history'));
         } else {
             return redirect('login');
         }
@@ -298,8 +310,8 @@ class HomeController extends Controller
 
     public function order_details($id)
     {
-        $value = Order::find($id);
-        return view('home.orders_detail', compact('value'));
+        $orderde = chiTietHD::where('hoadon_id', $id)->get();
+        return view('home.orders_detail', compact('orderde'));
     }
 
     public function cancel_order($id)

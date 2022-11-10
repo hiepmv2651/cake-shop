@@ -1,10 +1,10 @@
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('THÔNG TIN CÁ NHÂN') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Cập nhật thông tin hồ sơ tài khoản và địa chỉ email của bạn.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -21,7 +21,7 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-            <x-jet-label for="photo" value="{{ __('Photo') }}" />
+            <x-jet-label for="photo" value="{{ __('Ảnh Đại Diện') }}" />
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
@@ -37,12 +37,12 @@
             </div>
 
             <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                {{ __('Select A New Photo') }}
+                {{ __('Chọn ảnh mới') }}
             </x-jet-secondary-button>
 
             @if ($this->user->profile_photo_path)
             <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                {{ __('Remove Photo') }}
+                {{ __('Gỡ ảnh') }}
             </x-jet-secondary-button>
             @endif
 
@@ -67,17 +67,17 @@
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && !
             $this->user->hasVerifiedEmail())
             <p class="text-sm mt-2">
-                {{ __('Your email address is unverified.') }}
+                {{ __('Địa chỉ email của bạn chưa được xác minh.') }}
 
                 <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900"
                     wire:click.prevent="sendEmailVerification">
-                    {{ __('Click here to re-send the verification email.') }}
+                    {{ __('Bấm vào đây để gửi lại email xác minh.') }}
                 </button>
             </p>
 
             @if ($this->verificationLinkSent)
             <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to your email address.') }}
+                {{ __('Một liên kết xác minh mới đã được gửi đến địa chỉ email của bạn.') }}
             </p>
             @endif
             @endif
@@ -101,8 +101,8 @@
             <x-jet-label for="gender" value="{{ __('Giới Tính') }}" />
             <select name="gender" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm
                 mt-1 block w-full" wire:model.defer="state.gender" autocomplete="gender">
-                <option value="1">Male</option>
-                <option value="2" @if (old('gender')==2) selected @endif>Female</option>
+                <option value="1">Nam</option>
+                <option value="2" @if (old('gender')==2) selected @endif>Nữ</option>
             </select>
 
             <x-jet-input-error for="gender" class="mt-2" />
@@ -116,7 +116,7 @@
         </x-jet-action-message>
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Lưu') }}
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>

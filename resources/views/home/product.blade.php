@@ -9,8 +9,8 @@
             <div>
                 <form action="{{url('product_search')}}" method="GET">
                     @csrf
-                    <input style="width: 500px" type="text" name="search" placeholder="Search for Something">
-                    <input type="submit" value="search" name="" id="">
+                    <input style="width: 500px" type="text" name="search" placeholder="Nhập...">
+                    <input type="submit" value="Tìm kiếm" name="" id="">
                 </form>
             </div>
         </div>
@@ -29,12 +29,12 @@
                     <div class="option_container">
                         <div class="options">
                             <a href="{{url('product_details', $value->id)}}" class="option1">
-                                Product Detail
+                                Xem Chi Tiết
                             </a>
                             <form action="{{url('add_cart', $value->id)}}" method="POST">
                                 @csrf
                                 <input type="number" name="quantity" min="1" max="20" value="1">
-                                <input type="submit" value="Add To Cart">
+                                <input type="submit" value="Thêm vào giỏ">
                             </form>
                         </div>
                     </div>

@@ -31,52 +31,48 @@
 
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
 
-                <input type="button" value="selectAll" id="selectAll"
+                <input type="button" value="Chọn tất cả" id="selectAll"
                     style="width: 165px; height: 38px; background-color: #80BDE3" class="btn btn-primary" />
 
-                <input type="button" value="remove" id="removeAll"
+                <input type="button" value="Bỏ chọn tất cả" id="removeAll"
                     style="width: 165px; height: 38px; background-color: red" class="btn btn-danger" />
                 <table id="example" class="table is-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th></th>
                             <th>Tên Sản Phẩm</th>
+                            <th>Ảnh</th>
                             <th>Số Lượng</th>
                             <th>Giá</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th>Hành Động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($cart as $value)
-
                         <tr>
                             <td><input type="checkbox" class="selectbox" value="{{$value->id}}" name="ids[]">
                             </td>
                             <td>{{$value->products->title}}</td>
+                            <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td>
                             <td>{{$value->quantity}}</td>
                             <td>${{$value->price}}</td>
-                            <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td>
                             <td>
                                 <a onclick="confirmation(event)" href="{{url('delete_cart', $value->id)}}"
-                                    class="btn btn-danger">Delete</a>
+                                    class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>
-
                         @endforeach
-
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="5" style="text-align:right">Total:</th>
+                            <th colspan="5" style="text-align:right">Tổng Tiền:</th>
                             <th></th>
                         </tr>
-
                     </tfoot>
                 </table>
                 <div>
                     <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
-                        <h1 style=" font-size: 25px; padding-bottom: 15px">Proceed to Order</h1>
+                        <h1 style=" font-size: 25px; padding-bottom: 15px">Chọn Phương Thức Thanh Toán</h1>
                         <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
 
                         <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
@@ -91,32 +87,22 @@
                 <div>
                     @method('DELETE')
                     <button id="myBtn2" disabled formaction="{{url('delete_select')}}" type="submit"
-                        style="background-color: red" class="btn btn-danger">Delete All
-                        Selected</button>
+                        style="background-color: red" class="btn btn-danger">Xóa Toàn Bộ Sản Phẩm
+                    </button>
                 </div>
 
             </div>
         </form>
-
     </div>
-
-
 
     <!-- footer start -->
     @include('home.footer')
     <!-- footer end -->
     </div>
-    <div class="cpy_">
-        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
-        </p>
-    </div>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
 
     <script>
@@ -216,17 +202,9 @@ function pay() {
           })
           .then((willCancel) => {
               if (willCancel) {
-  
-  
-                   
                   window.location.href = urlToRedirect;
-                 
               }  
-  
-  
-          });
-  
-          
+          });   
       }
     </script>
     <!-- jQery -->

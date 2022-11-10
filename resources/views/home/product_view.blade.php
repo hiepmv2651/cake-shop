@@ -20,8 +20,6 @@
 
         <div class="row">
             @foreach ($product as $value)
-
-
             <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="box">
                     <div class="option_container">

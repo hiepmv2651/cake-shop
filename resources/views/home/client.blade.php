@@ -25,9 +25,9 @@
                             </h6>
                             <p>
                             🌿Điểm cộng: vận chuyển khá nhanh.
-                            ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm. (ai quen ăn kiêng hãy mua nhé)
-                            ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng (I loved it), béo nhẹ, thơm. 
-                            ✨ Granola: đậm vị choco, hạt tương đối.
+                            ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm.
+                            ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng, béo nhẹ, thơm. 
+                            ✨Granola: đậm vị choco, hạt tương đối.
                             </p>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="img_container">
                             <div class="img-box">
                                 <div class="img_box-inner">
-                                    <img src="images/client.jpg" alt="">
+                                    <img src="images/client1.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="img_container">
                             <div class="img-box">
                                 <div class="img_box-inner">
-                                    <img src="images/client.jpg" alt="">
+                                    <img src="images/client2.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             <p>
                             Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của shop ❤️ 
                             mình ăn rồi và đợt này mua 2 hộp để nhâm nhi. 
-                            Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình . Must try 🖤
+                            Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình.
                             </p>
                         </div>
                     </div>

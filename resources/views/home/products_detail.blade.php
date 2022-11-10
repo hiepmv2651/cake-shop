@@ -23,13 +23,13 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
 		<div class="container">
 	        <div class="heading-section">
-	            <h2>Product Details</h2>
+	          
 	        </div>
 	        <div class="row">
 	        	<div class="col-md-6">
 	        		<div id="slider" class="owl-carousel product-slider">
 						<div class="item">
-						  	<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+						<img src="{{asset('storage/'.$value->image)}}" alt="">
 						</div>
 						<div class="item">
 						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
@@ -50,29 +50,7 @@
 						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
 						</div>
 					</div>
-					<div id="thumb" class="owl-carousel product-thumb">
-						<div class="item">
-						  	<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-					</div>
+				
 	        	</div>
 	        	<div class="col-md-6">
 	        		<div class="product-dtl">
@@ -93,9 +71,15 @@
 								  </div>
 								<span>3 Reviews</span>
 							</div>
-		        			<div class="product-price-discount"><span>$39.00</span><span class="line-through">$29.00</span></div>
+		        			<div class="product-price-discount"><span>
+
+							${{$value->price}}
+							</span><span class="line-through">$29.00</span></div>
 		        		</div>
-	        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	        		
+						<p>
+						{{$value->category}}
+						</p>
 	        			
 	        			<div class="product-count">
 
@@ -120,14 +104,14 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-				  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+				  	{{$value->description}}
 				  	</div>
 				  	<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-				  		<div class="review-heading">REVIEWS</div>
-				  		<p class="mb-20">There are no reviews yet.</p>
+				  		<div class="review-heading">Bình Luận</div>
+				  		<p class="mb-20">Chưa có bình luận.</p>
 				  		<form class="review-form">
 		        			<div class="form-group">
-			        			<label>Your rating</label>
+			        			<label>Đánh giá của bạn</label>
 			        			<div class="reviews-counter">
 									<div class="rate">
 									    <input type="radio" id="star5" name="rate" value="5" />
@@ -144,22 +128,22 @@
 								</div>
 							</div>
 		        			<div class="form-group">
-			        			<label>Your message</label>
+			        			<label>Tin nhắn</label>
 			        			<textarea class="form-control" rows="10"></textarea>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col-md-6">
 				        			<div class="form-group">
-					        			<input type="text" name="" class="form-control" placeholder="Name*">
+					        			<input type="text" name="" class="form-control" placeholder="Họ Và Tên*">
 					        		</div>
 					        	</div>
 				        		<div class="col-md-6">
 				        			<div class="form-group">
-					        			<input type="text" name="" class="form-control" placeholder="Email Id*">
+					        			<input type="text" name="" class="form-control" placeholder="Email*">
 					        		</div>
 					        	</div>
 					        </div>
-					        <button class="round-black-btn">Submit Review</button>
+					        <button class="round-black-btn">Gửi</button>
 			        	</form>
 				  	</div>
 				</div>
@@ -173,7 +157,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-        <div class="col-sm-6 col-md-4 col-lg-4" style="margin:auto; width:50%; padding:30px">
+        <!-- <div class="col-sm-6 col-md-4 col-lg-4" style="margin:auto; width:50%; padding:30px">
             <div class="box">
 
                 <div class="img-box" style="padding: 20px">
@@ -210,7 +194,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- footer start -->

@@ -28,7 +28,6 @@
                 </thead>
                 <tbody>
                     @foreach ($order as $value)
-
                     <tr>
                         <td>{{$value->product_title}}</td>
                         <td>{{$value->quantity}}</td>
@@ -47,7 +46,6 @@
                         </td>
                     </tr>
                     @endforeach
-
                 </tbody>
                 <tfoot>
                     <tr>
@@ -56,19 +54,12 @@
                     </tr>
                 </tfoot>
             </table>
-
-
         </div>
-        @include('home.footer')
+        
     </div>
-    <div class="cpy_">
-        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+    <br>
 
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
-        </p>
-    </div>
-
+    @include('home.footer')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>

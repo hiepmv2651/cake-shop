@@ -56,10 +56,8 @@
                         <tbody>
                             @php
                             $i = 1;
-
                             @endphp
                             @foreach ($data as $value)
-
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$value->ngaydat}}</td>
@@ -71,8 +69,6 @@
                                 <td>{{$value->trangthais->name}}</td>
                                 <td>{{$value->payment_status}}</td>
                                 <td>{{$value->tongtien}}</td>
-
-
                                 <td>
                                     <a href="{{url('detail_hoadon', $value->id)}}" class="btn btn-primary">Detail</a>
                                     <a href="{{url('update_hoadon', $value->id)}}"

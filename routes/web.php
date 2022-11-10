@@ -140,6 +140,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/show_order', [HomeController::class, 'show_order']);
 
+    Route::get('/history_order', [HomeController::class, 'history_order']);
+
     Route::get('/order_details/{id}', [HomeController::class, 'order_details']);
 
     Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);

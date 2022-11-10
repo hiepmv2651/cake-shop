@@ -1,9 +1,9 @@
 <section class="why_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
-            <h2>
-                Why Shop With Us
-            </h2>
+            <h3>
+                Vì Sao Chọn Chúng Tôi?
+            </h3>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -101,10 +101,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Fast Delivery
+                            Giao Hàng Nhanh
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                        Hàng đến người nhận nhanh hơn so với các đơn vị khác
                         </p>
                     </div>
                 </div>
@@ -219,10 +219,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Free Shiping
+                            Miễn Phí Vận Chuyển
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                            Khi mua combo các sản phẩm của chúng tôi
                         </p>
                     </div>
                 </div>
@@ -244,10 +244,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Best Quality
+                        Chất Lượng Tốt Nhất
                         </h5>
                         <p>
-                            variations of passages of Lorem Ipsum available
+                           Hơn 5 năm kinh nghiệm trong lĩnh vực 
                         </p>
                     </div>
                 </div>

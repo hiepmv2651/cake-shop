@@ -8,7 +8,7 @@
 
 <body>
     @include('sweetalert::alert')
-    <div class="hero_area">
+    <div class="">
         <!-- header section strats -->
         @include('home.header')
         <!-- end header section -->
@@ -40,13 +40,8 @@
     @include('home.footer')
     <!-- footer end -->
 
-    <div class="cpy_">
-        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+    
 
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
-        </p>
-    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) { 
             var scrollpos = localStorage.getItem('scrollpos');

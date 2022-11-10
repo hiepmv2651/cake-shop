@@ -43,13 +43,13 @@
                 @endif
 
                 <div class="div_center">
-                    <h2 class="h2_font">Add category</h2>
+                    <h2 class="h2_font">Thêm Danh Mục Bánh</h2>
 
                     <form action="{{url('/add_category')}}" method="POST">
                         @csrf
                         <input type="text" class="input_color" name="category_name"
-                            placeholder="Write the category name">
-                        <input type="submit" class="btn btn-primary" value="Add Category" name="submit">
+                            placeholder="Viết tên...">
+                        <input type="submit" class="btn btn-primary" value="Thêm" name="submit">
                         @error('category_name')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
                             {{$message}}
@@ -64,10 +64,10 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Category Name</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                                <th>Action</th>
+                                <th>Tên danh mục</th>
+                                <th>Thời gian tạo</th>
+                                <th>Thời gian cập nhật</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,11 +79,10 @@
                                 <td>{{$value->created_at}}</td>
                                 <td>{{$value->updated_at}}</td>
                                 <td><a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Delete</a>
+                                        href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

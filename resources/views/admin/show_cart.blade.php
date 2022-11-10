@@ -33,7 +33,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Xem Giỏ Hàng</h2>
+                <h2 class="h2_font">Danh Sách Giỏ Hàng</h2>
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
@@ -45,8 +45,7 @@
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Giá</th>
-
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,23 +60,17 @@
                                 <td>{{$value->products->title}}</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->price}}</td>
-
-
-
                                 <td>
-
                                     <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Delete</a>
+                                        href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @php
                             $i++;
                             @endphp
                             @endforeach
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

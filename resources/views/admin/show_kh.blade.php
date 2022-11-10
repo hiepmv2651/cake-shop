@@ -33,7 +33,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Show Khách Hàng</h2>
+                <h2 class="h2_font">Danh Sách Khách Hàng</h2>
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
@@ -46,8 +46,8 @@
                                 <th>SĐT</th>
                                 <th>Địa Chỉ</th>
                                 <th>Giới Tính</th>
-                                <th>Image</th>
-                                <th>Action</th>
+                                <th>Ảnh Đại Diện</th>
+                                <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,29 +69,25 @@
                                 <td>{{$value->email}}</td>
                                 <td>{{$value->phone}}</td>
                                 <td>{{$value->address}}</td>
-
                                 <td>{{$gt}}</td>
                                 <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
 
                                 <td>
                                     <a href="{{url('update_user', $value->id)}}"
-                                        class="btn btn-inverse-warning">Edit</a>
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Delete</a>
+                                        class="btn btn-inverse-warning">Sửa</a>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @php
                             $i++;
                             @endphp
                             @endforeach
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
-
         <!-- container-scroller -->
         <!-- plugins:js -->
         @include('admin.js')

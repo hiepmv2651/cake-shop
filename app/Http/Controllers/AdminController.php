@@ -64,7 +64,7 @@ class AdminController extends Controller
 
         Product::create($data);
 
-        return redirect()->back()->with('message', 'Product created successfully');
+        return redirect()->back()->with('message', 'Thêm sản phẩm mới thành công!');
     }
 
     public function show_product()
@@ -98,14 +98,14 @@ class AdminController extends Controller
 
         $data->update($value);
 
-        return redirect()->back()->with('message', 'Product updated successfully');
+        return redirect()->back()->with('message', 'Cập nhật sản phẩm thành công!');
     }
 
     public function delete_product($id)
     {
         $data = product::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Product Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa sản phẩm thành công!');
     }
 
     public function add_hd()
@@ -409,5 +409,16 @@ class AdminController extends Controller
             $item = Order::all();
             return view('admin.baocao', compact('item'));
         }
+    }
+
+    public function khue()
+    {
+        return view('admin.khue');
+    }
+
+    
+    public function thongtincanhan()
+    {
+        return view('admin.thongtincanhan');
     }
 }

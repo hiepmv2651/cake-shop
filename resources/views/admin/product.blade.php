@@ -45,7 +45,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Add product</h2>
+                <h2 class="h2_font">Thêm sản phẩm mới</h2>
 
                 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
                     <div class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">

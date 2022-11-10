@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="admin/assets/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg"
+        <a class="sidebar-brand brand-logo" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png"
                 alt="logo" /></a>
     </div>
     <ul class="nav">
@@ -14,11 +14,11 @@
                     </div>
                     <div class="profile-name">
                         <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                        <span>Gold Member</span>
+                       
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-                <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                <!-- <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                     aria-labelledby="profile-dropdown">
                     <a href="#" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
@@ -52,18 +52,16 @@
                             <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </li>
-        <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
-        </li>
+       
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('/redirect')}}">
                 <span class="menu-icon">
                     <i class="mdi mdi-speedometer"></i>
                 </span>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Tổng Quan</span>
             </a>
         </li>
         <li class="nav-item menu-items">
@@ -71,14 +69,15 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
                 </span>
-                <span class="menu-title">Products</span>
+                <span class="menu-title">Sản Phẩm</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Add Products</a>
+                <!-- view_product = product.balde.php -->
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Thêm Sản Phẩm</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_product')}}">Show Products</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_product')}}">Xem Sản Phẩm</a></li>
                 </ul>
             </div>
         </li>
@@ -90,7 +89,7 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
-                <span class="menu-title">Category</span>
+                <span class="menu-title">Danh Mục</span>
             </a>
         </li>
 
@@ -125,16 +124,14 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-security"></i>
                 </span>
-                <span class="menu-title">User Pages</span>
+                <span class="menu-title">Người Dùng</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_kh')}}"> Khách Hàng
-                        </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_kh')}}"> Khách Hàng</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/show_nv')}}"> Nhân Viên </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}"> Thêm User </a></li>
-
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}">Thêm User</a></li>
                 </ul>
             </div>
         </li>
@@ -157,6 +154,7 @@
         </li>
 
         <li class="nav-item menu-items">
+        <!-- view_cart = show_cart.balde.php -->
             <a class="nav-link" href="{{url('view_cart')}}">
                 <span class="menu-icon">
                     <i class="mdi mdi-cart"></i>

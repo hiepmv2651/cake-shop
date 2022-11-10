@@ -247,7 +247,7 @@
                         Chất Lượng Tốt Nhất
                         </h5>
                         <p>
-                           Hơn 5 năm kinh nghiệm trong lĩnh vực 
+                           Hơn 5 năm kinh nghiệm trong lĩnh vực làm bánh
                         </p>
                     </div>
                 </div>

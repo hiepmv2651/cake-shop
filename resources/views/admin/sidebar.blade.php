@@ -1,6 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png"
+                alt="logo" /></a>
         <a class="sidebar-brand brand-logo-mini" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png"
                 alt="logo" /></a>
     </div>
@@ -14,7 +15,7 @@
                     </div>
                     <div class="profile-name">
                         <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                       
+
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -55,7 +56,7 @@
                 </div> -->
             </div>
         </li>
-       
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('/redirect')}}">
                 <span class="menu-icon">
@@ -74,7 +75,7 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                <!-- view_product = product.balde.php -->
+                    <!-- view_product = product.balde.php -->
                     <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Thêm Sản Phẩm</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/show_product')}}">Xem Sản Phẩm</a></li>
@@ -154,7 +155,7 @@
         </li>
 
         <li class="nav-item menu-items">
-        <!-- view_cart = show_cart.balde.php -->
+            <!-- view_cart = show_cart.balde.php -->
             <a class="nav-link" href="{{url('view_cart')}}">
                 <span class="menu-icon">
                     <i class="mdi mdi-cart"></i>
@@ -175,7 +176,7 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{url('/baocao')}}"> Báo Cáo
                         </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_nv')}}"> Biểu Đồ Thống Kê </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/thongke')}}"> Thống Kê </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}"> Thêm User </a></li>
 
                 </ul>

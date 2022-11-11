@@ -31,69 +31,20 @@ class HomeController extends Controller
     {
         $usertype = Auth::user()->usertype;
         if ($usertype == '1' || $usertype == '2') {
+            $mytime = now()->format('d');
             $lastDayofMonth = Carbon::now()->startOfMonth()->toDateString();
             $lastDayof2Month = Carbon::now()->startOfMonth()->subMonth(1);
 
-            $previous_products = Product::where('created_at', '<', $lastDayofMonth)->count();
-            $previous_1products = Product::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month]])->count();
-            $now_products = Product::where('created_at', '>=', $lastDayofMonth)->count();
-            $total_products = Product::all()->count();
-
-            $previous_orders = Order::where('created_at', '<', $lastDayofMonth)->count();
-            $previous_1orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month]])->count();
-            $now_orders = Order::where('created_at', '>=', $lastDayofMonth)->count();
-            $total_orders = Order::all()->count();
-
-            $previous_users = User::where([['created_at', '<', $lastDayofMonth], ['usertype', '=', 0]])->count();
-            $previous_1users = User::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['usertype', '=', 0]])->count();
-            $now_users = User::where([['created_at', '>=', $lastDayofMonth], ['usertype', '=', 0]])->count();
-            $total_users = User::all()->where('usertype', '=', 0)->count();
-
-            $previous_1sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-            $previous_sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
+            $dtngay = Order::whereDate('created_at', Carbon::today())->sum('tongtien');
+            $dhngay = Order::whereDate('created_at', Carbon::today())->count();
             $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-            $sum_orders = Order::where('payment_status', 'like', '%Đã thanh toán%')->sum('tongtien');
-
-            $previous_1devivered = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '8']])->count();
-            $previous_devivered = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
-            $now_devivered = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
-            $total_devivered = Order::where('trangthai_id', '=', '8')->count();
-
-            $previous_1processing = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '9']])->count();
-            $previous_processing = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
-            $now_processing = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
-            $total_processing = Order::where('trangthai_id', '=', '9')->count();
+            $sumsp = Product::all()->count();
 
             return view('admin.home', compact(
-                'total_products',
-                'previous_products',
-                'now_products',
-                'previous_1products',
-
-                'total_users',
-                'previous_users',
-                'now_users',
-                'previous_1users',
-
-                'previous_orders',
-                'total_orders',
-                'now_orders',
-                'previous_1orders',
-
-                'previous_sum_orders',
-                'sum_orders',
+                'dtngay',
+                'dhngay',
                 'now_sum_orders',
-                'previous_1sum_orders',
-
-                'previous_devivered',
-                'total_devivered',
-                'now_devivered',
-                'previous_1devivered',
-
-                'previous_processing',
-                'total_processing',
-                'now_processing',
-                'previous_1processing'
+                'sumsp',
             ));
         } else {
             $product = Product::paginate(6);

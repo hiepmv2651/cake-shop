@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Notification;
+use Carbon\Carbon;
+
 use App\Models\Cart;
 
 use App\Models\User;
-
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
@@ -39,6 +40,7 @@ class AdminController extends Controller
     public function delete_category($id)
     {
         $data = category::find($id);
+        Product::where('category', $data->category_name)->delete();
         $data->delete();
         return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
@@ -105,6 +107,7 @@ class AdminController extends Controller
     {
         $data = product::find($id);
         $data->delete();
+        chiTietHD::where('Product_id', $id)->delete();
         return redirect()->back()->with('message', 'Xóa sản phẩm thành công!');
     }
 
@@ -115,45 +118,28 @@ class AdminController extends Controller
         return view('admin.add_hd', compact('data', 'index'));
     }
 
-    // public function order()
-    // {
-    //     $order = Order::all();
-    //     return view('admin.order', compact('order'));
-    // }
+    public function send_email($id)
+    {
+        $user = User::find($id);
+        return view('admin.email_info', compact('user'));
+    }
 
-    // public function delivery($id)
-    // {
-    //     $order = Order::find($id);
-    //     $order->delivery_status = "delivered";
-    //     $order->payment_status = "paid";
+    public function send_user_email(Request $request, $id)
+    {
+        $user = User::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'firstline' => $request->firstline,
+            'body' => $request->body,
+            'button' => $request->button,
+            'url' => $request->url,
+            'lastline' => $request->lastline
+        ];
 
-    //     $order->save();
+        Notification::send($user, new SendEmailNotification($details));
 
-    //     return redirect()->back();
-    // }
-
-    // public function send_email($id)
-    // {
-    //     $order = Order::find($id);
-    //     return view('admin.email_info', compact('order'));
-    // }
-
-    // public function send_user_email(Request $request, $id)
-    // {
-    //     $order = Order::find($id);
-    //     $details = [
-    //         'greeting' => $request->greeting,
-    //         'firstline' => $request->firstline,
-    //         'body' => $request->body,
-    //         'button' => $request->button,
-    //         'url' => $request->url,
-    //         'lastline' => $request->lastline
-    //     ];
-
-    //     Notification::send($order, new SendEmailNotification($details));
-
-    //     return redirect()->back();
-    // }
+        return redirect()->back();
+    }
 
     public function view_status()
     {
@@ -175,6 +161,7 @@ class AdminController extends Controller
     public function delete_status($id)
     {
         $data = TrangThai::find($id);
+        Order::where('trangthai_id', $id)->delete();
         $data->delete();
         return redirect()->back()->with('message', 'Status Deleted Successfully');
     }
@@ -195,6 +182,12 @@ class AdminController extends Controller
     public function delete_user($id)
     {
         $data = User::find($id);
+        $orderId = Order::where('user_id', $id)->get();
+        chiTietHD::where('hoadon_id', $orderId->id)->delete();
+        Order::where('user_id', $id)->delete();
+        
+        Cart::where('user_id', $id)->delete();
+
         if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
             return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa');
         $data->delete();
@@ -224,6 +217,7 @@ class AdminController extends Controller
     public function delete_hd($id)
     {
         $data = Order::find($id);
+        chiTietHD::where('hoadon_id', $id)->delete();
         $data->delete();
         return redirect()->back()->with('message', 'Order Deleted Successfully');
     }
@@ -400,7 +394,7 @@ class AdminController extends Controller
             $oldvalue = $request->baocao;
             $item = Order::all();
             $value = Order::where([['id', '=', $request->baocao], ['payment_status', 'like', '%Đã thanh toán%']])->get();
-            if($value->count() > 0) {
+            if ($value->count() > 0) {
                 $data = chiTietHD::where('hoadon_id', '=', $request->baocao)->get();
                 return view('admin.baocao', compact('value', 'data', 'item', 'oldvalue'));
             }
@@ -416,9 +410,77 @@ class AdminController extends Controller
         return view('admin.khue');
     }
 
-    
+
     public function thongtincanhan()
     {
         return view('admin.thongtincanhan');
+    }
+
+    public function thongke()
+    {
+        $lastDayofMonth = Carbon::now()->startOfMonth()->toDateString();
+        $lastDayof2Month = Carbon::now()->startOfMonth()->subMonth(1);
+
+        $previous_products = Product::where('created_at', '<', $lastDayofMonth)->count();
+        $previous_1products = Product::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month]])->count();
+        $now_products = Product::where('created_at', '>=', $lastDayofMonth)->count();
+        $total_products = Product::all()->count();
+
+        $previous_orders = Order::where('created_at', '<', $lastDayofMonth)->count();
+        $previous_1orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month]])->count();
+        $now_orders = Order::where('created_at', '>=', $lastDayofMonth)->count();
+        $total_orders = Order::all()->count();
+
+        $previous_users = User::where([['created_at', '<', $lastDayofMonth], ['usertype', '=', 0]])->count();
+        $previous_1users = User::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['usertype', '=', 0]])->count();
+        $now_users = User::where([['created_at', '>=', $lastDayofMonth], ['usertype', '=', 0]])->count();
+        $total_users = User::all()->where('usertype', '=', 0)->count();
+
+        $previous_1sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
+        $previous_sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
+        $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
+        $sum_orders = Order::where('payment_status', 'like', '%Đã thanh toán%')->sum('tongtien');
+
+        $previous_1devivered = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '8']])->count();
+        $previous_devivered = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
+        $now_devivered = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
+        $total_devivered = Order::where('trangthai_id', '=', '8')->count();
+
+        $previous_1processing = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '9']])->count();
+        $previous_processing = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
+        $now_processing = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
+        $total_processing = Order::where('trangthai_id', '=', '9')->count();
+
+        return view('admin.thongke', compact(
+            'total_products',
+            'previous_products',
+            'now_products',
+            'previous_1products',
+
+            'total_users',
+            'previous_users',
+            'now_users',
+            'previous_1users',
+
+            'previous_orders',
+            'total_orders',
+            'now_orders',
+            'previous_1orders',
+
+            'previous_sum_orders',
+            'sum_orders',
+            'now_sum_orders',
+            'previous_1sum_orders',
+
+            'previous_devivered',
+            'total_devivered',
+            'now_devivered',
+            'previous_1devivered',
+
+            'previous_processing',
+            'total_processing',
+            'now_processing',
+            'previous_1processing'
+        ));
     }
 }

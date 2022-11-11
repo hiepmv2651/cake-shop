@@ -70,6 +70,9 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::get('/baocao', [AdminController::class, 'baocao']);
 
+    Route::get('/thongke', [AdminController::class, 'thongke']);
+
+
     Route::get('/update_hoadon/{id}', [AdminController::class, 'update_hoadon']);
 
     Route::post('/edit_hoadon/{id}', [AdminController::class, 'edit_hoadon']);

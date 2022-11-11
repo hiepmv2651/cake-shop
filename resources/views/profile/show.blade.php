@@ -18,9 +18,6 @@
 <!-- responsive style -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet" />
 
-
-<x-app-layout>
-
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -45,14 +42,16 @@
                     @auth
 
                     <li class="nav-item">
-                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Cart [ <span
+                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Cart [
+                            <span
                                 style="color: green;">{{App\Models\cart::where('user_id','=',Auth::user()->id)->count()}}]</span></a>
                     </li>
 
                     @else
 
                     <li class="nav-item">
-                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Giỏ Hàng [ 0
+                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Giỏ Hàng
+                            [ 0
                             ]</a>
                     </li>
                     @endauth
@@ -86,56 +85,50 @@
     </div>
 </header>
 
-    <!-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Hồ Sơ') }}
-        </h2>
-        
-    </x-slot> -->
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                @livewire('profile.update-profile-information-form')
+<div>
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+        @livewire('profile.update-profile-information-form')
 
-                <x-jet-section-border />
-            @endif
+        <x-jet-section-border />
+        @endif
 
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-password-form')
-                </div>
-
-                <x-jet-section-border />
-            @endif
-
-            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.two-factor-authentication-form')
-                </div>
-
-                <x-jet-section-border />
-            @endif
-
-            <div class="mt-10 sm:mt-0">
-                @livewire('profile.logout-other-browser-sessions-form')
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                <x-jet-section-border />
-
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
-                </div>
-            @endif
+        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+        <div class="mt-10 sm:mt-0">
+            @livewire('profile.update-password-form')
         </div>
 
+        <x-jet-section-border />
+        @endif
 
+        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+        <div class="mt-10 sm:mt-0">
+            @livewire('profile.two-factor-authentication-form')
+        </div>
 
+        <x-jet-section-border />
+        @endif
+
+        <div class="mt-10 sm:mt-0">
+            @livewire('profile.logout-other-browser-sessions-form')
+        </div>
+
+        @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+        <x-jet-section-border />
+
+        <div class="mt-10 sm:mt-0">
+            @livewire('profile.delete-user-form')
+        </div>
+        @endif
     </div>
 
 
-    <footer>
+
+</div>
+
+
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -204,9 +197,6 @@
     </div>
 </footer>
 <div class="cpy_">
-        <p class="mx-auto">
-        </p>
+    <p class="mx-auto">
+    </p>
 </div>
-
-  
-</x-app-layout>

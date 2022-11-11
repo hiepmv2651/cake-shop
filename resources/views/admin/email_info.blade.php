@@ -12,6 +12,10 @@
             font-size: 15px;
             font-weight: bold;
         }
+
+        .input_color {
+            color: black;
+        }
     </style>
 </head>
 
@@ -24,43 +28,90 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <h2 style="text-align: center">Send Email to {{$order->email}}</h2>
-                <form action="{{url('send_user_email', $order->id)}}" method="POST">
-                    @csrf
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Greeting</label>
-                        <input style="color: black" type="text" name="greeting">
-                    </div>
+                <h2 style="text-align: center">Send Email to {{$user->email}}</h2>
+                <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
+                    <div class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Firstling</label>
-                        <input style="color: black" type="text" name="firstline">
-                    </div>
+                        <form action="{{url('send_user_email', $user->id)}}" method="POST">
+                            @csrf
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Body</label>
-                        <input style="color: black" type="text" name="body">
-                    </div>
+                            <div>
+                                <x-jet-label for="" value="{{ __('Email Greeting') }}" />
+                                <x-jet-input id="greeting" class="block mt-1 w-full input_color" type="text"
+                                    name="greeting" :value="old('ngaydat')" required autofocus
+                                    autocomplete="greeting" />
+                                @error('greeting')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Button</label>
-                        <input style="color: black" type="text" name="button">
-                    </div>
+                            </div>
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Url</label>
-                        <input style="color: black" type="text" name="url">
-                    </div>
+                            <div class="mt-4">
+                                <x-jet-label for="" value="{{ __('Email Firstling') }}" />
+                                <x-jet-input id="firstline" class="block mt-1 w-full input_color" type="text"
+                                    name="firstline" :value="old('firstline')" required />
+                                @error('firstline')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                            </div>
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <label for="">Email Last Line</label>
-                        <input style="color: black" type="text" name="lastline">
-                    </div>
+                            <div class="mt-4">
+                                <x-jet-label for="" value="{{ __('Email Body') }}" />
+                                <x-jet-input id="body" class="block mt-1 w-full input_color" type="text" name="body"
+                                    :value="old('body')" required />
+                                @error('body')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                            </div>
 
-                    <div style="padding-left: 35%; padding-top: 30px">
-                        <input type="submit" value="Send Email" class="btn btn-primary" name="button" id="">
+                            <div class="mt-4">
+                                <x-jet-label for="" value="{{ __('Email Button') }}" />
+                                <x-jet-input id="button" class="block mt-1 w-full input_color" type="text" name="button"
+                                    :value="old('button')" required />
+                                @error('button')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-4">
+                                <x-jet-label for="" value="{{ __('Email Url') }}" />
+                                <x-jet-input id="url" class="block mt-1 w-full input_color" type="text" name="url"
+                                    :value="old('url')" required />
+                                @error('url')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                            </div>
+
+                            <div class="mt-4">
+                                <x-jet-label for="" value="{{ __('Email Last Line') }}" />
+                                <x-jet-input id="lastline" class="block mt-1 w-full input_color" type="text"
+                                    name="lastline" :value="old('lastline')" required />
+                                @error('lastline')
+                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    {{$message}}
+                                </p>
+                                @enderror
+                            </div>
+
+                            <div class="flex items-center justify-end mt-4">
+
+                                <x-jet-button class="ml-4">
+                                    {{ __('Thêm') }}
+                                </x-jet-button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <!-- container-scroller -->

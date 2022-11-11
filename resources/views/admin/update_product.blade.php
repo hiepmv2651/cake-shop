@@ -47,7 +47,7 @@
                     </div>
                     @endif
 
-                    <h2 class="h2_font">Edit product</h2>
+                    <h2 class="h2_font">Sửa Thông Tin Sản Phẩm</h2>
 
 
                 </div>

@@ -78,7 +78,11 @@
                                 <td>{{$value->category_name}}</td>
                                 <td>{{$value->created_at}}</td>
                                 <td>{{$value->updated_at}}</td>
-                                <td><a onclick="return confirm('Are you sure to delete this')"
+                                <td>
+                                <a href="{{url('update_category', $value->id)}}"
+                                        class="btn btn-inverse-warning">Sửa</a>    
+                                
+                                <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>

@@ -17,7 +17,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user() || Auth::user()->usertype != 1) {
+        if (!Auth::user() || (Auth::user()->usertype != 1 and Auth::user()->usertype != 2)) {
             abort(403);
         }
 

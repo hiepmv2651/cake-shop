@@ -38,15 +38,22 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::get('/delete_category/{id}', [AdminController::class, 'delete_category']);
 
+    Route::get('/update_category/{id}', [AdminController::class, 'update_category']);
+
+    Route::post('/edit_category/{id}', [AdminController::class, 'edit_category']);
+
     Route::get('/view_status', [AdminController::class, 'view_status']);
 
     Route::post('/add_status', [AdminController::class, 'add_status']);
+
+    Route::get('/update_status/{id}', [AdminController::class, 'update_status']);
+
+    Route::post('/edit_status/{id}', [AdminController::class, 'edit_status']);
 
     Route::get('/delete_status/{id}', [AdminController::class, 'delete_status']);
 
     Route::get('/view_product', [AdminController::class, 'view_product']);
 
-    
 
     Route::get('/show_kh', [AdminController::class, 'show_kh']);
 
@@ -102,6 +109,7 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     Route::get('/show_product', [AdminController::class, 'show_product']);
 
     Route::get('/update_product/{id}', [AdminController::class, 'update_product']);
+    
 
     Route::post('/edit_product/{id}', [AdminController::class, 'edit_product']);
 
@@ -142,6 +150,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/stripe/{totalprice}', [HomeController::class, 'stripePost'])->name('stripe.post');
 
     Route::get('/show_order', [HomeController::class, 'show_order']);
+
+    Route::get('/history_order', [HomeController::class, 'history_order']);
 
     Route::get('/order_details/{id}', [HomeController::class, 'order_details']);
 

@@ -12,39 +12,29 @@
         @include('home.header')
         <!-- end header section -->
 
-        <div class="col-sm-6 col-md-4 col-lg-4" style="margin:auto; width:50%; padding:30px">
-            <div class="box">
 
-                <div class="img-box" style="padding: 20px">
-                    <img src="{{asset('storage/'.$value->image)}}" alt="">
-                </div>
-                <div class="detail-box">
-                    <h5>Name :
-                        {{$value->product_id}}
-                    </h5>
-
-                    <h5>Payment Status:
-                        {{$value->payment_status}}
-                    </h5>
-                    <h5>Quantity:
-                        {{$value->quantity}}
-                    </h5>
-                    <h5>Price:
-                        {{$value->price}}
-                    </h5>
-                    <h6 style="color: blue">
-                        ${{$value->price}}
-                    </h6>
-
-
-
-
-
-                </div>
-            </div>
+        <div style="width: 90%; margin-left: auto; margin-right: auto;">
+            <table id="example" class="table is-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Ảnh Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Giá Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($orderde as $value)
+                    <tr>           
+                        <td>{{$value->products->title}}</td>
+                        <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td> 
+                        <td>{{$value->quantity}}</td>
+                        <td>{{$value->price}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-
-
         <!-- footer start -->
         @include('home.footer')
         <!-- footer end -->

@@ -16,6 +16,7 @@ use App\Models\TrangThai;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\SendEmailNotification;
 
 class AdminController extends Controller
@@ -48,7 +49,7 @@ class AdminController extends Controller
         $data = category::find($id);
 
         $value = $request->validate([
-            'category_name' => 'required',
+            'category_name' => 'required|unique:categories,category_name,' . $id,
         ]);
 
         $data->update($value);
@@ -57,10 +58,13 @@ class AdminController extends Controller
 
     public function delete_category($id)
     {
-        $data = category::find($id);
-        Product::where('category', $data->category_name)->delete();
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa danh mục thành công!');
+        if (auth::user()->usertype == '1') {
+            $data = category::find($id);
+            Product::where('category', $data->category_name)->delete();
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa danh mục thành công!');
+        }
+        abort(403);
     }
 
     public function view_product()
@@ -122,10 +126,14 @@ class AdminController extends Controller
 
     public function delete_product($id)
     {
-        $data = product::find($id);
-        $data->delete();
-        chiTietHD::where('Product_id', $id)->delete();
-        return redirect()->back()->with('message', 'Xóa sản phẩm thành công!');
+        if (auth::user()->usertype == '1') {
+            $data = product::find($id);
+            Storage::delete($data->image);
+            $data->delete();
+            chiTietHD::where('Product_id', $id)->delete();
+            return redirect()->back()->with('message', 'Xóa sản phẩm thành công!');
+        }
+        abort(403);
     }
 
     public function add_hd()
@@ -177,10 +185,13 @@ class AdminController extends Controller
 
     public function delete_status($id)
     {
-        $data = TrangThai::find($id);
-        Order::where('trangthai_id', $id)->delete();
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa thành công trạng thái!');
+        if (auth::user()->usertype == '1') {
+            $data = TrangThai::find($id);
+            Order::where('trangthai_id', $id)->delete();
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa thành công trạng thái!');
+        }
+        abort(403);
     }
 
     public function update_status($id)
@@ -195,7 +206,7 @@ class AdminController extends Controller
         $data = TrangThai::find($id);
 
         $value = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:trang_thais,name,' . $id,
         ]);
 
         $data->update($value);
@@ -218,17 +229,22 @@ class AdminController extends Controller
 
     public function delete_user($id)
     {
-        $data = User::find($id);
-        $orderId = Order::where('user_id', $id)->get();
-        chiTietHD::where('hoadon_id', $orderId->id)->delete();
-        Order::where('user_id', $id)->delete();
-        
-        Cart::where('user_id', $id)->delete();
+        if (auth::user()->usertype == '1') {
+            $data = User::find($id);
+            Storage::delete($data->profile_photo_path);
+            $orderId = Order::where('user_id', $id)->get();
+            chiTietHD::where('hoadon_id', $orderId->id)->delete();
+            Order::where('user_id', $id)->delete();
 
-        if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
-            return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa!');
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa thành công user!');
+            Storage::delete(Cart::where('user_id', $id)->image);
+            Cart::where('user_id', $id)->delete();
+
+            if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
+                return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa!');
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa thành công user!');
+        }
+        abort(403);
     }
 
     public function view_cart()
@@ -240,9 +256,13 @@ class AdminController extends Controller
 
     public function delete_gh($id)
     {
-        $data = Cart::find($id);
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa giỏ hàng thành công!');
+        if (auth::user()->usertype == '1') {
+            $data = Cart::find($id);
+            Storage::delete($data->image);
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa giỏ hàng thành công!');
+        }
+        abort(403);
     }
 
     public function show_hd()
@@ -253,10 +273,13 @@ class AdminController extends Controller
 
     public function delete_hd($id)
     {
-        $data = Order::find($id);
-        chiTietHD::where('hoadon_id', $id)->delete();
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa đơn hàng thành công!');
+        if (auth::user()->usertype == '1') {
+            $data = Order::find($id);
+            chiTietHD::where('hoadon_id', $id)->delete();
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa đơn hàng thành công!');
+        }
+        abort(403);
     }
 
     public function show_cthd()
@@ -267,9 +290,12 @@ class AdminController extends Controller
 
     public function delete_cthd($id)
     {
-        $data = chiTietHD::find($id);
-        $data->delete();
-        return redirect()->back()->with('message', 'Xóa chi tiết đơn hàng thành công!');
+        if (auth::user()->usertype == '1') {
+            $data = chiTietHD::find($id);
+            $data->delete();
+            return redirect()->back()->with('message', 'Xóa chi tiết đơn hàng thành công!');
+        }
+        abort(403);
     }
 
     public function add_hoadon(Request $request)
@@ -430,7 +456,7 @@ class AdminController extends Controller
         if ($request->baocao != null) {
             $oldvalue = $request->baocao;
             $item = Order::all();
-            $value = Order::where([['id', '=', $request->baocao], ['payment_status', 'like', '%Đã thanh toán%']])->get();
+            $value = Order::where('id', '=', $request->baocao)->get();
             if ($value->count() > 0) {
                 $data = chiTietHD::where('hoadon_id', '=', $request->baocao)->get();
                 return view('admin.baocao', compact('value', 'data', 'item', 'oldvalue'));

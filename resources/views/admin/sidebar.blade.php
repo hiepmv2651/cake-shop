@@ -174,10 +174,9 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/baocao')}}"> Báo Cáo
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/baocao')}}"> In Hóa Đơn
                         </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{url('/thongke')}}"> Thống Kê </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}"> Thêm User </a></li>
 
                 </ul>
             </div>

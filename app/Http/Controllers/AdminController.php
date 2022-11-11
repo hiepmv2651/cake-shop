@@ -32,15 +32,33 @@ class AdminController extends Controller
         ]);
 
         Category::create($data);
+        return redirect()->back()->with('message', 'Thêm danh mục thành công!');
+    }
 
-        return redirect()->back()->with('message', 'Category Added Successfully');
+    public function update_category($id)
+    {
+        $data = category::find($id);
+        $value = category::all();
+        return view('admin.update_category', compact('data', 'value'));
+    }
+
+    public function edit_category(Request $request, $id)
+    {
+        $data = category::find($id);
+
+        $value = $request->validate([
+            'category_name' => 'required',
+        ]);
+
+        $data->update($value);
+        return redirect()->back()->with('message', 'Cập nhật danh mục thành công!');
     }
 
     public function delete_category($id)
     {
         $data = category::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Category Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa danh mục thành công!');
     }
 
     public function view_product()
@@ -89,7 +107,6 @@ class AdminController extends Controller
             'description' => 'required',
             'category' => 'required',
             'price' => 'required',
-
         ]);
 
         if ($request->hasFile('image')) {
@@ -169,15 +186,35 @@ class AdminController extends Controller
 
         TrangThai::create($data);
 
-        return redirect()->back()->with('message', 'Status Added Successfully');
+        return redirect()->back()->with('message', 'Thêm trạng thái thành công!');
     }
 
     public function delete_status($id)
     {
         $data = TrangThai::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Status Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa thành công trạng thái!');
     }
+
+    public function update_status($id)
+    {
+        $data = TrangThai::find($id);
+        $value = TrangThai::all();
+        return view('admin.update_status', compact('data', 'value'));
+    }
+
+    public function edit_status(Request $request, $id)
+    {
+        $data = TrangThai::find($id);
+
+        $value = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $data->update($value);
+        return redirect()->back()->with('message', 'Cập nhật trạng thái thành công!');
+    }
+
 
     public function show_kh()
     {
@@ -196,9 +233,9 @@ class AdminController extends Controller
     {
         $data = User::find($id);
         if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
-            return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa');
+            return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa!');
         $data->delete();
-        return redirect()->back()->with('message', 'User Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa thành công user!');
     }
 
     public function view_cart()
@@ -212,7 +249,7 @@ class AdminController extends Controller
     {
         $data = Cart::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Cart Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa giỏ hàng thành công!');
     }
 
     public function show_hd()
@@ -225,7 +262,7 @@ class AdminController extends Controller
     {
         $data = Order::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Order Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa đơn hàng thành công!');
     }
 
     public function show_cthd()
@@ -238,7 +275,7 @@ class AdminController extends Controller
     {
         $data = chiTietHD::find($id);
         $data->delete();
-        return redirect()->back()->with('message', 'Detail Deleted Successfully');
+        return redirect()->back()->with('message', 'Xóa chi tiết đơn hàng thành công!');
     }
 
     public function add_hoadon(Request $request)

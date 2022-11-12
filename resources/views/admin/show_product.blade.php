@@ -14,6 +14,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 
 </head>
@@ -33,20 +37,20 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Show Product</h2>
+                <h2 class="h2_font">Xem sản phẩm</h2>
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
                     <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
                         <thead>
                             <tr>
 
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                                <th>Action</th>
+                                <th>Mã Sản Phẩm</th>
+                                <th>Tên</th>
+                                <th>Mô Tả</th>
+                                <th>Giá</th>
+                                <th>Loại</th>
+                                <th>Hình Ảnh</th>
+                                <th>Hành Động</th>
                             </tr>
                         </thead>
                         <tbody>

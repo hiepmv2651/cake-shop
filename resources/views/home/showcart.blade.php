@@ -99,7 +99,11 @@
     @include('home.footer')
     <!-- footer end -->
     </div>
-    
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
@@ -194,8 +198,8 @@ function pay() {
           var urlToRedirect = ev.currentTarget.getAttribute('href');  
           console.log(urlToRedirect); 
           swal({
-              title: "Are you sure to cancel this product",
-              text: "You will not be able to revert this!",
+              title: "Bạn có chắc chắn hủy sản phẩm này không?",
+              text: "Bạn sẽ không thể hoàn nguyên điều này!",
               icon: "warning",
               buttons: true,
               dangerMode: true,
@@ -207,6 +211,7 @@ function pay() {
           });   
       }
     </script>
+
     <!-- jQery -->
     <!-- popper js -->
     <script src="home/js/popper.min.js"></script>

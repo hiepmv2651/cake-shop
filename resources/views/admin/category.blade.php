@@ -22,6 +22,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 </head>
 
@@ -47,8 +51,7 @@
 
                     <form action="{{url('/add_category')}}" method="POST">
                         @csrf
-                        <input type="text" class="input_color" name="category_name"
-                            placeholder="Viết tên...">
+                        <input type="text" class="input_color" name="category_name" placeholder="Viết tên...">
                         <input type="submit" class="btn btn-primary" value="Thêm" name="submit">
                         @error('category_name')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
@@ -76,13 +79,17 @@
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->category_name}}</td>
-                                <td>{{$value->created_at}}</td>
-                                <td>{{$value->updated_at}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $value->created_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
+                                    d/m/Y')}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $value->updated_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
+                                    d/m/Y')}}</td>
                                 <td>
-                                <a href="{{url('update_category', $value->id)}}"
-                                        class="btn btn-inverse-warning">Sửa</a>    
-                                
-                                <a onclick="return confirm('Are you sure to delete this')"
+                                    <a href="{{url('update_category', $value->id)}}"
+                                        class="btn btn-inverse-warning">Sửa</a>
+
+                                    <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>

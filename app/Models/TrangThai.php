@@ -11,6 +11,6 @@ class TrangThai extends Model
     use HasFactory;
 
     public function orders() {
-        return $this->hasOne(Order::class);
+        return $this->hasMany(Order::class, 'trangthai_id');
     }
 }

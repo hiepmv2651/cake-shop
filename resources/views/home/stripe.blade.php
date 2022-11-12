@@ -25,7 +25,8 @@
         <span style="font-size: 18px">@include('home.header')</span>
 
         <div class="container">
-            <h1 style="text-align: center; font-size:24px; padding-bottom:20px">Pay Using Your Card - Total Amount
+            <h1 style="text-align: center; font-size:24px; padding-bottom:20px">
+                Thanh toán bằng thẻ của bạn - Tổng số tiền
                 ${{$totalprice ?? 0}}</h1>
 
             <div class="row">

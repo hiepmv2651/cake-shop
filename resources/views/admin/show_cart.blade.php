@@ -14,6 +14,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 
 </head>

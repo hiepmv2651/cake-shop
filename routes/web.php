@@ -66,11 +66,11 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     Route::get('/delete_gh/{id}', [AdminController::class, 'delete_gh']);
 
     Route::get('/show_hd', [AdminController::class, 'show_hd']);
-    
+
     Route::get('/delete_hd/{id}', [AdminController::class, 'delete_hd']);
 
     Route::get('/show_cthd', [AdminController::class, 'show_cthd']);
-    
+
     Route::get('/delete_cthd/{id}', [AdminController::class, 'delete_cthd']);
 
     Route::post('/add_hoadon', [AdminController::class, 'add_hoadon']);
@@ -109,7 +109,7 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     Route::get('/show_product', [AdminController::class, 'show_product']);
 
     Route::get('/update_product/{id}', [AdminController::class, 'update_product']);
-    
+
 
     Route::post('/edit_product/{id}', [AdminController::class, 'edit_product']);
 
@@ -126,14 +126,15 @@ Route::middleware(['auth', 'usertype'])->group(function () {
     Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email']);
 
 
-   
 
+    Route::get('/khue', [AdminController::class, 'khue']);
+
+    Route::get('/thongtincanhan', [AdminController::class, 'thongtincanhan']);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/redirect', [HomeController::class, 'redirect']);
 
-    Route::get('/product_details/{id}', [HomeController::class, 'products_detail']);
 
     Route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
 
@@ -156,15 +157,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/order_details/{id}', [HomeController::class, 'order_details']);
 
     Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);
-
-    Route::get('/product_search', [HomeController::class, 'product_search']);
-
-    Route::get('/product', [HomeController::class, 'product']);
-
-    Route::get('/search_product', [HomeController::class, 'search_product']);
-    
 });
 
-    Route::get('/lienhe', [HomeController::class, 'lienhe']);
-    Route::get('/khue', [AdminController::class, 'khue']);
-    Route::get('/thongtincanhan', [AdminController::class, 'thongtincanhan']);
+Route::get('/lienhe', [HomeController::class, 'lienhe']);
+
+Route::get('/product', [HomeController::class, 'product']);
+
+Route::get('/product_details/{id}', [HomeController::class, 'products_detail']);
+
+Route::get('/product_search', [HomeController::class, 'product_search']);
+
+Route::get('/search_product', [HomeController::class, 'search_product']);

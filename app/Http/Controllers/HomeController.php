@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use Session;
+use Exception;
 use Carbon\Carbon;
 use App\Models\Cart;
-use App\Models\chiTietHD;
 use App\Models\User;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\chiTietHD;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class HomeController extends Controller
 {
@@ -36,15 +39,18 @@ class HomeController extends Controller
             $lastDayof2Month = Carbon::now()->startOfMonth()->subMonth(1);
 
             $dtngay = Order::whereDate('created_at', Carbon::today())->sum('tongtien');
-            $dhngay = Order::whereDate('created_at', Carbon::today())->count();
+
+            $dhngay = Order::whereDate('created_at', Carbon::today())->where('trangthai_id', '1')->count();
+
             $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-            $sumsp = Product::all()->count();
+
+            $now_don_duyet = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '2'], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');;
 
             return view('admin.home', compact(
                 'dtngay',
                 'dhngay',
                 'now_sum_orders',
-                'sumsp',
+                'now_don_duyet',
             ));
         } else {
             $product = Product::paginate(6);
@@ -166,11 +172,11 @@ class HomeController extends Controller
             $cart->delete();
         }
 
-        return redirect()->back()->with('message', 'We received your order successfully. We will connect with you soon.');
+        return redirect()->back()->with('message', 'Chúng tôi đã nhận được đơn đặt hàng của bạn thành công. Chúng tôi sẽ sớm kết nối với bạn. ');
     }
 
-    public function stripe(Request $request)
-    {
+    public function stripe(Request $request, \Exception $e)
+    { 
         $totalprice = $request->thanhtoan;
         $data = implode(',', $request->get('ids'));
 
@@ -186,8 +192,8 @@ class HomeController extends Controller
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         Stripe\Charge::create([
-            "amount" => $totalprice * 100,
-            "currency" => "usd",
+            "amount" => $totalprice,
+            "currency" => "vnđ",
             "source" => $request->stripeToken,
             "description" => "Thanks for payment"
         ]);
@@ -231,15 +237,15 @@ class HomeController extends Controller
 
         Session::flash('success', 'Payment successful!');
 
-        return view('home.stripe');
+        return view('home.history_order');
     }
 
     public function show_order()
-    {  
+    {
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=' , 8], ['payment_status', '!=', '%Đã thanh toán%']])->latest()->get();
+            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=', 8], ['payment_status', '!=', '%Đã thanh toán%']])->latest()->get();
             return view('home.order', compact('order'));
         } else {
             return redirect('login');
@@ -251,7 +257,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            $history = Order::where([['user_id', $userId], ['trangthai_id', 8], ['payment_status', 'like', '%Đã thanh toán%']])->latest()->get();
+            $history = Order::where([['user_id', $userId], ['trangthai_id', 3], ['payment_status', 'like', '%Đã thanh toán%']])->latest()->get();
 
             return view('home.history_order', compact('history'));
         } else {
@@ -263,15 +269,6 @@ class HomeController extends Controller
     {
         $orderde = chiTietHD::where('hoadon_id', $id)->get();
         return view('home.orders_detail', compact('orderde'));
-    }
-
-    public function cancel_order($id)
-    {
-        $order = Order::find($id);
-        $order->delivery_status = 'You cancel the order';
-        $order->save();
-
-        return redirect()->back();
     }
 
     public function product_search(Request $request)

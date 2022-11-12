@@ -48,7 +48,7 @@
                         </div>
                         <br>
                         <h6 class="text-muted font-weight-normal">{{$dhngay}}</h6>
-                        <h6 class="text-muted font-weight-normal">Đơn hàng trong ngày</h6>
+                        <h6 class="text-muted font-weight-normal">Đơn hàng chưa duyệt trong ngày</h6>
                     </div>
                 </div>
             </div>
@@ -95,9 +95,9 @@
                             </div>
 
                         </div>
-                        <h6 class="text-muted font-weight-normal">{{$sumsp}}
+                        <h6 class="text-muted font-weight-normal">{{$now_don_duyet}}
                         </h6>
-                        <h6 class="text-muted font-weight-normal">Tổng sản phẩm</h6>
+                        <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã duyệt và thanh toán</h6>
                     </div>
                 </div>
             </div>

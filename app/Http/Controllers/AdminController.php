@@ -53,7 +53,7 @@ class AdminController extends Controller
         ]);
 
         $data->update($value);
-        return redirect()->back()->with('message', 'Cập nhật danh mục thành công!');
+        return redirect('view_category')->with('message', 'Cập nhật danh mục thành công!');
     }
 
     public function delete_category($id)
@@ -121,7 +121,7 @@ class AdminController extends Controller
 
         $data->update($value);
 
-        return redirect()->back()->with('message', 'Cập nhật sản phẩm thành công!');
+        return redirect('show_product')->with('message', 'Cập nhật sản phẩm thành công!');
     }
 
     public function delete_product($id)
@@ -210,7 +210,7 @@ class AdminController extends Controller
         ]);
 
         $data->update($value);
-        return redirect()->back()->with('message', 'Cập nhật trạng thái thành công!');
+        return redirect('view_status')->with('message', 'Cập nhật trạng thái thành công!');
     }
 
 
@@ -341,7 +341,7 @@ class AdminController extends Controller
 
         $data->update($value);
 
-        return redirect()->back()->with('message', 'Cập Nhật Hóa Đơn Thành Công');
+        return redirect('show_hd')->with('message', 'Cập Nhật Hóa Đơn Thành Công');
     }
 
     public function add_cthd()
@@ -391,7 +391,7 @@ class AdminController extends Controller
 
         $data->update($value);
 
-        return redirect()->back()->with('message', 'Cập Nhật Hóa Đơn Thành Công');
+        return redirect('show_cthd')->with('message', 'Cập Nhật Hóa Đơn Thành Công');
     }
 
     public function add_user()
@@ -420,29 +420,35 @@ class AdminController extends Controller
 
     public function update_user($id)
     {
-        $data = User::find($id);
-        return view('admin.update_user', compact('data'));
+        if (auth::user()->usertype == '1') {
+            $data = User::find($id);
+            return view('admin.update_user', compact('data'));
+        }
+        abort(403);
     }
 
     public function edit_user(Request $request, $id)
     {
-        $data = User::find($id);
+        if (auth::user()->usertype == '1') {
+            $data = User::find($id);
 
-        $value = $request->validate([
-            'name' => 'required',
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($data)],
-            'usertype' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'gender' => 'required',
-            'password' => 'required',
-        ]);
+            $value = $request->validate([
+                'name' => 'required',
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($data)],
+                'usertype' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'gender' => 'required',
+                'password' => 'required',
+            ]);
 
-        $value['password'] = bcrypt($value['password']);
+            $value['password'] = bcrypt($value['password']);
 
-        $data->update($value);
+            $data->update($value);
 
-        return redirect()->back()->with('message', 'Cập Nhập User Thành Công');
+            return redirect()->back()->with('message', 'Cập Nhập User Thành Công');
+        }
+        abort(403);
     }
 
     public function detail_hoadon($id)
@@ -455,7 +461,7 @@ class AdminController extends Controller
     {
         if ($request->baocao != null) {
             $oldvalue = $request->baocao;
-            $item = Order::all();
+            $item = Order::where([['trangthai_id', '3'], ['payment_status', 'like', '%đã thanh toán%']]);
             $value = Order::where('id', '=', $request->baocao)->get();
             if ($value->count() > 0) {
                 $data = chiTietHD::where('hoadon_id', '=', $request->baocao)->get();

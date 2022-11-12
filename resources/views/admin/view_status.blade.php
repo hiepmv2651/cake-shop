@@ -22,6 +22,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 </head>
 
@@ -74,15 +78,19 @@
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
-                                <td>{{$value->created_at}}</td>
-                                <td>{{$value->updated_at}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $value->created_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
+                                    d/m/Y')}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $value->updated_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
+                                    d/m/Y')}}</td>
                                 <td>
-                                    
-                                <a href="{{url('update_status', $value->id)}}"
-                                        class="btn btn-inverse-warning">Sửa</a>    
+
+                                    <a href="{{url('update_status', $value->id)}}"
+                                        class="btn btn-inverse-warning">Sửa</a>
 
 
-                                <a onclick="return confirm('Are you sure to delete this')"
+                                    <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>

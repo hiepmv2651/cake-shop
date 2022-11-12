@@ -14,6 +14,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 
 </head>
@@ -80,8 +84,7 @@
                                 <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
 
                                 <td>
-                                    <a href="{{url('update_user', $value->id)}}"
-                                        class="btn btn-inverse-warning">Sửa</a>
+                                    <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
                                         href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
 

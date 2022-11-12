@@ -14,6 +14,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 
 </head>
@@ -59,7 +63,7 @@
                                 <td>{{$i}}</td>
                                 <td>{{$value->price}}</td>
                                 <td>{{$value->quantity}}</td>
-                                <td>{{$value->orders->id}}</td>
+                                <td>{{$value->hoadon_id}}</td>
                                 <td>{{$value->products->title}}</td>
 
                                 <td>

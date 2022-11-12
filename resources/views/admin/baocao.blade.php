@@ -19,6 +19,10 @@
         .dataTables_length select {
             background-color: white !important;
         }
+
+        .dataTables_info {
+            color: black !important;
+        }
     </style>
 
 </head>
@@ -38,7 +42,8 @@
                 </div>
                 @endif
 
-                <h2 class="h2_font">Thống Kê Hóa Đơn</h2>
+                @if ($item->count() > 0)
+                <h2 class="h2_font">In Hóa Đơn Đã Duyệt Và Thanh Toán</h2>
                 <div class="div_center">
                     @php
                     $id = 0;
@@ -65,10 +70,13 @@
                             <li>{{$message}}</li>
                         </ul>
                         @enderror
-                        <input type="submit" class="btn btn-primary" value="Add Status" name="submit">
+                        <input type="submit" class="btn btn-primary" value="In Hóa Đơn" name="submit">
 
                     </form>
                 </div>
+                @else
+                <h2 class="h2_font">Không có hóa đã duyệt và thanh toán</h2>
+                @endif
 
                 @isset($data)
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
@@ -350,6 +358,27 @@
 
 
         $('#example').DataTable({
+            "language": {
+                                            "lengthMenu": " _MENU_ ",
+                                            "zeroRecords": "Không tìm thấy",
+                                            "info": "Hiển thị trang _PAGE_ / _PAGES_",
+                                            "infoEmpty": "Không có dữ liệu",
+                                            "infoFiltered": "(Được lọc từ _MAX_ mục)",
+                                            "search": "Tìm kiếm:",
+                                            "paginate": {
+                                                "first": "Trang đầu",
+                                                "last": "Trang cuối",
+                                                "next": "Sau",
+                                                "previous": "Trước",
+                                            },
+                                            buttons: {
+                                                colvis: 'Chọn mục không xuất',
+                                            },
+                                            select: {
+                                                rows: " (%d dòng được chọn)"
+                                            }
+                                        },
+                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             dom: 'Bfrtip',
             
             buttons: [
@@ -379,7 +408,29 @@
             
             
         });
-        $('#example2').DataTable();
+        $('#example2').DataTable({
+            "language": {
+                                            "lengthMenu": " _MENU_ ",
+                                            "zeroRecords": "Không tìm thấy",
+                                            "info": "Hiển thị trang _PAGE_ / _PAGES_",
+                                            "infoEmpty": "Không có dữ liệu",
+                                            "infoFiltered": "(Được lọc từ _MAX_ mục)",
+                                            "search": "Tìm kiếm:",
+                                            "paginate": {
+                                                "first": "Trang đầu",
+                                                "last": "Trang cuối",
+                                                "next": "Sau",
+                                                "previous": "Trước",
+                                            },
+                                            buttons: {
+                                                colvis: 'Chọn mục không xuất',
+                                            },
+                                            select: {
+                                                rows: " (%d dòng được chọn)"
+                                            }
+                                        },
+                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        });
     });
         </script>
         <script src="//unpkg.com/alpinejs" defer></script>

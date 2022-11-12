@@ -48,34 +48,17 @@
                         <td>{{$value->payment_status}}</td>
                         <td>{{$value->tongtien}}</td>
 
-                        <!-- <td>{{$value->product_title}}</td>
-                        <td>{{$value->quantity}}</td>
-                        <td>${{$value->price}}</td>
-                        <td>{{$value->payment_status}}</td>
-                        <td>{{$value->delivery_status}}</td>
-                        <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td> -->
-                        
                         <td>
-                            @if ($value->delivery_status == 'processing')
-                            <a onclick="return confirm('Are you sure to cancel this')"
-                                href="{{url('cancel_order', $value->id)}}" class="btn btn-danger">Cancel Order</a>
-                            @else
-                            <p style="color: blue">Not Allow</p>
-                            @endif
+
                             <a href="{{url('order_details', $value->id)}}" class="btn btn-danger">Xem Chi Tiết</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="5" style="text-align:right">Total:</th>
-                        <th></th>
-                    </tr>
-                </tfoot>
+
             </table>
         </div>
-        
+
     </div>
     <br>
 
@@ -87,33 +70,8 @@
     <script>
         $(document).ready(function () {
     $('#example').DataTable({
-        footerCallback: function (row, data, start, end, display) {
-            var api = this.api();
- 
-            // Remove the formatting to get integer data for summation
-            var intVal = function (i) {
-                return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
-            };
- 
-            // Total over all pages
-            total = api
-                .column(2)
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
- 
-            // Total over this page
-            pageTotal = api
-                .column(2, { page: 'current' })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
- 
-            // Update footer
-            $(api.column(4).footer()).html('$' + pageTotal + ' ( $' + total + ' total)');
-        },
+        
+        
     });
 });
     </script>

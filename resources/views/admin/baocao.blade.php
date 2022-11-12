@@ -113,7 +113,7 @@
                                 <td>{{$value->user->name}}</td>
                                 <td>{{$value->trangthais->name}}</td>
                                 <td>{{$value->payment_status}}</td>
-                                <td>{{$value->tongtien}}</td>
+                                <td>{{$value->tongtien}} VNĐ</td>
 
                             </tr>
                             @php
@@ -147,7 +147,7 @@
                             @foreach ($data as $value)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>{{$value->price}} VNĐ</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->orders->id}}</td>
                                 <td>{{$value->products->title}}</td>

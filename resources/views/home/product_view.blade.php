@@ -5,8 +5,8 @@
             <div>
                 <form action="{{url('search_product')}}" method="GET">
                     @csrf
-                    <input style="width: 500px" type="text" name="search" placeholder="Search for Something">
-                    <input type="submit" value="search" name="" id="">
+                    <input style="width: 500px" type="text" name="search" placeholder="Tìm Kiếm Sản Phẩm">
+                    <input type="submit" value="Tìm Kiếm" name="" id="">
                 </form>
             </div>
         </div>
@@ -25,12 +25,12 @@
                     <div class="option_container">
                         <div class="options">
                             <a href="{{url('product_details', $value->id)}}" class="option1">
-                                Product Detail
+                                Chi Tiết Sản Phẩm
                             </a>
                             <form action="{{url('add_cart', $value->id)}}" method="POST">
                                 @csrf
                                 <input type="number" name="quantity" min="1" max="20" value="1">
-                                <input type="submit" value="Add To Cart">
+                                <input type="submit" value="Thêm Vào Giỏ">
                             </form>
                         </div>
                     </div>
@@ -42,21 +42,10 @@
                             {{$value->title}}
                         </h5>
 
-                        @if ($value->discount_price != null)
-                        <h6 style="color: red">
-                            ${{$value->discount_price}}
-                        </h6>
-
-                        <h6 style="text-decoration: line-through; color:blue">
-                            ${{$value->price}}
-                        </h6>
-
-                        @else
                         <h6 style="color: blue">
-                            ${{$value->price}}
+                            {{$value->price}} VNĐ
                         </h6>
 
-                        @endif
                     </div>
                 </div>
             </div>
@@ -67,7 +56,7 @@
         </div>
         <div class="btn-box">
             <a href="{{url('product')}}">
-                View All products
+                Xem Tất Cả Sản Phẩm
             </a>
         </div>
     </div>

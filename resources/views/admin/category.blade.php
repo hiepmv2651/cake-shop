@@ -88,9 +88,11 @@
                                 <td>
                                     <a href="{{url('update_category', $value->id)}}"
                                         class="btn btn-inverse-warning">Sửa</a>
-
+                                    @if(auth::user()->usertype == 1)
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

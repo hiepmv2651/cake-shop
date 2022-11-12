@@ -91,13 +91,16 @@
                                 <td>{{$value->user->name}}</td>
                                 <td>{{$value->trangthais->name}}</td>
                                 <td>{{$value->payment_status}}</td>
-                                <td>{{$value->tongtien}}</td>
+                                <td>{{$value->tongtien}} VNĐ</td>
                                 <td>
                                     <a href="{{url('detail_hoadon', $value->id)}}" class="btn btn-primary">Detail</a>
                                     <a href="{{url('update_hoadon', $value->id)}}"
                                         class="btn btn-inverse-warning">Edit</a>
+                                    @if(auth::user()->usertype == 1)
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @php

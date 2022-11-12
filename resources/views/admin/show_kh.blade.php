@@ -78,9 +78,12 @@
 
                                 <td>
                                     <a href="{{url('send_email', $value->id)}}" class="btn btn-primary">Gửi email</a>
+                                    @if(auth::user()->usertype == 1)
                                     <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
                                         href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @php

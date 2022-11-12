@@ -60,7 +60,7 @@
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->title}}</td>
                                 <td>{{$value->description}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>{{$value->price}} VNĐ</td>
 
                                 <td>{{$value->category}}</td>
                                 <td><img src="{{asset('storage/'.$value->image)}}" alt=""></td>
@@ -68,8 +68,11 @@
                                 <td>
                                     <a href="{{url('update_product', $value->id)}}"
                                         class="btn btn-inverse-warning">Edit</a>
+                                    @if(auth::user()->usertype == 1)
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_product', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

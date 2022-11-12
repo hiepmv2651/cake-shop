@@ -445,8 +445,10 @@ class AdminController extends Controller
             $value['password'] = bcrypt($value['password']);
 
             $data->update($value);
+            if($data->usertype == 0)
+                return redirect('show_kh')->with('message', 'Cập Nhập Khách Hàng Thành Công');
 
-            return redirect()->back()->with('message', 'Cập Nhập User Thành Công');
+            return redirect('show_nv')->with('message', 'Cập Nhập Nhân Viên Thành Công');
         }
         abort(403);
     }

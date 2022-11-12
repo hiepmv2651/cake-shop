@@ -66,8 +66,11 @@
                                 <td>
                                     <a href="{{url('update_cthoadon', $value->id)}}"
                                         class="btn btn-inverse-warning">Edit</a>
+                                    @if(auth::user()->usertype == 1)
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @php

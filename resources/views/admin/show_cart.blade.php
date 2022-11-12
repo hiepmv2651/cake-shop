@@ -49,7 +49,10 @@
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Giá</th>
+                                @if(auth::user()->usertype == 1)
                                 <th>Hành Động</th>
+                                @else
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -63,11 +66,14 @@
                                 <td>{{$value->user->name}}</td>
                                 <td>{{$value->products->title}}</td>
                                 <td>{{$value->quantity}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>{{$value->price}} VNĐ</td>
+                                @if(auth::user()->usertype == 1)
                                 <td>
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
+                                @else
+                                @endif
                             </tr>
                             @php
                             $i++;

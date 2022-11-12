@@ -22,7 +22,8 @@
                     @auth
 
                     <li class="nav-item">
-                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Cart [ <span
+                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Giỏ Hàng [
+                            <span
                                 style="color: green;">{{App\Models\cart::where('user_id','=',Auth::user()->id)->count()}}]</span></a>
                     </li>
 

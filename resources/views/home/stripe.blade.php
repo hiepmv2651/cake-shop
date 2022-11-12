@@ -51,6 +51,8 @@
                                 @csrf
 
                                 <input type="hidden" name="data" value="{{$data ?? ''}}">
+                                <input type="hidden" name="address" value="{{$address ?? ''}}">
+                                <input type="hidden" name="phone" value="{{$phone ?? ''}}">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label class='control-label'>Name on Card</label> <input class='form-control'

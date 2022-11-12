@@ -46,21 +46,9 @@
                             {{$value->title}}
                         </h5>
 
-                        @if ($value->discount_price != null)
-                        <h6 style="color: red">
-                            ${{$value->discount_price}}
-                        </h6>
-
-                        <h6 style="text-decoration: line-through; color:blue">
-                            ${{$value->price}}
-                        </h6>
-
-                        @else
                         <h6 style="color: blue">
-                            ${{$value->price}}
+                            {{$value->price}} VNĐ
                         </h6>
-
-                        @endif
                     </div>
                 </div>
             </div>

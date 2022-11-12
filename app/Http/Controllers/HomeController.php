@@ -133,6 +133,15 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function capnhat_cart($id, Request $request) {
+        $data = Cart::find($id);
+        $data->price = $data->price / $data->quantity * $request->quantity;
+        $data->quantity = $request->quantity;
+        $data->save();
+        
+        return redirect()->back()->with('message', 'Cập Nhập Số Lượng Sản Phẩm Thành Công');
+    }
+
     public function cash_order(Request $request)
     {
         $value = $request->get('ids');
@@ -144,8 +153,8 @@ class HomeController extends Controller
         $order = new Order;
         $order->ngaydat = Carbon::now();
 
-        $order->phone = $user->phone;
-        $order->address = $user->address;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
         $order->description = '';
 
         $order->user_id = $userId;
@@ -179,9 +188,11 @@ class HomeController extends Controller
     { 
         $totalprice = $request->thanhtoan;
         $data = implode(',', $request->get('ids'));
+        $address = $request->address;
+        $phone = $request->phone;
 
         if (Auth::id()) {
-            return view('home.stripe', compact('totalprice', 'data'));
+            return view('home.stripe', compact('totalprice', 'data', 'address', 'phone'));
         } else {
             return redirect('login');
         }
@@ -193,7 +204,7 @@ class HomeController extends Controller
 
         Stripe\Charge::create([
             "amount" => $totalprice,
-            "currency" => "vnđ",
+            "currency" => "vnd",
             "source" => $request->stripeToken,
             "description" => "Thanks for payment"
         ]);
@@ -207,8 +218,8 @@ class HomeController extends Controller
         $order = new Order;
         $order->ngaydat = Carbon::now();
 
-        $order->phone = $user->phone;
-        $order->address = $user->address;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
         $order->description = '';
 
         $order->user_id = $userId;

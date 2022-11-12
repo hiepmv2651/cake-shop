@@ -148,6 +148,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('/stripe', [HomeController::class, 'stripe']);
 
+    Route::delete('/capnhat_cart/{id}', [HomeController::class, 'capnhat_cart']);
+
     Route::post('/stripe/{totalprice}', [HomeController::class, 'stripePost'])->name('stripe.post');
 
     Route::get('/show_order', [HomeController::class, 'show_order']);

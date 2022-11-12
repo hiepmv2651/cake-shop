@@ -49,8 +49,6 @@
                                 <th>Số Lượng</th>
                                 <th>Mã Hóa Đơn</th>
                                 <th>Tên Sản Phẩm</th>
-
-
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,7 +59,7 @@
                             @foreach ($data as $value)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>{{$value->price}} VNĐ</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->hoadon_id}}</td>
                                 <td>{{$value->products->title}}</td>
@@ -69,8 +67,11 @@
                                 <td>
                                     <a href="{{url('update_cthoadon', $value->id)}}"
                                         class="btn btn-inverse-warning">Edit</a>
+                                    @if(auth::user()->usertype == 1)
                                     <a onclick="return confirm('Are you sure to delete this')"
                                         href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @php

@@ -97,7 +97,7 @@
                         </div>
                         <h6 class="text-muted font-weight-normal">{{$now_don_duyet}}
                         </h6>
-                        <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã duyệt và thanh toán</h6>
+                        <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã duyệt và thanh toán trong tháng</h6>
                     </div>
                 </div>
             </div>

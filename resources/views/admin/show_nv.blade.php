@@ -52,7 +52,10 @@
                                 <th>Phân Quyền</th>
                                 <th>Giới Tính</th>
                                 <th>Ảnh Đại Diện</th>
+                                @if(auth::user()->usertype == 1)
                                 <th>Hành Động</th>
+                                @else
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -82,13 +85,15 @@
 
                                 <td>{{$gt}}</td>
                                 <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
-
+                                @if(auth::user()->usertype == 1)
                                 <td>
                                     <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
+
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
                                         href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
-
                                 </td>
+                                @else
+                                @endif
                             </tr>
                             @php
                             $i++;

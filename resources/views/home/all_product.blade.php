@@ -20,9 +20,9 @@
         @include('home.footer')
         <!-- footer end -->
     </div>
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) { 
+        document.addEventListener("DOMContentLoaded", function(event) {
             var scrollpos = localStorage.getItem('scrollpos');
             if (scrollpos) window.scrollTo(0, scrollpos);
         });
@@ -35,4 +35,5 @@
     @include('home.js2');
 
 </body>
+
 </html>

@@ -39,8 +39,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -54,8 +53,7 @@
 
                             <div>
                                 <x-jet-label for="ngaydat" value="{{ __('Ngày Đặt') }}" />
-                                <x-jet-input id="ngaydat" class="block mt-1 w-full input_color" type="date"
-                                    name="ngaydat" :value="old('ngaydat')" required autofocus autocomplete="ngaydat" />
+                                <x-jet-input id="ngaydat" class="block mt-1 w-full input_color" type="date" name="ngaydat" :value="old('ngaydat')" required autofocus autocomplete="ngaydat" />
                                 @error('ngaydat')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -66,8 +64,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="phone" value="{{ __('Số Điện Thoại') }}" />
-                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone"
-                                    :value="old('phone')" required />
+                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone" :value="old('phone')" required />
                                 @error('phone')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -77,8 +74,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="address" value="{{ __('Địa Chỉ') }}" />
-                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text"
-                                    name="address" :value="old('address')" required />
+                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text" name="address" :value="old('address')" required />
                                 @error('address')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -88,8 +84,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="description" value="{{ __('Mô Tả') }}" />
-                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text"
-                                    name="description" :value="old('description')" required />
+                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text" name="description" :value="old('description')" required />
                                 @error('description')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -99,8 +94,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="tongtien" value="{{ __('Tổng Tiền') }}" />
-                                <x-jet-input id="tongtien" class="block mt-1 w-full input_color" type="number"
-                                    name="tongtien" :value="old('tongtien')" required />
+                                <x-jet-input id="tongtien" class="block mt-1 w-full input_color" type="number" name="tongtien" :value="old('tongtien')" required />
                                 @error('tongtien')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -111,9 +105,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="user_id" value="{{ __('Tên Người Mua') }}" />
 
-                                <select name="user_id"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="user_id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     @foreach ($data as $value)
                                     <option value="{{$value->id}}">
                                         {{$value->name}}
@@ -131,9 +123,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="trangthai_id" value="{{ __('Trạng Thái') }}" />
 
-                                <select name="trangthai_id"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="trangthai_id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     @foreach ($index as $value)
                                     <option value="{{$value->id}}">
                                         {{$value->name}}
@@ -151,9 +141,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="payment_status" value="{{ __('Thanh Toán') }}" />
 
-                                <select name="payment_status"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="payment_status" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="Chưa Thanh Toán">
                                         Chưa Thanh Toán
                                     </option>

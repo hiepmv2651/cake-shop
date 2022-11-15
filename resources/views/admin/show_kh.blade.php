@@ -31,8 +31,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -80,8 +79,7 @@
                                     <a href="{{url('send_email', $value->id)}}" class="btn btn-primary">Gửi email</a>
                                     @if(auth::user()->usertype == 1)
                                     <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
                                     @else
                                     @endif
                                 </td>

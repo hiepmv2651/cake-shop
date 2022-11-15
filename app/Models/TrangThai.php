@@ -10,7 +10,8 @@ class TrangThai extends Model
     protected $fillable = ['name'];
     use HasFactory;
 
-    public function orders() {
+    public function orders()
+    {
         return $this->hasMany(Order::class, 'trangthai_id');
     }
 }

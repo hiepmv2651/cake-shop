@@ -41,8 +41,7 @@
             <div class="content-wrapper">
                 <div class="div_center">
                     @if(session()->has('message'))
-                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                        x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                         {{session('message')}}
                     </div>
                     @endif
@@ -58,8 +57,7 @@
 
                             <div>
                                 <x-jet-label for="title" value="{{ __('Tên') }}" />
-                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="title"
-                                    value="{{$data->title}}" required autocomplete="title" />
+                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="title" value="{{$data->title}}" required autocomplete="title" />
                                 @error('title')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -70,8 +68,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="description" value="{{ __('Mô Tả') }}" />
-                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text"
-                                    name="description" value="{{$data->description}}" required />
+                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text" name="description" value="{{$data->description}}" required />
                                 @error('description')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -81,10 +78,8 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="image" value="{{ __('Hình') }}" />
-                                <img style="margin: auto" height="100px" width="100px"
-                                    src="{{asset('storage/'.$data->image)}}" alt="">
-                                <x-jet-input id="image" class="block mt-1 w-full input_color" type="file"
-                                    name="image" />
+                                <img style="margin: auto" height="100px" width="100px" src="{{asset('storage/'.$data->image)}}" alt="">
+                                <x-jet-input id="image" class="block mt-1 w-full input_color" type="file" name="image" />
                                 @error('image')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -94,8 +89,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="price" value="{{ __('Giá') }}" />
-                                <x-jet-input id="price" class="block mt-1 w-full input_color" type="number" name="price"
-                                    value="{{$data->price}}" required />
+                                <x-jet-input id="price" class="block mt-1 w-full input_color" type="number" name="price" value="{{$data->price}}" required />
                                 @error('price')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -106,9 +100,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="category" value="{{ __('Loại Bánh') }}" />
 
-                                <select name="category"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="category" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="{{$data->category}}">{{$data->category}}</option>
                                     @foreach ($value as $item)
                                     <option value="{{$item->category_name}}">

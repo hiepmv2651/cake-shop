@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <!-- <x-jet-authentication-card-logo /> -->
             <a href="{{url('')}}">
-            <img width="90px" height="120px" src="https://img.upanh.tv/2022/11/10/favicon.png" alt="favicon.png">
+                <img width="90px" height="120px" src="https://img.upanh.tv/2022/11/10/favicon.png" alt="favicon.png">
             </a>
         </x-slot>
 
@@ -12,9 +12,9 @@
         </div>
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
         @endif
 
         <x-jet-validation-errors class="mb-4" />

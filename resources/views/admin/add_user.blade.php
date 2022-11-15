@@ -39,8 +39,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -54,8 +53,7 @@
 
                             <div>
                                 <x-jet-label for="name" value="{{ __('Tên') }}" />
-                                <x-jet-input id="name" class="block mt-1 w-full input_color" type="text" name="name"
-                                    :value="old('name')" required autofocus autocomplete="name" />
+                                <x-jet-input id="name" class="block mt-1 w-full input_color" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                                 @error('name')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -65,8 +63,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                                <x-jet-input id="email" class="block mt-1 w-full input_color" type="email" name="email"
-                                    :value="old('email')" required />
+                                <x-jet-input id="email" class="block mt-1 w-full input_color" type="email" name="email" :value="old('email')" required />
                                 @error('email')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -76,8 +73,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="phone" value="{{ __('Số Điện Thoại') }}" />
-                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone"
-                                    :value="old('phone')" required />
+                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone" :value="old('phone')" required />
                                 @error('phone')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -87,8 +83,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="address" value="{{ __('Địa Chỉ') }}" />
-                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text"
-                                    name="address" :value="old('address')" required />
+                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text" name="address" :value="old('address')" required />
                                 @error('address')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -99,9 +94,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="usertype" value="{{ __('Quyền Người Dùng') }}" />
 
-                                <select name="usertype"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="usertype" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="0">Khách Hàng</option>
                                     <option value="2" @if (old('usertype')==2) selected @endif>Nhân Viên</option>
                                 </select>
@@ -115,9 +108,7 @@
                             <div class="mt-4">
                                 <x-jet-label for="gender" value="{{ __('Giới Tính') }}" />
 
-                                <select name="gender"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="gender" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="1">Nam</option>
                                     <option value="2" @if (old('gender')==2) selected @endif>Nữ</option>
                                 </select>
@@ -130,8 +121,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="password" value="{{ __('Mật Khẩu') }}" />
-                                <x-jet-input id="password" class="block mt-1 w-full input_color" type="password"
-                                    name="password" required autocomplete="new-password" />
+                                <x-jet-input id="password" class="block mt-1 w-full input_color" type="password" name="password" required autocomplete="new-password" />
                                 @error('password')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}

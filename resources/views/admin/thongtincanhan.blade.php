@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NHÓM 1</title>
 </head>
+
 <body>
-<table align="center" bgcolor="#faebd7"  border="1px" >
+    <table align="center" bgcolor="#faebd7" border="1px">
         <tr>
-            <td align="center" colspan="2"  bgcolor="orange">THÔNG TIN NHÓM</td>
+            <td align="center" colspan="2" bgcolor="orange">THÔNG TIN NHÓM</td>
         </tr>
         <tr>
-            <td align="center" colspan="2"  bgcolor="orange">Thành viên 1</td>
+            <td align="center" colspan="2" bgcolor="orange">Thành viên 1</td>
         </tr>
         <tr>
             <td>Tên:</td>
@@ -27,7 +29,7 @@
             <td>61-CNTT2</td>
         </tr>
         <tr>
-            <td align="center" colspan="2"  bgcolor="orange">Thành viên 2</td>
+            <td align="center" colspan="2" bgcolor="orange">Thành viên 2</td>
         </tr>
         <tr>
             <td>Tên:</td>
@@ -42,7 +44,7 @@
             <td>61-CNTT2</td>
         </tr>
         <tr>
-            <td align="center" colspan="2"  bgcolor="orange">Thành viên 3</td>
+            <td align="center" colspan="2" bgcolor="orange">Thành viên 3</td>
         </tr>
         <tr>
             <td>Tên:</td>
@@ -58,4 +60,5 @@
         </tr>
     </table>
 </body>
+
 </html>

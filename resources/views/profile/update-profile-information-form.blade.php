@@ -25,14 +25,12 @@
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
-                <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}"
-                    class="rounded-full h-20 w-20 object-cover">
+                <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
             </div>
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2" x-show="photoPreview" style="display: none;">
-                <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                    x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center" x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>
 
@@ -53,8 +51,7 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name"
-                autocomplete="name" />
+            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
@@ -69,8 +66,7 @@
             <p class="text-sm mt-2">
                 {{ __('Địa chỉ email của bạn chưa được xác minh.') }}
 
-                <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900"
-                    wire:click.prevent="sendEmailVerification">
+                <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
                     {{ __('Bấm vào đây để gửi lại email xác minh.') }}
                 </button>
             </p>
@@ -85,15 +81,13 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="address" value="{{ __('Địa Chỉ') }}" />
-            <x-jet-input id="address" type="text" class="mt-1 block w-full" wire:model.defer="state.address"
-                autocomplete="address" />
+            <x-jet-input id="address" type="text" class="mt-1 block w-full" wire:model.defer="state.address" autocomplete="address" />
             <x-jet-input-error for="address" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="phone" value="{{ __('Số Điện Thoại') }}" />
-            <x-jet-input id="phone" type="text" class="mt-1 block w-full" wire:model.defer="state.phone"
-                autocomplete="phone" />
+            <x-jet-input id="phone" type="text" class="mt-1 block w-full" wire:model.defer="state.phone" autocomplete="phone" />
             <x-jet-input-error for="phone" class="mt-2" />
         </div>
 

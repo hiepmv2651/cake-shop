@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VÕ TẤN KHUÊ</title>
 </head>
+
 <body>
-    <table align="center" bgcolor="#faebd7"  border="1px" >
+    <table align="center" bgcolor="#faebd7" border="1px">
         <tr>
-            <td align="center" colspan="2"  bgcolor="orange">BÀI TẬP</td>
+            <td align="center" colspan="2" bgcolor="orange">BÀI TẬP</td>
         </tr>
         <tr>
             <td>BÀI TẬP FORM</td>
@@ -54,4 +56,5 @@
         </tr>
     </table>
 </body>
+
 </html>

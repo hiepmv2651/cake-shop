@@ -3,23 +3,23 @@
         <x-slot name="logo">
             <!-- <x-jet-authentication-card-logo /> -->
             <a href="{{url('')}}">
-            <img width="90px" height="120px" src="https://img.upanh.tv/2022/11/10/favicon.png" alt="favicon.png">
+                <img width="90px" height="120px" src="https://img.upanh.tv/2022/11/10/favicon.png" alt="favicon.png">
             </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
         @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div width="500px" style="text-align: center;">
-              
-                <h1 >ĐĂNG NHẬP</h1>
+
+                <h1>ĐĂNG NHẬP</h1>
             </div>
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
@@ -40,9 +40,9 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Quên mật khẩu?') }}
-                    </a>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    {{ __('Quên mật khẩu?') }}
+                </a>
                 @endif
 
                 <x-jet-button class="ml-4">

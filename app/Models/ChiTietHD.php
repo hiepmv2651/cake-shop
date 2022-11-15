@@ -10,11 +10,13 @@ class chiTietHD extends Model
     use HasFactory;
     protected $fillable = ['price', 'quantity', 'hoadon_id', 'Product_id'];
 
-    public function orders() {
+    public function orders()
+    {
         return $this->belongsTo(Order::class, 'hoadon_id');
     }
 
-    public function products() {
+    public function products()
+    {
         return $this->belongsTo(Product::class, 'Product_id');
     }
 }

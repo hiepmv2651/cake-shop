@@ -24,10 +24,10 @@
                                 Khách Hàng
                             </h6>
                             <p>
-                            🌿Điểm cộng: vận chuyển khá nhanh.
-                            ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm.
-                            ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng, béo nhẹ, thơm. 
-                            ✨Granola: đậm vị choco, hạt tương đối.
+                                🌿Điểm cộng: vận chuyển khá nhanh.
+                                ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm.
+                                ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng, béo nhẹ, thơm.
+                                ✨Granola: đậm vị choco, hạt tương đối.
                             </p>
                         </div>
                     </div>
@@ -46,11 +46,11 @@
                                 Trần Văn Khánh
                             </h5>
                             <h6>
-                            Khách Hàng
+                                Khách Hàng
                             </h6>
                             <p>
-                            Bánh ngon ăn có vị hơi đắng nhẹ, nhưng khi nuốt hậu có vị ngọt, bánh dễ ăn thích hợp cho người đang ăn kiêng.
-Được đựng trong túi zip giấy, có ghi rõ thông tin kcal, thành phần và hsd. 👍👍👍
+                                Bánh ngon ăn có vị hơi đắng nhẹ, nhưng khi nuốt hậu có vị ngọt, bánh dễ ăn thích hợp cho người đang ăn kiêng.
+                                Được đựng trong túi zip giấy, có ghi rõ thông tin kcal, thành phần và hsd. 👍👍👍
                             </p>
                         </div>
                     </div>
@@ -69,12 +69,12 @@
                                 Mạnh Văn Hiệp
                             </h5>
                             <h6>
-                            Khách Hàng
+                                Khách Hàng
                             </h6>
                             <p>
-                            Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của shop ❤️ 
-                            mình ăn rồi và đợt này mua 2 hộp để nhâm nhi. 
-                            Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình.
+                                Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của shop ❤️
+                                mình ăn rồi và đợt này mua 2 hộp để nhâm nhi.
+                                Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình.
                             </p>
                         </div>
                     </div>

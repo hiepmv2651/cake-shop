@@ -23,7 +23,8 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Sản phẩm tháng trước:
-                                                {{$previous_products}}</h3>
+                                                {{$previous_products}}
+                                            </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_products}}</p>
                                         </div>
                                     </div>
@@ -122,7 +123,8 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Đơn hàng đã giao tháng trước:
-                                                {{$previous_devivered}}</h3>
+                                                {{$previous_devivered}}
+                                            </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_devivered}}</p>
                                         </div>
                                     </div>
@@ -191,7 +193,8 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Tổng tiền tháng trước:
-                                                {{$previous_sum_orders}}</h3>
+                                                {{$previous_sum_orders}}
+                                            </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{$now_sum_orders}}
                                             </p>
                                         </div>

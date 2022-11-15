@@ -296,8 +296,8 @@
                 $('.selectbox').prop('checked', false);
                 table.rows().deselect();
                 table.draw();
-                document.getElementById('myInput1').value = ''
-                document.getElementById('myInput2').value = ''
+                document.getElementById('myInput1').value = '';
+                document.getElementById('myInput2').value = '';
             });
             document.getElementById("form").submit();
         }

@@ -41,8 +41,7 @@
             <div class="content-wrapper">
                 <div class="div_center">
                     @if(session()->has('message'))
-                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                        x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                         {{session('message')}}
                     </div>
                     @endif
@@ -58,8 +57,7 @@
 
                             <div>
                                 <x-jet-label for="title" value="{{ __('Tên') }}" />
-                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="category_name"
-                                    value="{{$data->category_name}}" required autocomplete="title" />
+                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="category_name" value="{{$data->category_name}}" required autocomplete="title" />
                                 @error('category_name')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>

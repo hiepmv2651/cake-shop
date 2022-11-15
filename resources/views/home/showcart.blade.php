@@ -2,9 +2,7 @@
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bulma.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
@@ -46,22 +44,19 @@
         <!-- end header section -->
 
         @if(session()->has('message'))
-        <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-            x-init="setTimeout(() => show=false, 3000)" x-show="show">
+        <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
             {{session('message')}}
         </div>
         @endif
 
-        <form method="POST">
+        <form method="POST" name="form">
             @csrf
 
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
 
-                <input type="button" value="Chọn tất cả" id="selectAll"
-                    style="width: 165px; height: 38px; background-color: #80BDE3" class="btn btn-primary" />
+                <input type="button" value="Chọn tất cả" id="selectAll" style="width: 165px; height: 38px; background-color: #80BDE3" class="btn btn-primary" />
 
-                <input type="button" value="Bỏ chọn tất cả" id="removeAll"
-                    style="width: 165px; height: 38px; background-color: red" class="btn btn-danger" />
+                <input type="button" value="Bỏ chọn tất cả" id="removeAll" style="width: 165px; height: 38px; background-color: red" class="btn btn-danger" />
                 <table id="example" class="table is-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -76,7 +71,7 @@
                     <tbody>
                         @foreach ($cart as $value)
                         <tr>
-                            <td><input type="checkbox" class="selectbox" value="{{$value->id}}" name="ids[]">
+                            <td><input type="checkbox" class="selectbox" id="clear" value="{{$value->id}}" name="ids[]">
                             </td>
                             <td>{{$value->products->title}}</td>
                             <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td>
@@ -85,18 +80,15 @@
                             <td>
                                 <a onclick="on1()" style="color: white" class="btn btn-primary">Cập Nhật</a>
                                 <div id="overlay1">
-                                    <div
-                                        class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
-                                        <div
-                                            class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                                    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
+                                        <div class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                                             <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
                                             <h1 style=" font-size: 25px; padding-bottom: 15px">Cập Nhập Số Lượng Sản
                                                 Phẩm</h1>
                                             </div>
                                             <form method="POST">
                                                 @csrf
-                                                <input id="myInput3" type="number" min="1" max="20" class="input_color"
-                                                    required name="quantity" value="{{$value->quantity}}">
+                                                <input id="myInput3" type="number" min="1" max="20" class="input_color" required name="quantity" value="{{$value->quantity}}">
                                                 @error('quantity')
                                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                                     {{$message}}
@@ -110,21 +102,18 @@
                                                 <button id="btn1" style="margin-top: 10px; display: block;
                                                 margin-left: auto;
                                                 margin-right: auto;
-                                                width: 40%; background-color: red" type="button"
-                                                    class=" btn btn-danger" onclick="off1()">Đóng</button>
+                                                width: 40%; background-color: red" type="button" class=" btn btn-danger" onclick="off1()">Đóng</button>
                                                 <button style="margin-top: 10px; display: block;
                                                 margin-left: auto;
                                                 margin-right: auto;
-                                                width: 40%; background-color: blue" class=" btn btn-primary"
-                                                    formaction="{{url('capnhat_cart', $value->id)}}">Cập
+                                                width: 40%; background-color: blue" class=" btn btn-primary" formaction="{{url('capnhat_cart', $value->id)}}">Cập
                                                     Nhật</button>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-                                <a onclick="confirmation(event)" href="{{url('delete_cart', $value->id)}}"
-                                    class="btn btn-danger">Xóa</a>
+                                <a onclick="confirmation(event)" href="{{url('delete_cart', $value->id)}}" class="btn btn-danger">Xóa</a>
 
                             </td>
                         </tr>
@@ -139,15 +128,12 @@
                 </table>
 
                 <div>
-                    <input type="button" onclick="on()" id="btn"
-                        style="text-align: center; background-color: red; width: 20%" class="btn btn-danger"
-                        value="Thanh Toán">
+                    <input type="button" onclick="on()" id="btn" style="text-align: center; background-color: red; width: 20%" class="btn btn-danger" value="Thanh Toán">
                 </div>
 
                 <div>
                     @method('DELETE')
-                    <button id="myBtn2" disabled formaction="{{url('delete_select')}}" type="submit"
-                        style="background-color: red" class="btn btn-danger">Xóa Toàn Bộ Sản Phẩm
+                    <button id="myBtn2" disabled formaction="{{url('delete_select')}}" type="submit" style="background-color: red" class="btn btn-danger">Xóa Toàn Bộ Sản Phẩm
                     </button>
                 </div>
 
@@ -161,15 +147,13 @@
                             vào phương thức thanh toán</h1>
                         </div>
 
-                        <input id="myInput1" type="text" class="input_color" required name="address"
-                            placeholder="Nhập địa chỉ giao hàng">
+                        <input id="myInput1" type="text" class="input_color" required name="address" placeholder="Nhập địa chỉ giao hàng">
                         @error('address')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
                             {{$message}}
                         </p>
                         @enderror
-                        <input id="myInput2" type="number" class="input_color" required name="phone"
-                            placeholder="Nhập số điện thoại liên hệ">
+                        <input id="myInput2" type="number" class="input_color" required name="phone" placeholder="Nhập số điện thoại liên hệ">
                         @error('phone')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
                             {{$message}}
@@ -181,11 +165,9 @@
                                 <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
 
                                 @method('DELETE')
-                                <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
-                                    class="btn btn-danger">Cash On
+                                <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}" class="btn btn-danger">Cash On
                                     Delivery</button>
-                                <button id="myBtn1" disabled formaction="{{url('stripe')}}" onclick="pay()"
-                                    class="btn btn-danger">Pay
+                                <button id="myBtn1" disabled formaction="{{url('stripe')}}" onclick="pay()" class="btn btn-danger">Pay
                                     Using
                                     Card</button>
                             </div>
@@ -194,8 +176,7 @@
                         <button id="btn1" style="margin-top: 10px; display: block;
                             margin-left: auto;
                             margin-right: auto;
-                            width: 40%; background-color: red" type="button" class=" btn btn-danger"
-                            onclick="off()">Đóng</button>
+                            width: 40%; background-color: red" type="button" class=" btn btn-danger" onclick="off()">Đóng</button>
                     </div>
 
                 </div>
@@ -210,8 +191,8 @@
     <!-- footer end -->
     </div>
     <script>
-        if ( window.history.replaceState ) {
-            window.history.replaceState( null, null, window.location.href );
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -221,30 +202,33 @@
 
     <script>
         var totalprice;
-        $(document).ready(function () {
-    var table = $('#example').DataTable({
-        "language": {
-                                            "lengthMenu": " _MENU_ ",
-                                            "zeroRecords": "Không tìm thấy",
-                                            "info": "Hiển thị trang _PAGE_ / _PAGES_",
-                                            "infoEmpty": "Không có dữ liệu",
-                                            "infoFiltered": "(Được lọc từ _MAX_ mục)",
-                                            "search": "Tìm kiếm:",
-                                            "paginate": {
-                                                "first": "Trang đầu",
-                                                "last": "Trang cuối",
-                                                "next": "Sau",
-                                                "previous": "Trước",
-                                            },
-                                            buttons: {
-                                                colvis: 'Chọn mục không xuất',
-                                            },
-                                            select: {
-                                                rows: " (%d dòng được chọn)"
-                                            }
-                                        },
-                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        select: true,
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "language": {
+                    "lengthMenu": " _MENU_ ",
+                    "zeroRecords": "Không tìm thấy",
+                    "info": "Hiển thị trang _PAGE_ / _PAGES_",
+                    "infoEmpty": "Không có dữ liệu",
+                    "infoFiltered": "(Được lọc từ _MAX_ mục)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Sau",
+                        "previous": "Trước",
+                    },
+                    buttons: {
+                        colvis: 'Chọn mục không xuất',
+                    },
+                    select: {
+                        rows: " (%d dòng được chọn)"
+                    }
+                },
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                select: true,
                 columnDefs: [{
                     orderable: false,
                     className: 'select-checkbox',
@@ -253,117 +237,111 @@
                     style: 'multi',
                     selector: 'td input:first-child'
                 },
-                order: [[1, 'asc']],
-        footerCallback: function (row, data, start, end, display) {
-            var api = this.api();
- 
-            // Remove the formatting to get integer data for summation
-            var intVal = function (i) {
-                return typeof i === 'string' ? i.replace(/[\VNĐ,]/g, '') * 1 : typeof i === 'number' ? i : 0;
-            };
+                order: [
+                    [1, 'asc']
+                ],
+                footerCallback: function(row, data, start, end, display) {
+                    var api = this.api();
 
-            total = api
-                .column(4)
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
- 
-            // Total over this page
-            pageTotal = api.rows({ selected: true }).data().pluck(4).reduce(function (a, b) {
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function(i) {
+                        return typeof i === 'string' ? i.replace(/[\VNĐ,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+                    };
+
+                    total = api
+                        .column(4)
+                        .data()
+                        .reduce(function(a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    // Total over this page
+                    pageTotal = api.rows({
+                        selected: true
+                    }).data().pluck(4).reduce(function(a, b) {
                         return intVal(a) + intVal(b);
                     }, 0);
-                
-                totalprice = pageTotal
-            // Update footer
-            $(api.column(5).footer()).html(pageTotal + ' VNĐ' + ' (' + total + ' VNĐ)');
-        },
-    });
 
-   
-    $("#selectAll").on("click", function (e) {
+                    totalprice = pageTotal
+                    // Update footer
+                    $(api.column(5).footer()).html(pageTotal + ' VNĐ' + ' (' + total + ' VNĐ)');
+                },
+            });
+
+
+            $("#selectAll").on("click", function(e) {
                 $('.selectbox').prop('checked', true);
                 table.rows().select();
                 table.draw();
             });
 
 
-            $("#removeAll").on("click", function () {
+            $("#removeAll").on("click", function() {
                 $('.selectbox').prop('checked', false);
                 table.rows().deselect();
                 table.draw();
             });
-            
-            table.on('select deselect', function () {
-                $('#myBtn, #myBtn1, #myBtn2').prop('disabled', !table.rows( '.selected' ).count());
+
+            table.on('select deselect', function() {
+                $('#myBtn, #myBtn1, #myBtn2').prop('disabled', !table.rows('.selected').count());
                 table.draw();
             })
-            
-});
 
-function pay() {
-    document.getElementById('thanhtoan').value = totalprice;
-          
+        });
+
+        function pay() {
+            document.getElementById('thanhtoan').value = totalprice;
+            $(document).ready(function() {
+                var table = $('#example').DataTable();
+                $('.selectbox').prop('checked', false);
+                table.rows().deselect();
+                table.draw();
+                document.getElementById('myInput1').value = ''
+                document.getElementById('myInput2').value = ''
+            });
+            document.getElementById("form").submit();
         }
-    </script>
-    <script>
-        $('.selectall').click(function(){
-            $('.selectbox').prop('checked', $(this).prop('checked'));
-        });
-
-        $('.selectbox').change(function(){
-            var total = $('.selectbox').length;
-            var number = $('.selectbox:checked').length;
-            if(total == number) {
-                $('.selectall').prop('checked', true);
-            }
-            else {
-                $('.selectall').prop('checked', false);
-
-            }
-
-        });
     </script>
 
     <script>
         function confirmation(ev) {
-          ev.preventDefault();
-          var urlToRedirect = ev.currentTarget.getAttribute('href');  
-          console.log(urlToRedirect); 
-          swal({
-              title: "Bạn có chắc chắn hủy sản phẩm này không?",
-              text: "Bạn sẽ không thể hoàn nguyên điều này!",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willCancel) => {
-              if (willCancel) {
-                  window.location.href = urlToRedirect;
-              }  
-          });   
-      }
+            ev.preventDefault();
+            var urlToRedirect = ev.currentTarget.getAttribute('href');
+            console.log(urlToRedirect);
+            swal({
+                    title: "Bạn có chắc chắn hủy sản phẩm này không?",
+                    text: "Bạn sẽ không thể hoàn nguyên điều này!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willCancel) => {
+                    if (willCancel) {
+                        window.location.href = urlToRedirect;
+                    }
+                });
+        }
     </script>
 
     <script>
         function on() {
-      document.getElementById("overlay").style.display = "block";
-    }
-    
-    function off() {
-      document.getElementById('myInput1').value = ''
-      document.getElementById('myInput2').value = ''
-      document.getElementById("overlay").style.display = "none";
-    }
+            document.getElementById("overlay").style.display = "block";
+        }
 
-    function on1() {
-      document.getElementById("overlay1").style.display = "block";
-    }
-    
-    function off1() {
-      document.getElementById('myInput3').value = ''
-      document.getElementById("overlay1").style.display = "none";
-    }
+        function off() {
+            document.getElementById('myInput1').value = ''
+            document.getElementById('myInput2').value = ''
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        function on1() {
+            document.getElementById("overlay1").style.display = "block";
+        }
+
+        function off1() {
+            document.getElementById('myInput3').value = ''
+            document.getElementById("overlay1").style.display = "none";
+        }
     </script>
 
     <!-- jQery -->

@@ -160,38 +160,37 @@
                             khi nhấn
                             vào phương thức thanh toán</h1>
                         </div>
-                        <form method="POST">
-                            @csrf
-                            <input id="myInput1" type="text" class="input_color" required name="address"
-                                placeholder="Nhập địa chỉ giao hàng">
-                            @error('address')
-                            <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                                {{$message}}
-                            </p>
-                            @enderror
-                            <input id="myInput2" type="number" class="input_color" required name="phone"
-                                placeholder="Nhập số điện thoại liên hệ">
-                            @error('phone')
-                            <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                                {{$message}}
-                            </p>
-                            @enderror
-                            <div>
-                                <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
-                            <h1 style=" font-size: 25px; padding-bottom: 15px">Chọn Phương Thức Thanh Toán</h1>
-                                    <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
 
-                                    @method('DELETE')
-                                    <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
-                                        class="btn btn-danger">Cash On
-                                        Delivery</button>
-                                    <button id="myBtn1" disabled formaction="{{url('stripe')}}" onclick="pay()"
-                                        class="btn btn-danger">Pay
-                                        Using
-                                        Card</button>
-                                </div>
+                        <input id="myInput1" type="text" class="input_color" required name="address"
+                            placeholder="Nhập địa chỉ giao hàng">
+                        @error('address')
+                        <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                            {{$message}}
+                        </p>
+                        @enderror
+                        <input id="myInput2" type="number" class="input_color" required name="phone"
+                            placeholder="Nhập số điện thoại liên hệ">
+                        @error('phone')
+                        <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                            {{$message}}
+                        </p>
+                        @enderror
+                        <div>
+                            <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
+                            <h1 style=" font-size: 25px; padding-bottom: 15px">Chọn Phương Thức Thanh Toán</h1>
+                                <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
+
+                                @method('DELETE')
+                                <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
+                                    class="btn btn-danger">Cash On
+                                    Delivery</button>
+                                <button id="myBtn1" disabled formaction="{{url('stripe')}}" onclick="pay()"
+                                    class="btn btn-danger">Pay
+                                    Using
+                                    Card</button>
                             </div>
-                        </form>
+                        </div>
+
                         <button id="btn1" style="margin-top: 10px; display: block;
                             margin-left: auto;
                             margin-right: auto;

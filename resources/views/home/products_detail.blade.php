@@ -14,20 +14,7 @@
 		@include('home.header')
 		<!-- end header section -->
 		<!--Important link from https://bootsnipp.com/snippets/XqvZr-->
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
-			id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!------ Include the above in your HEAD tag ---------->
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap"
-			rel="stylesheet">
-		<link rel="stylesheet" type="text/css"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-		<link rel="stylesheet" type="text/css"
-			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-		<link rel="stylesheet" type="text/css"
-			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 		<div class="pd-wrap">
 			<div class="container">
 				<div class="heading-section">
@@ -37,29 +24,10 @@
 					<div class="col-md-6">
 						<div id="slider" class="owl-carousel product-slider">
 							<div class="item">
-								<img src="{{asset('storage/'.$value->image)}}" alt="">
+								<img src="{{asset('storage/'.$value->image)}}" style="margin-left: auto;
+								margin-right: auto;width: 50%;display: block;" alt="">
 							</div>
-							<div class="item">
-								<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-							</div>
-							<div class="item">
-								<img
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-							</div>
-							<div class="item">
-								<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-							</div>
-							<div class="item">
-								<img
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-							</div>
-							<div class="item">
-								<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-							</div>
-							<div class="item">
-								<img
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-							</div>
+
 						</div>
 
 					</div>
@@ -71,9 +39,9 @@
 									<div class="rate">
 										<input type="radio" id="star5" name="rate" value="5" checked />
 										<label for="star5" title="text">5 stars</label>
-										<input type="radio" id="star4" name="rate" value="4" checked />
+										<input type="radio" id="star4" name="rate" value="4" />
 										<label for="star4" title="text">4 stars</label>
-										<input type="radio" id="star3" name="rate" value="3" checked />
+										<input type="radio" id="star3" name="rate" value="3" />
 										<label for="star3" title="text">3 stars</label>
 										<input type="radio" id="star2" name="rate" value="2" />
 										<label for="star2" title="text">2 stars</label>

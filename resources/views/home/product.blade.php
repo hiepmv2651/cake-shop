@@ -54,9 +54,13 @@
             </div>
             @endforeach
         </div>
-        <div>
-            {{$product->links()}}
+
+        <div class="d-flex" style="margin-top: 30px">
+            <div class="mx-auto">
+                {{$product->links("pagination::bootstrap-4")}}
+            </div>
         </div>
+
         <div class="btn-box">
             <a href="{{url('product')}}">
                 Xem tất cả sản phẩm

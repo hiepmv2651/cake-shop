@@ -12,6 +12,12 @@
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
+        @if(session()->has('message'))
+        <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+            x-init="setTimeout(() => show=false, 3000)" x-show="show">
+            {{session('message')}}
+        </div>
+        @endif
         <!-- end header section -->
         <div style="width: 15%; margin-left: 50px;">
             <a class="btn btn-danger" href="{{url('history_order')}}">Lịch Sử Mua Hàng</a>
@@ -61,7 +67,11 @@
 
     </div>
     <br>
-
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
     @include('home.footer')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

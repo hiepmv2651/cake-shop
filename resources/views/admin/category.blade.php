@@ -68,8 +68,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Tên danh mục</th>
-                                <th>Thời gian tạo</th>
-                                <th>Thời gian cập nhật</th>
+
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -79,12 +78,7 @@
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->category_name}}</td>
-                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $value->created_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
-                                    d/m/Y')}}</td>
-                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $value->updated_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
-                                    d/m/Y')}}</td>
+
                                 <td>
                                     <a href="{{url('update_category', $value->id)}}"
                                         class="btn btn-inverse-warning">Sửa</a>

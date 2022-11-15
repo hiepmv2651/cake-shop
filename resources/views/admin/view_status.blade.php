@@ -68,8 +68,6 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Tên trạng thái</th>
-                                <th>Thời gian tạo</th>
-                                <th>Thời gian cập nhật</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -78,12 +76,7 @@
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
-                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $value->created_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
-                                    d/m/Y')}}</td>
-                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $value->updated_at->setTimezone('Asia/Ho_Chi_Minh'))->format('g:i A
-                                    d/m/Y')}}</td>
+
                                 <td>
 
                                     <a href="{{url('update_status', $value->id)}}"

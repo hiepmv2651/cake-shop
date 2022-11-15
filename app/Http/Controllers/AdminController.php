@@ -507,20 +507,20 @@ class AdminController extends Controller
         $now_users = User::where([['created_at', '>=', $lastDayofMonth], ['usertype', '=', 0]])->count();
         $total_users = User::all()->where('usertype', '=', 0)->count();
 
-        $previous_1sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-        $previous_sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-        $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
-        $sum_orders = Order::where('payment_status', 'like', '%Đã thanh toán%')->sum('tongtien');
+        $previous_1sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
+        $previous_sum_orders = Order::where([['created_at', '<', $lastDayofMonth], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
+        $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
+        $sum_orders = Order::where('payment_status', 'like', '%đã thanh toán%')->sum('tongtien');
 
-        $previous_1devivered = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '8']])->count();
-        $previous_devivered = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
-        $now_devivered = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '8']])->count();
-        $total_devivered = Order::where('trangthai_id', '=', '8')->count();
+        $previous_1devivered = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '4']])->count();
+        $previous_devivered = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '4']])->count();
+        $now_devivered = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '4']])->count();
+        $total_devivered = Order::where('trangthai_id', '=', '4')->count();
 
-        $previous_1processing = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '9']])->count();
-        $previous_processing = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
-        $now_processing = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '9']])->count();
-        $total_processing = Order::where('trangthai_id', '=', '9')->count();
+        $previous_1processing = Order::where([['created_at', '<', $lastDayofMonth], ['created_at', '>=', $lastDayof2Month], ['trangthai_id', '=', '5']])->count();
+        $previous_processing = Order::where([['created_at', '<', $lastDayofMonth], ['trangthai_id', '=', '5']])->count();
+        $now_processing = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '=', '5']])->count();
+        $total_processing = Order::where('trangthai_id', '=', '5')->count();
 
         return view('admin.thongke', compact(
             'total_products',

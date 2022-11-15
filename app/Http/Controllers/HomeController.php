@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use Session;
-use Exception;
 use Carbon\Carbon;
 use App\Models\Cart;
-use App\Models\User;
 
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\chiTietHD;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class HomeController extends Controller
 {
@@ -42,9 +38,9 @@ class HomeController extends Controller
 
             $dhngay = Order::whereDate('created_at', Carbon::today())->where('trangthai_id', '1')->count();
 
-            $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');
+            $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
 
-            $now_don_duyet = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '2'], ['payment_status', 'like', '%Đã thanh toán%']])->sum('tongtien');;
+            $now_don_duyet = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '2'], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');;
 
             return view('admin.home', compact(
                 'dtngay',
@@ -133,12 +129,13 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function capnhat_cart($id, Request $request) {
+    public function capnhat_cart($id, Request $request)
+    {
         $data = Cart::find($id);
         $data->price = $data->price / $data->quantity * $request->quantity;
         $data->quantity = $request->quantity;
         $data->save();
-        
+
         return redirect()->back()->with('message', 'Cập Nhập Số Lượng Sản Phẩm Thành Công');
     }
 
@@ -158,7 +155,7 @@ class HomeController extends Controller
         $order->description = '';
 
         $order->user_id = $userId;
-        $order->trangthai_id = 5;
+        $order->trangthai_id = 1;
         $order->tongtien = $request->thanhtoan;
 
         $order->payment_status = 'Chưa thanh toán';
@@ -181,11 +178,12 @@ class HomeController extends Controller
             $cart->delete();
         }
 
-        return redirect()->back()->with('message', 'Chúng tôi đã nhận được đơn đặt hàng của bạn thành công. Chúng tôi sẽ sớm kết nối với bạn. ');
+        $order = Order::where('user_id',Auth::user()->id);
+        return view('home.order', compact('order'))->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }
 
     public function stripe(Request $request, \Exception $e)
-    { 
+    {
         $totalprice = $request->thanhtoan;
         $data = implode(',', $request->get('ids'));
         $address = $request->address;
@@ -223,7 +221,7 @@ class HomeController extends Controller
         $order->description = '';
 
         $order->user_id = $userId;
-        $order->trangthai_id = 5;
+        $order->trangthai_id = 1;
         $order->tongtien = $totalprice;
 
         $order->payment_status = 'Đã thanh toán';
@@ -248,7 +246,8 @@ class HomeController extends Controller
 
         Session::flash('success', 'Payment successful!');
 
-        return view('home.history_order');
+        $order = Order::find(Auth::user()->id);
+        return view('home.order', compact('order'))->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');;
     }
 
     public function show_order()

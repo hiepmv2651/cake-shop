@@ -178,8 +178,7 @@ class HomeController extends Controller
             $cart->delete();
         }
 
-        $order = Order::where('user_id',Auth::user()->id);
-        return view('home.order', compact('order'))->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
+        return redirect('show_order')->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }
 
     public function stripe(Request $request, \Exception $e)
@@ -246,8 +245,7 @@ class HomeController extends Controller
 
         Session::flash('success', 'Payment successful!');
 
-        $order = Order::find(Auth::user()->id);
-        return view('home.order', compact('order'))->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');;
+        return redirect('show_order')->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }
 
     public function show_order()

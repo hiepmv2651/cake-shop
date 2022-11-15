@@ -27,7 +27,7 @@
         <div class="container">
             <h1 style="text-align: center; font-size:24px; padding-bottom:20px">
                 Thanh toán bằng thẻ của bạn - Tổng số tiền
-                ${{$totalprice ?? 0}}</h1>
+                {{$totalprice ?? 0}} VNĐ</h1>
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">

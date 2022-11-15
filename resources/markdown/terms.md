@@ -23,3 +23,16 @@ Cách 1: Thanh toán trực tiếp (người mua nhận hàng tại địa chỉ
 Cách 2: Thanh toán sau (COD – giao hàng và thu tiền tận nơi)
 
 Cách 3: Thanh toán online qua thẻ tín dụng, chuyển khoản
+
+4. Chính Sách Bảo Mật Thông Tin Cá Nhân này bao gồm các nội dung:
+
+1. Sự Chấp Thuận
+1. Mục Đích Thu Thập
+1. Phạm Vi Thu Thập
+1. Thời Gian Lưu Trữ
+1. Không Chia Sẻ Thông Tin Cá Nhân Khách Hàng
+1. An Toàn Dữ Liệu
+1. Quyền Của Khách Hàng Đối Với Thông Tin Cá Nhân
+1. Thông Tin Liên Hệ
+1. Đơn Vị Thu Thập và Quản Lý Thông Tin
+1. Hiệu Lực

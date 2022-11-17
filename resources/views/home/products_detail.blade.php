@@ -12,9 +12,10 @@
 	<div class="hero_area">
 		<!-- header section strats -->
 		@include('home.header')
+	
 		<!-- end header section -->
 		<!--Important link from https://bootsnipp.com/snippets/XqvZr-->
-
+		<br>
 		<div class="pd-wrap">
 			<div class="container">
 				<div class="heading-section">
@@ -48,23 +49,23 @@
 										<input type="radio" id="star1" name="rate" value="1" />
 										<label for="star1" title="text">1 star</label>
 									</div>
-									<span>3 Reviews</span>
+									<span></span>
 								</div>
 								<div class="product-price-discount"><span>
 
 										{{$value->price}} VNĐ
-									</span><span class="line-through">29000 VNĐ</span></div>
+									</span><span class="line-through"></span></div>
 							</div>
 
 							<p>
-								{{$value->category}}
+								Danh mục: {{$value->category}}
 							</p>
 
 							<div class="product-count">
 
 								<form action="{{url('add_cart', $value->id)}}" method="POST">
 									@csrf
-									<label for="size">Quantity</label>
+									<label for="size">Số Lượng</label>
 									<input type="number" name="quantity" min="1" max="20" value="1">
 									<input type="submit" class="round-black-btn" value="Thêm Vào Giỏ">
 								</form>

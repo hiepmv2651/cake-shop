@@ -65,6 +65,10 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
+            if(Cart::where('user_id', $userId)->count() > 10) {
+                Alert::warning('Đã đạt giới hạn của giỏ hàng!', 'Hãy xóa để thêm sản phẩm mới.');
+                return redirect()->back();
+            }
 
             $product = Product::find($id);
 
@@ -132,8 +136,8 @@ class HomeController extends Controller
     public function capnhat_cart($id, Request $request)
     {
         $data = Cart::find($id);
-        $data->price = $data->price / $data->quantity * $request->quantity;
-        $data->quantity = $request->quantity;
+        $data->price = $data->price / $data->quantity * $request->quantity[0];
+        $data->quantity = $request->quantity[0];
         $data->save();
 
         return redirect()->back()->with('message', 'Cập Nhập Số Lượng Sản Phẩm Thành Công');
@@ -156,11 +160,11 @@ class HomeController extends Controller
 
         $order->user_id = $userId;
         $order->trangthai_id = 1;
-        $order->tongtien = $request->thanhtoan;
+        
 
         $order->payment_status = 'Chưa thanh toán';
-
         $order->save();
+        
 
         foreach ($data as $data) {
             $cthd = new chiTietHD;
@@ -177,6 +181,11 @@ class HomeController extends Controller
 
             $cart->delete();
         }
+        $id1 = json_decode(Order::where('user_id', $userId)->get('id')->last())->id;
+        $order1 = Order::find($id1);
+        $order1->tongtien = chiTietHD::where('hoadon_id', $id1)->sum('price');
+        $order1->save();
+        
 
         return redirect('show_order')->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }
@@ -253,7 +262,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=', 8], ['payment_status', '!=', '%Đã thanh toán%']])->latest()->get();
+            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=', 5], ['payment_status', '!=', '%đã thanh toán%']])->latest()->get();
             return view('home.order', compact('order'));
         } else {
             return redirect('login');
@@ -265,7 +274,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            $history = Order::where([['user_id', $userId], ['trangthai_id', 3], ['payment_status', 'like', '%Đã thanh toán%']])->latest()->get();
+            $history = Order::where([['user_id', $userId], ['trangthai_id', 4], ['payment_status', 'like', '%đã thanh toán%']])->latest()->get();
 
             return view('home.history_order', compact('history'));
         } else {

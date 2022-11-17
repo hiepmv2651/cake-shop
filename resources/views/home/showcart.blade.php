@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
 
     @include('home.css')
+    
     <style>
         #overlay,
         #overlay1 {
@@ -43,6 +44,7 @@
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
+  
         <!-- end header section -->
 
         @if(session()->has('message'))
@@ -52,6 +54,7 @@
         </div>
         @endif
 
+        <br>
         <form method="POST">
             @csrf
 

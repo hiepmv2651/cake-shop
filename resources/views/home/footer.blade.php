@@ -21,11 +21,11 @@
                                 <div class="widget_menu">
                                     <h3>Menu</h3>
                                     <ul>
-                                        <li><a href="#">Trang Chủ</a></li>
-                                        <li><a href="#">Sản Phẩm</a></li>
+                                        <li><a href="{{url('/')}}">Trang Chủ</a></li>
+                                        <li><a href="{{url('product')}}">Sản Phẩm</a></li>
                                         <li><a href="#">Danh Mục</a></li>
                                         <li><a href="#">Giới Thiệu</a></li>
-                                        <li><a href="#">Liên Hệ</a></li>
+                                        <li><a href="{{url('lienhe')}}">Liên Hệ</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -34,10 +34,10 @@
                                     <h3>Tài Khoản</h3>
                                     <ul>
                                         <li><a href="#">Thông Tin</a></li>
-                                        <li><a href="#">Đăng Xuất</a></li>
-                                        <li><a href="#">Đăng Nhập</a></li>
-                                        <li><a href="#">Giỏ Hàng</a></li>
-                                        <li><a href="#">Đơn Hàng</a></li>
+                                        <li><a href="{{ route('register') }}">Đăng Xuất</a></li>
+                                        <li><a href="{{ route('login') }}">Đăng Nhập</a></li>
+                                        <li><a href="{{url('show_cart')}}">Giỏ Hàng</a></li>
+                                        <li><a href="{{url('show_order')}}">Đơn Hàng</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,5 +68,6 @@
 </footer>
 <div class="cpy_">
     <p class="mx-auto">
+        CakeShop.com 2022
     </p>
 </div>

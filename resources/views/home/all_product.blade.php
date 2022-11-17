@@ -10,6 +10,7 @@
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
+      
         <!-- end header section -->
 
         <!-- product section -->
@@ -35,5 +36,4 @@
     @include('home.js2');
 
 </body>
-
 </html>

@@ -48,15 +48,22 @@
       <div class="container">
          <h5 class="card-title"></h5>
          <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-7">
                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.972994768358!2d109.18848131400071!3d12.250106733614388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31706780e366bf6b%3A0xb8a5331b1e0b181!2zNDYgUXVhbmcgVHJ1bmcsIFbhuqFuIFRo4bqhbmgsIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEgNjUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1668663699077!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-xl-5">
+               <p>Được phát triển từ năm 2022 trên nền tảng kĩ thuật, chất lượng và kinh nghiệm sản xuất bánh cho hệ thống khách sạn 5 sao và resort hàng đầu Việt Nam.
+Chúng tôi chuyên cung cấp những sản phẩm bánh mì Âu, bánh mì Việt Nam, bánh ngọt, bánh kem và kem Gelato…hỗ trợ tư vấn setup cho khách hàng.
+Sản phẩm chất lượng cao được làm từ nguyên liệu nhập khẩu, chọn lọc kĩ càng cung cấp cho hệ thống nhà hàng, khách sạn, resort, coffee shop, sự kiện, cửa hàng bán lẻ.
+Với phương châm chúng tôi tự tin mang đến cho tất cả khách hàng sự tin tưởng và hài lòng, chất lượng.</p>
+
             </div>
          </div>
       </div> <!-- container .//  -->
    </section>
 
 
-
+<br>
    <!-- footer start -->
    @include('home.footer')
    <!-- footer end -->

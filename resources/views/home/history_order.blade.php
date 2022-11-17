@@ -13,7 +13,7 @@
         <!-- header section strats -->
         @include('home.header')
         <!-- end header section -->
-
+        <br>
         <div style="width: 90%; margin-left: auto; margin-right: auto;">
             <table id="example" class="table is-striped" style="width:100%">
                 <thead>

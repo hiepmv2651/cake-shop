@@ -231,16 +231,24 @@ class AdminController extends Controller
     {
         if (auth::user()->usertype == '1') {
             $data = User::find($id);
-            Storage::delete($data->profile_photo_path);
-            $orderId = Order::where('user_id', $id)->get();
-            chiTietHD::where('hoadon_id', $orderId->id)->delete();
-            Order::where('user_id', $id)->delete();
-
-            Storage::delete(Cart::where('user_id', $id)->image);
-            Cart::where('user_id', $id)->delete();
-
             if ($data->usertype == 1 && User::where('usertype', 1)->count() == 1)
                 return redirect()->back()->with('message', 'Hãy thêm một admin khác trước khi xóa!');
+
+            if (!is_null($data->profile_photo_path))
+                Storage::delete($data->profile_photo_path);
+
+            if (Order::where('user_id', $id)->count() > 0) {
+                $orderId = Order::where('user_id', $id)->get();
+                chiTietHD::where('hoadon_id', $orderId->id)->delete();
+                Order::where('user_id', $id)->delete();
+            }
+
+            if (Cart::where('user_id', $id)->count() > 0) {
+                Storage::delete(Cart::where('user_id', $id)->image);
+                Cart::where('user_id', $id)->delete();
+            }
+
+
             $data->delete();
             return redirect()->back()->with('message', 'Xóa thành công user!');
         }

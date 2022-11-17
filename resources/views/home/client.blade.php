@@ -25,9 +25,9 @@
                             </h6>
                             <p>
                                 🌿Điểm cộng: vận chuyển khá nhanh.
-                                ✨Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm.
-                                ✨Brownie: sốp, ẩm, và đậm vị choco đăng đắng, béo nhẹ, thơm.
-                                ✨Granola: đậm vị choco, hạt tương đối.
+                                Biscotti: bột nguyên cám, bánh hơi thô, ít ngọt, đậm vị matcha, thơm.
+                                Brownie: sốp, ẩm, và đậm vị choco đăng đắng, béo nhẹ, thơm.
+                                Granola: đậm vị choco, hạt tương đối.
                             </p>
                         </div>
                     </div>

@@ -29,20 +29,18 @@
 
       <!-- header section strats -->
       @include('home.header')
+      
       <!-- end header section -->
    </div>
    <!-- inner page section -->
-   <section class="inner_page_head">
-      <div class="container_fuild">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="full">
+
+ 
+         <div style="width: 100%; text-align: center;">
+         <br>
                   <h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
-               </div>
-            </div>
+          <br>
          </div>
-      </div>
-   </section>
+
    <!-- end inner page section -->
 
 
@@ -51,7 +49,7 @@
          <h5 class="card-title"></h5>
          <div class="row">
             <div class="col-xl-6">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9282.685532333977!2d109.18866369692984!3d11.982239180112348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31708d2a33f42685%3A0x41fcfc07049fd207!2zNDk5IEjDuW5nIFbGsMahbmcsIENhbSBOZ2jEqWEsIENhbSBSYW5oLCBLaMOhbmggSMOyYSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1652682052693!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.972994768358!2d109.18848131400071!3d12.250106733614388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31706780e366bf6b%3A0xb8a5331b1e0b181!2zNDYgUXVhbmcgVHJ1bmcsIFbhuqFuIFRo4bqhbmgsIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEgNjUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1668663699077!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
          </div>
       </div> <!-- container .//  -->

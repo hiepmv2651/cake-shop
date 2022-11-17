@@ -262,7 +262,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            $order = Order::where([['user_id', $userId], ['trangthai_id', '!=', 5], ['payment_status', '!=', '%đã thanh toán%']])->latest()->get();
+            $order = Order::where('user_id', $userId)->latest()->get();
             return view('home.order', compact('order'));
         } else {
             return redirect('login');

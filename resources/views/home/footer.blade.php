@@ -67,6 +67,6 @@
     </div>
 </footer>
 <div class="cpy_">
-        <p class="mx-auto">
-        </p>
+    <p class="mx-auto">
+    </p>
 </div>

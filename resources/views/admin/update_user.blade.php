@@ -41,8 +41,7 @@
             <div class="content-wrapper">
                 <div class="div_center">
                     @if(session()->has('message'))
-                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                        x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                         {{session('message')}}
                     </div>
                     @endif
@@ -58,8 +57,7 @@
 
                             <div>
                                 <x-jet-label for="name" value="{{ __('Tên') }}" />
-                                <x-jet-input id="name" class="block mt-1 w-full input_color" type="text" name="name"
-                                    value="{{$data->name}}" required autocomplete="name" />
+                                <x-jet-input id="name" class="block mt-1 w-full input_color" type="text" name="name" value="{{$data->name}}" required autocomplete="name" />
                                 @error('name')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -70,8 +68,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                                <x-jet-input id="email" class="block mt-1 w-full input_color" type="email" name="email"
-                                    value="{{$data->email}}" required />
+                                <x-jet-input id="email" class="block mt-1 w-full input_color" type="email" name="email" value="{{$data->email}}" required />
                                 @error('email')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -81,8 +78,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="phone" value="{{ __('Số Điện Thoại') }}" />
-                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone"
-                                    value="{{$data->phone}}" required />
+                                <x-jet-input id="phone" class="block mt-1 w-full input_color" type="number" name="phone" value="{{$data->phone}}" required />
                                 @error('phone')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -92,8 +88,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="address" value="{{ __('Địa Chỉ') }}" />
-                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text"
-                                    name="address" value="{{$data->address}}" required />
+                                <x-jet-input id="address" class="block mt-1 w-full input_color" type="text" name="address" value="{{$data->address}}" required />
                                 @error('address')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -103,8 +98,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="password" value="{{ __('Mật Khẩu') }}" />
-                                <x-jet-input id="password" class="block mt-1 w-full input_color" type="password"
-                                    name="password" value="{{$data->password}}" required />
+                                <x-jet-input id="password" class="block mt-1 w-full input_color" type="password" name="password" value="{{$data->password}}" required />
                                 @error('password')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -115,16 +109,13 @@
                             <div class="mt-4">
                                 <x-jet-label for="gender" value="{{ __('Giới Tính') }}" />
 
-                                <select name="gender"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="gender" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="{{$data->gender}}">
                                         @if ($data->gender == 1) Nam
                                         @else Nữ
                                         @endif
                                     </option>
-                                    <option value="@if($data->gender == 1) 2 @else 1 @endif" @if (old('gender')==2)
-                                        selected @endif>
+                                    <option value="@if($data->gender == 1) 2 @else 1 @endif" @if (old('gender')==2) selected @endif>
                                         @if ($data->gender == 1) Nữ
                                         @else Nam
                                         @endif
@@ -141,16 +132,13 @@
                             <div class="mt-4">
                                 <x-jet-label for="usertype" value="{{ __('Quyền User') }}" />
 
-                                <select name="usertype"
-                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                                    required>
+                                <select name="usertype" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
                                     <option value="{{$data->usertype}}">
                                         @if ($data->usertype == 0) Khách Hàng
                                         @else Nhân Viên
                                         @endif
                                     </option>
-                                    <option value="@if($data->usertype == 0) 2 @else 0 @endif" @if (old('usertype')==2)
-                                        selected @endif>
+                                    <option value="@if($data->usertype == 0) 2 @else 0 @endif" @if (old('usertype')==2) selected @endif>
                                         @if ($data->usertype == 0) Nhân Viên
                                         @else Khách Hàng
                                         @endif

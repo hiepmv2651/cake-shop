@@ -16,8 +16,7 @@
         </div>
 
         @if(session()->has('message'))
-        <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-            x-init="setTimeout(() => show=false, 3000)" x-show="show">
+        <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
             {{session('message')}}
         </div>
         @endif

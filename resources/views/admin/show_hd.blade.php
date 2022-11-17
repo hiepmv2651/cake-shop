@@ -37,8 +37,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -94,11 +93,9 @@
                                 <td>{{$value->tongtien}} VNĐ</td>
                                 <td>
                                     <a href="{{url('detail_hoadon', $value->id)}}" class="btn btn-primary">Detail</a>
-                                    <a href="{{url('update_hoadon', $value->id)}}"
-                                        class="btn btn-inverse-warning">Edit</a>
+                                    <a href="{{url('update_hoadon', $value->id)}}" class="btn btn-inverse-warning">Edit</a>
                                     @if(auth::user()->usertype == 1)
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
                                     @else
                                     @endif
                                 </td>
@@ -126,85 +123,86 @@
         <script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
         <script>
             var minDate, maxDate;
- 
- // Custom filtering function which will search data in column four between two values
- $.fn.dataTable.ext.search.push(
-     function( settings, data, dataIndex ) {
-         var min = minDate.val();
-         var max = maxDate.val();
-         var date = new Date( data[1] );
-  
-         if (
-             ( min === null && max === null ) ||
-             ( min === null && date <= max ) ||
-             ( min <= date   && max === null ) ||
-             ( min <= date   && date <= max )
-         ) {
-             return true;
-         }
-         return false;
-     }
- );
-  
-       
-            $(document).ready(function () {
+
+            // Custom filtering function which will search data in column four between two values
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var min = minDate.val();
+                    var max = maxDate.val();
+                    var date = new Date(data[1]);
+
+                    if (
+                        (min === null && max === null) ||
+                        (min === null && date <= max) ||
+                        (min <= date && max === null) ||
+                        (min <= date && date <= max)
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+
+
+            $(document).ready(function() {
                 minDate = new DateTime($('#min'), {
-                                        i18n: {
-                                            months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                                            weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
-                                        },
-                                        buttons: {
-                                            today: true,
-                                            clear: true
-                                        },
-                                        format: 'YYYY-MM-DD'
-                                    });
-                                    maxDate = new DateTime($('#max'), {
-                                        i18n: {
-                                            months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                                            weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
-                                        },
-                                        buttons: {
-                                            today: true,
-                                            clear: true
-                                        },
-                                        format: 'YYYY-MM-DD'
-                                    });
-        var table = $('#example').DataTable({
-            "language": {
-                                            "lengthMenu": " _MENU_ ",
-                                            "zeroRecords": "Không tìm thấy",
-                                            "info": "Hiển thị trang _PAGE_ / _PAGES_",
-                                            "infoEmpty": "Không có dữ liệu",
-                                            "infoFiltered": "(Được lọc từ _MAX_ mục)",
-                                            "search": "Tìm kiếm:",
-                                            "paginate": {
-                                                "first": "Trang đầu",
-                                                "last": "Trang cuối",
-                                                "next": "Sau",
-                                                "previous": "Trước",
-                                            },
-                                            buttons: {
-                                                colvis: 'Chọn mục không xuất',
-                                            },
-                                            select: {
-                                                rows: " (%d dòng được chọn)"
-                                            }
-                                        },
-                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            scrollX: true,
-            autoWidth: false,
-            columnDefs: [
-                {
-                    targets: ['_all'],
-                    className: 'mdc-data-table__cell',
-                },
-            ],
-        });
-        $('#min, #max').on('change', function () {
-         table.draw();
-     });
-    });
+                    i18n: {
+                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                        weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+                    },
+                    buttons: {
+                        today: true,
+                        clear: true
+                    },
+                    format: 'YYYY-MM-DD'
+                });
+                maxDate = new DateTime($('#max'), {
+                    i18n: {
+                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                        weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+                    },
+                    buttons: {
+                        today: true,
+                        clear: true
+                    },
+                    format: 'YYYY-MM-DD'
+                });
+                var table = $('#example').DataTable({
+                    "language": {
+                        "lengthMenu": " _MENU_ ",
+                        "zeroRecords": "Không tìm thấy",
+                        "info": "Hiển thị trang _PAGE_ / _PAGES_",
+                        "infoEmpty": "Không có dữ liệu",
+                        "infoFiltered": "(Được lọc từ _MAX_ mục)",
+                        "search": "Tìm kiếm:",
+                        "paginate": {
+                            "first": "Trang đầu",
+                            "last": "Trang cuối",
+                            "next": "Sau",
+                            "previous": "Trước",
+                        },
+                        buttons: {
+                            colvis: 'Chọn mục không xuất',
+                        },
+                        select: {
+                            rows: " (%d dòng được chọn)"
+                        }
+                    },
+                    "lengthMenu": [
+                        [10, 25, 50, -1],
+                        [10, 25, 50, "All"]
+                    ],
+                    scrollX: true,
+                    autoWidth: false,
+                    columnDefs: [{
+                        targets: ['_all'],
+                        className: 'mdc-data-table__cell',
+                    }, ],
+                });
+                $('#min, #max').on('change', function() {
+                    table.draw();
+                });
+            });
         </script>
         <script src="//unpkg.com/alpinejs" defer></script>
         <!-- endinject -->

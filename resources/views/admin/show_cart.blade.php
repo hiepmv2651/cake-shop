@@ -31,8 +31,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -69,8 +68,7 @@
                                 <td>{{$value->price}} VNĐ</td>
                                 @if(auth::user()->usertype == 1)
                                 <td>
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                                 @else
                                 @endif

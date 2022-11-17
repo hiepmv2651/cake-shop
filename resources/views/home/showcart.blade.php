@@ -47,7 +47,7 @@
 
         @if(session()->has('message'))
         <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-            x-init="setTimeout(() => show=false, 3000)" x-show="show">
+            x-init="setTimeout(() => show=false, 6000)" x-show="show">
             {{session('message')}}
         </div>
         @endif
@@ -76,7 +76,7 @@
                     <tbody>
                         @foreach ($cart as $value)
                         <tr>
-                            <td><input type="checkbox" class="selectbox" value="{{$value->id}}" name="ids[]">
+                            <td><input type="checkbox" class="selectbox" id="clear" value="{{$value->id}}" name="ids[]">
                             </td>
                             <td>{{$value->products->title}}</td>
                             <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td>
@@ -84,50 +84,51 @@
                             <td>{{$value->price}} VNĐ</td>
                             <td>
                                 <a onclick="on1()" style="color: white" class="btn btn-primary">Cập Nhật</a>
-                                <div id="overlay1">
-                                    <div
-                                        class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
-                                        <div
-                                            class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                                            <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
-                                            <h1 style=" font-size: 25px; padding-bottom: 15px">Cập Nhập Số Lượng Sản
-                                                Phẩm</h1>
-                                            </div>
-                                            <form method="POST">
-                                                @csrf
-                                                <input id="myInput3" type="number" min="1" max="20" class="input_color"
-                                                    required name="quantity" value="{{$value->quantity}}">
-                                                @error('quantity')
-                                                <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                                                    {{$message}}
-                                                </p>
-                                                @enderror
-                                            </form>
-                                            <div style="display: flex;
-                                            justify-content: center;
-                                            align-items: center;
-                                            ">
-                                                <button id="btn1" style="margin-top: 10px; display: block;
-                                                margin-left: auto;
-                                                margin-right: auto;
-                                                width: 40%; background-color: red" type="button"
-                                                    class=" btn btn-danger" onclick="off1()">Đóng</button>
-                                                <button style="margin-top: 10px; display: block;
-                                                margin-left: auto;
-                                                margin-right: auto;
-                                                width: 40%; background-color: blue" class=" btn btn-primary"
-                                                    formaction="{{url('capnhat_cart', $value->id)}}">Cập
-                                                    Nhật</button>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
                                 <a onclick="confirmation(event)" href="{{url('delete_cart', $value->id)}}"
                                     class="btn btn-danger">Xóa</a>
-
                             </td>
                         </tr>
+                        <div id="overlay1">
+                            <div
+                                class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
+                                <div
+                                    class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                                    <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
+                                    <h1 style=" font-size: 25px; padding-bottom: 15px">Cập Nhập Số Lượng Sản
+                                        Phẩm</h1>
+                                    </div>
+
+                                    <input id="myInput3" type="number" min="1" max="20" class="input_color" required
+                                        name="quantity[]" value="{{$value->quantity}}">
+                                    @error('quantity[]')
+                                    <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                        {{$message}}
+                                    </p>
+                                    @enderror
+
+                                    <div style="display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    ">
+                                        @method('DELETE')
+                                        <button id="btn1" style="margin-top: 10px; display: block;
+                                        margin-left: auto;
+                                        margin-right: auto;
+                                        width: 40%; background-color: red" type="button" class=" btn btn-danger"
+                                            onclick="off1()">Đóng</button>
+                                        <button style="margin-top: 10px; display: block;
+                                        margin-left: auto;
+                                        margin-right: auto;
+                                        width: 40%; background-color: blue" type="button" class=" btn btn-primary"
+                                            formaction="{{url('capnhat_cart', $value->id)}}">Cập
+                                            Nhật</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -137,20 +138,17 @@
                         </tr>
                     </tfoot>
                 </table>
-
                 <div>
                     <input type="button" onclick="on()" id="btn"
                         style="text-align: center; background-color: red; width: 20%" class="btn btn-danger"
                         value="Thanh Toán">
                 </div>
-
                 <div>
                     @method('DELETE')
                     <button id="myBtn2" disabled formaction="{{url('delete_select')}}" type="submit"
                         style="background-color: red" class="btn btn-danger">Xóa Toàn Bộ Sản Phẩm
                     </button>
                 </div>
-
             </div>
             <div id="overlay">
                 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
@@ -160,7 +158,7 @@
                             khi nhấn
                             vào phương thức thanh toán</h1>
                         </div>
-
+                        @csrf
                         <input id="myInput1" type="text" class="input_color" required name="address"
                             placeholder="Nhập địa chỉ giao hàng">
                         @error('address')
@@ -179,7 +177,6 @@
                             <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
                             <h1 style=" font-size: 25px; padding-bottom: 15px">Chọn Phương Thức Thanh Toán</h1>
                                 <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
-
                                 @method('DELETE')
                                 <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
                                     class="btn btn-danger">Cash On
@@ -190,21 +187,16 @@
                                     Card</button>
                             </div>
                         </div>
-
                         <button id="btn1" style="margin-top: 10px; display: block;
                             margin-left: auto;
                             margin-right: auto;
                             width: 40%; background-color: red" type="button" class=" btn btn-danger"
                             onclick="off()">Đóng</button>
                     </div>
-
                 </div>
             </div>
-
         </form>
     </div>
-
-
     <!-- footer start -->
     @include('home.footer')
     <!-- footer end -->
@@ -218,7 +210,6 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
-
     <script>
         var totalprice;
         $(document).ready(function () {
@@ -261,7 +252,6 @@
             var intVal = function (i) {
                 return typeof i === 'string' ? i.replace(/[\VNĐ,]/g, '') * 1 : typeof i === 'number' ? i : 0;
             };
-
             total = api
                 .column(4)
                 .data()
@@ -279,15 +269,12 @@
             $(api.column(5).footer()).html(pageTotal + ' VNĐ' + ' (' + total + ' VNĐ)');
         },
     });
-
    
     $("#selectAll").on("click", function (e) {
                 $('.selectbox').prop('checked', true);
                 table.rows().select();
                 table.draw();
             });
-
-
             $("#removeAll").on("click", function () {
                 $('.selectbox').prop('checked', false);
                 table.rows().deselect();
@@ -300,29 +287,18 @@
             })
             
 });
-
 function pay() {
     document.getElementById('thanhtoan').value = totalprice;
-          
+    $(document).ready(function() {
+                var table = $('#example').DataTable();
+                $('.selectbox').prop('checked', false);
+                table.rows().deselect();
+                table.draw();
+                document.getElementById('myInput1').value = '';
+                document.getElementById('myInput2').value = '';
+            });
         }
-    </script>
-    <script>
-        $('.selectall').click(function(){
-            $('.selectbox').prop('checked', $(this).prop('checked'));
-        });
-
-        $('.selectbox').change(function(){
-            var total = $('.selectbox').length;
-            var number = $('.selectbox:checked').length;
-            if(total == number) {
-                $('.selectall').prop('checked', true);
-            }
-            else {
-                $('.selectall').prop('checked', false);
-
-            }
-
-        });
+       
     </script>
 
     <script>
@@ -344,7 +320,6 @@ function pay() {
           });   
       }
     </script>
-
     <script>
         function on() {
       document.getElementById("overlay").style.display = "block";
@@ -355,7 +330,6 @@ function pay() {
       document.getElementById('myInput2').value = ''
       document.getElementById("overlay").style.display = "none";
     }
-
     function on1() {
       document.getElementById("overlay1").style.display = "block";
     }
@@ -364,8 +338,8 @@ function pay() {
       document.getElementById('myInput3').value = ''
       document.getElementById("overlay1").style.display = "none";
     }
-    </script>
 
+    </script>
     <!-- jQery -->
     <!-- popper js -->
     <script src="home/js/popper.min.js"></script>
@@ -373,7 +347,6 @@ function pay() {
     <script src="home/js/bootstrap.js"></script>
     <!-- custom js -->
     <script src="home/js/custom.js"></script>
-
 </body>
 
 </html>

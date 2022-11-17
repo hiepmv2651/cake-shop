@@ -13,15 +13,18 @@ class Order extends Model
 
     protected $fillable = ['ngaydat', 'phone', 'address', 'description', 'tongtien', 'user_id', 'trangthai_id', 'payment_status'];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function trangthais() {
+    public function trangthais()
+    {
         return $this->belongsTo(TrangThai::class, 'trangthai_id');
     }
 
-    public function chiTietHDs() {
+    public function chiTietHDs()
+    {
         return $this->hasMany(chiTietHD::class);
     }
 }

@@ -51,32 +51,35 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
     <script></script>
     <script>
-        $(document).ready(function () {
-    $('#example').DataTable({
-        "language": {
-                                            "lengthMenu": " _MENU_ ",
-                                            "zeroRecords": "Không tìm thấy",
-                                            "info": "Hiển thị trang _PAGE_ / _PAGES_",
-                                            "infoEmpty": "Không có dữ liệu",
-                                            "infoFiltered": "(Được lọc từ _MAX_ mục)",
-                                            "search": "Tìm kiếm:",
-                                            "paginate": {
-                                                "first": "Trang đầu",
-                                                "last": "Trang cuối",
-                                                "next": "Sau",
-                                                "previous": "Trước",
-                                            },
-                                            buttons: {
-                                                colvis: 'Chọn mục không xuất',
-                                            },
-                                            select: {
-                                                rows: " (%d dòng được chọn)"
-                                            }
-                                        },
-                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        
-    });
-});
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "language": {
+                    "lengthMenu": " _MENU_ ",
+                    "zeroRecords": "Không tìm thấy",
+                    "info": "Hiển thị trang _PAGE_ / _PAGES_",
+                    "infoEmpty": "Không có dữ liệu",
+                    "infoFiltered": "(Được lọc từ _MAX_ mục)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Sau",
+                        "previous": "Trước",
+                    },
+                    buttons: {
+                        colvis: 'Chọn mục không xuất',
+                    },
+                    select: {
+                        rows: " (%d dòng được chọn)"
+                    }
+                },
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+
+            });
+        });
     </script>
     <!-- jQery -->
 

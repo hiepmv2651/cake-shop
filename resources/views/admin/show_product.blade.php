@@ -31,8 +31,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -66,11 +65,9 @@
                                 <td><img src="{{asset('storage/'.$value->image)}}" alt=""></td>
 
                                 <td>
-                                    <a href="{{url('update_product', $value->id)}}"
-                                        class="btn btn-inverse-warning">Edit</a>
+                                    <a href="{{url('update_product', $value->id)}}" class="btn btn-inverse-warning">Edit</a>
                                     @if(auth::user()->usertype == 1)
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_product', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_product', $value->id)}}" class="btn btn-danger">Delete</a>
                                     @else
                                     @endif
                                 </td>

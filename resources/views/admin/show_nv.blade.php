@@ -31,8 +31,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -89,8 +88,7 @@
                                 <td>
                                     <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
 
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                                 @else
                                 @endif

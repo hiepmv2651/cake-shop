@@ -36,20 +36,23 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
 
                 @if ($item->count() > 0)
-                <h2 class="h2_font">In Hóa Đơn Đã Duyệt Và Thanh Toán</h2>
+                <h2 class="h2_font">In Hóa Đơn</h2>
                 <div class="div_center">
                     @php
                     $id = 0;
                     @endphp
                     <form action="{{url('/baocao')}}" method="get">
                         @csrf
-                        <select name="baocao" class="border-gray-300 text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
+                        <select name="baocao"
+                            class="border-gray-300 text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
+                            required>
                             @isset($oldvalue)
                             <option value="{{$oldvalue}}">{{$oldvalue}}</option>
                             @endisset
@@ -72,7 +75,7 @@
                     </form>
                 </div>
                 @else
-                <h2 class="h2_font">Không có hóa đã duyệt và thanh toán</h2>
+                <h2 class="h2_font">Không có hóa đơn</h2>
                 @endif
 
                 @isset($data)
@@ -81,7 +84,7 @@
                     <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
                         <thead>
                             <tr>
-                                <th>STT</th>
+                                <th>Mã HĐ</th>
                                 <th>Ngày Đặt</th>
                                 <th>SĐT</th>
                                 <th>Địa Chỉ</th>
@@ -94,14 +97,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-
-                            @endphp
                             @foreach ($value as $value)
-
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$value->id}}</td>
                                 <td>{{$value->ngaydat}}</td>
                                 <td>{{$value->phone}}</td>
                                 <td>{{$value->address}}</td>
@@ -111,11 +109,7 @@
                                 <td>{{$value->trangthais->name}}</td>
                                 <td>{{$value->payment_status}}</td>
                                 <td>{{$value->tongtien}} VNĐ</td>
-
                             </tr>
-                            @php
-                            $i++;
-                            @endphp
                             @endforeach
 
                         </tbody>
@@ -125,10 +119,12 @@
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <table id="example2" class="table is-striped" style="width:100%" style="background-color: white" data-rowonetitle="Chi Tiết Hóa Đơn" data-sheetname="Chi Tiết Hóa Đơn">
+                    <table id="example2" class="table is-striped" style="width:100%" style="background-color: white"
+                        data-rowonetitle="Chi Tiết Hóa Đơn" data-sheetname="Chi Tiết Hóa Đơn">
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã CTHĐ</th>
                                 <th>Giá Tiền</th>
                                 <th>Số Lượng</th>
                                 <th>Mã Hóa Đơn</th>
@@ -137,22 +133,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
                             @foreach ($data as $value)
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$value->id}}</td>
                                 <td>{{$value->price}} VNĐ</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->orders->id}}</td>
                                 <td>{{$value->products->title}}</td>
-
-
                             </tr>
-                            @php
-                            $i++;
-                            @endphp
                             @endforeach
 
                         </tbody>
@@ -276,11 +265,11 @@
                     ws += buildRow(header, rowNum, 2);
                     rowNum++;
 
-                    // Loop through each row to append to sheet.    
+                    // Loop through each row to append to sheet.
                     table.rows().every(function(rowIdx, tableLoop, rowLoop) {
                         var data = this.data();
 
-                        // If data is object based, then it needs to be converted 
+                        // If data is object based, then it needs to be converted
                         // to an array before sending to buildRow()
                         ws += buildRow(data, rowNum, '');
 

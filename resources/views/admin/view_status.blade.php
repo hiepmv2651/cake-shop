@@ -40,7 +40,8 @@
             <div class="content-wrapper">
 
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -65,6 +66,7 @@
                     <table id="example" class="table is-striped" style="width:100%">
                         <thead>
                             <tr>
+                                <th>STT</th>
                                 <th>Id</th>
                                 <th>Tên trạng thái</th>
                                 <th>Hành động</th>
@@ -73,15 +75,18 @@
                         <tbody>
                             @foreach ($data as $value)
                             <tr>
+                                <td>{{$loop->iteration}}</td>
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
 
                                 <td>
 
-                                    <a href="{{url('update_status', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
+                                    <a href="{{url('update_status', $value->id)}}"
+                                        class="btn btn-inverse-warning">Sửa</a>
 
 
-                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Are you sure to delete this')"
+                                        href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
                             @endforeach

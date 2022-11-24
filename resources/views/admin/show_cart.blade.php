@@ -31,7 +31,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -44,6 +45,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã GH</th>
                                 <th>Tên khách hàng</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
@@ -56,26 +58,21 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
-                            @php
-                            $i = 1;
-
-                            @endphp
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$value->id}}</td>
                                 <td>{{$value->user->name}}</td>
                                 <td>{{$value->products->title}}</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->price}} VNĐ</td>
                                 @if(auth::user()->usertype == 1)
                                 <td>
-                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Are you sure to delete this')"
+                                        href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                                 @else
                                 @endif
                             </tr>
-                            @php
-                            $i++;
-                            @endphp
                             @endforeach
                         </tbody>
                     </table>

@@ -471,7 +471,7 @@ class AdminController extends Controller
     {
         if ($request->baocao != null) {
             $oldvalue = $request->baocao;
-            $item = Order::where([['trangthai_id', '3'], ['payment_status', 'like', '%đã thanh toán%']]);
+            $item = Order::all();
             $value = Order::where('id', '=', $request->baocao)->get();
             if ($value->count() > 0) {
                 $data = chiTietHD::where('hoadon_id', '=', $request->baocao)->get();

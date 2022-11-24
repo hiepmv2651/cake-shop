@@ -17,7 +17,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
-
+    public $show = false;
     //TODO: Trang chu
     public function index()
     {
@@ -110,9 +110,10 @@ class HomeController extends Controller
     public function show_cart()
     {
         if (Auth::id()) {
+            $show = $this->show;
             $id = Auth::user()->id;
-            $cart = Cart::where('user_id', '=', $id)->get();
-            return view('home.showcart', compact('cart'));
+            $cart = Cart::orderBy('id', 'ASC')->where('user_id', '=', $id)->get();
+            return view('home.showcart', compact('cart', 'show'));
         } else {
             return redirect('login');
         }
@@ -127,17 +128,18 @@ class HomeController extends Controller
 
     public function delete_select(Request $request)
     {
+
         $data = $request->get('ids');
 
         DB::delete('delete from carts where id in (' . implode(",", $data) . ')');
         return redirect()->back();
     }
 
-    public function capnhat_cart($id, Request $request)
+    public function capnhat_cart($id, Request $request, $quantity)
     {
         $data = Cart::find($id);
-        $data->price = $data->price / $data->quantity * $request->quantity[0];
-        $data->quantity = $request->quantity[0];
+        $data->price = $data->price / $data->quantity * $request->quantity[$quantity];
+        $data->quantity = $request->quantity[$quantity];
         $data->save();
 
         return redirect()->back()->with('message', 'Cập Nhập Số Lượng Sản Phẩm Thành Công');
@@ -152,19 +154,24 @@ class HomeController extends Controller
         $data = DB::select('select * from carts where id in (' . implode(",", $value) . ') and user_id = ' . $userId);
 
         $order = new Order;
+        $order->phone = $request->validate([
+            'phone' => 'required',
+        ]);
+
+        $order->address = $request->validate([
+            'address' => 'required',
+        ]);
         $order->ngaydat = Carbon::now();
 
-        $order->phone = $request->phone;
-        $order->address = $request->address;
         $order->description = '';
 
         $order->user_id = $userId;
         $order->trangthai_id = 1;
-        
+
 
         $order->payment_status = 'Chưa thanh toán';
         $order->save();
-        
+
 
         foreach ($data as $data) {
             $cthd = new chiTietHD;
@@ -185,7 +192,7 @@ class HomeController extends Controller
         $order1 = Order::find($id1);
         $order1->tongtien = chiTietHD::where('hoadon_id', $id1)->sum('price');
         $order1->save();
-        
+
 
         return redirect('show_order')->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }

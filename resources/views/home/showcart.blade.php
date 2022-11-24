@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
 
     @include('home.css')
-    
+
     <style>
         #overlay,
         #overlay1 {
@@ -44,7 +44,7 @@
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
-  
+
         <!-- end header section -->
 
         @if(session()->has('message'))
@@ -58,17 +58,22 @@
         <form method="POST">
             @csrf
 
-            <div style="width: 90%; margin-left: auto; margin-right: auto;">
+            <div style=" width: 90%; margin-left: auto; margin-right: auto;">
 
                 <input type="button" value="Chọn tất cả" id="selectAll"
                     style="width: 165px; height: 38px; background-color: #80BDE3" class="btn btn-primary" />
 
                 <input type="button" value="Bỏ chọn tất cả" id="removeAll"
                     style="width: 165px; height: 38px; background-color: red" class="btn btn-danger" />
+                <input type="button" onclick="on()" id="btn"
+                    style="text-align: center; background-color: orange; width: 165px" class="btn btn-danger"
+                    value="Thanh Toán">
+
                 <table id="example" class="table is-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th></th>
+                            <th>STT</th>
                             <th>Tên Sản Phẩm</th>
                             <th>Ảnh</th>
                             <th>Số Lượng</th>
@@ -78,9 +83,13 @@
                     </thead>
                     <tbody>
                         @foreach ($cart as $value)
+                        @php
+                        $quantity = 0;
+                        @endphp
                         <tr>
                             <td><input type="checkbox" class="selectbox" id="clear" value="{{$value->id}}" name="ids[]">
                             </td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$value->products->title}}</td>
                             <td><img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" alt=""></td>
                             <td>{{$value->quantity}}</td>
@@ -98,12 +107,18 @@
                                 <div
                                     class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                                     <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
-                                    <h1 style=" font-size: 25px; padding-bottom: 15px">Cập Nhập Số Lượng Sản
+                                    <h1 style=" font-size: 25px; padding-bottom: 5px">Cập Nhập Số Lượng Sản
                                         Phẩm</h1>
                                     </div>
 
+                                    <h2 style=" font-size: 20px; padding-bottom: 15px; text-align:center">
+                                        {{$cart[$quantity]->products->title}}</h2>
+                                    <img src="{{asset('storage/'.$value->image)}}" height="80px" width="150" style="margin-left: auto;
+                                    margin-right: auto;display: block;" alt="">
+                                    <h2 style=" font-size: 20px; padding-bottom: 15px; text-align:center">
+                                        Giá tiền: {{$cart[$quantity]->products->price}} VNĐ</h2>
                                     <input id="myInput3" type="number" min="1" max="20" class="input_color" required
-                                        name="quantity[]" value="{{$value->quantity}}">
+                                        name="quantity[]" value="{{$cart[$quantity]->quantity}}">
                                     @error('quantity[]')
                                     <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                         {{$message}}
@@ -114,7 +129,7 @@
                                     justify-content: center;
                                     align-items: center;
                                     ">
-                                        @method('DELETE')
+                                        @method('PUT')
                                         <button id="btn1" style="margin-top: 10px; display: block;
                                         margin-left: auto;
                                         margin-right: auto;
@@ -123,8 +138,8 @@
                                         <button style="margin-top: 10px; display: block;
                                         margin-left: auto;
                                         margin-right: auto;
-                                        width: 40%; background-color: blue" type="button" class=" btn btn-primary"
-                                            formaction="{{url('capnhat_cart', $value->id)}}">Cập
+                                        width: 40%; background-color: blue" type="submit" class=" btn btn-primary"
+                                            formaction="{{url('capnhat_cart', [$value->id,$quantity])}}">Cập
                                             Nhật</button>
 
                                     </div>
@@ -132,24 +147,24 @@
                                 </div>
                             </div>
                         </div>
+                        @php
+                        $quantity = 1;
+                        @endphp
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="5" style="text-align:right">Tổng Tiền:</th>
+                            <th colspan="6" style="text-align:right">Tổng Tiền:</th>
                             <th></th>
                         </tr>
                     </tfoot>
                 </table>
-                <div>
-                    <input type="button" onclick="on()" id="btn"
-                        style="text-align: center; background-color: red; width: 20%" class="btn btn-danger"
-                        value="Thanh Toán">
-                </div>
+
                 <div>
                     @method('DELETE')
                     <button id="myBtn2" disabled formaction="{{url('delete_select')}}" type="submit"
-                        style="background-color: red" class="btn btn-danger">Xóa Toàn Bộ Sản Phẩm
+                        style="background-color: red; margin-bottom: 15px" class="btn btn-danger">Xóa Toàn
+                        Bộ Sản Phẩm
                     </button>
                 </div>
             </div>
@@ -161,15 +176,17 @@
                             khi nhấn
                             vào phương thức thanh toán</h1>
                         </div>
+
+                        @method('PUT')
                         @csrf
-                        <input id="myInput1" type="text" class="input_color" required name="address"
+                        <input id="myInput1" type="text" class="input_color" name="address"
                             placeholder="Nhập địa chỉ giao hàng">
                         @error('address')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
                             {{$message}}
                         </p>
                         @enderror
-                        <input id="myInput2" type="number" class="input_color" required name="phone"
+                        <input id="myInput2" type="number" class="input_color" name="phone"
                             placeholder="Nhập số điện thoại liên hệ">
                         @error('phone')
                         <p class="mt-3 list-disc list-inside text-sm text-red-600">
@@ -180,7 +197,7 @@
                             <div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 20px"">
                             <h1 style=" font-size: 25px; padding-bottom: 15px">Chọn Phương Thức Thanh Toán</h1>
                                 <input id="thanhtoan" type="hidden" name="thanhtoan" value="" />
-                                @method('DELETE')
+
                                 <button id="myBtn" onclick="pay()" disabled formaction="{{url('cash_order')}}"
                                     class="btn btn-danger">Cash On
                                     Delivery</button>
@@ -195,6 +212,7 @@
                             margin-right: auto;
                             width: 40%; background-color: red" type="button" class=" btn btn-danger"
                             onclick="off()">Đóng</button>
+
                     </div>
                 </div>
             </div>
@@ -250,29 +268,29 @@
                 order: [[1, 'asc']],
         footerCallback: function (row, data, start, end, display) {
             var api = this.api();
- 
+
             // Remove the formatting to get integer data for summation
             var intVal = function (i) {
                 return typeof i === 'string' ? i.replace(/[\VNĐ,]/g, '') * 1 : typeof i === 'number' ? i : 0;
             };
             total = api
-                .column(4)
+                .column(5)
                 .data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0);
- 
+
             // Total over this page
-            pageTotal = api.rows({ selected: true }).data().pluck(4).reduce(function (a, b) {
+            pageTotal = api.rows({ selected: true }).data().pluck(5).reduce(function (a, b) {
                         return intVal(a) + intVal(b);
                     }, 0);
-                
+
                 totalprice = pageTotal
             // Update footer
-            $(api.column(5).footer()).html(pageTotal + ' VNĐ' + ' (' + total + ' VNĐ)');
+            $(api.column(6).footer()).html(pageTotal + ' VNĐ' + ' (' + total + ' VNĐ)');
         },
     });
-   
+
     $("#selectAll").on("click", function (e) {
                 $('.selectbox').prop('checked', true);
                 table.rows().select();
@@ -283,12 +301,12 @@
                 table.rows().deselect();
                 table.draw();
             });
-            
+
             table.on('select deselect', function () {
                 $('#myBtn, #myBtn1, #myBtn2').prop('disabled', !table.rows( '.selected' ).count());
                 table.draw();
             })
-            
+
 });
 function pay() {
     document.getElementById('thanhtoan').value = totalprice;
@@ -301,14 +319,14 @@ function pay() {
                 document.getElementById('myInput2').value = '';
             });
         }
-       
+
     </script>
 
     <script>
         function confirmation(ev) {
           ev.preventDefault();
-          var urlToRedirect = ev.currentTarget.getAttribute('href');  
-          console.log(urlToRedirect); 
+          var urlToRedirect = ev.currentTarget.getAttribute('href');
+          console.log(urlToRedirect);
           swal({
               title: "Bạn có chắc chắn hủy sản phẩm này không?",
               text: "Bạn sẽ không thể hoàn nguyên điều này!",
@@ -319,15 +337,15 @@ function pay() {
           .then((willCancel) => {
               if (willCancel) {
                   window.location.href = urlToRedirect;
-              }  
-          });   
+              }
+          });
       }
     </script>
     <script>
         function on() {
       document.getElementById("overlay").style.display = "block";
     }
-    
+
     function off() {
       document.getElementById('myInput1').value = ''
       document.getElementById('myInput2').value = ''
@@ -336,7 +354,7 @@ function pay() {
     function on1() {
       document.getElementById("overlay1").style.display = "block";
     }
-    
+
     function off1() {
       document.getElementById('myInput3').value = ''
       document.getElementById("overlay1").style.display = "none";

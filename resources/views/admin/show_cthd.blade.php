@@ -31,7 +31,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -44,6 +45,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã CTHĐ</th>
                                 <th>Giá Tiền</th>
                                 <th>Số Lượng</th>
                                 <th>Mã Hóa Đơn</th>
@@ -52,28 +54,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
                             @foreach ($data as $value)
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$value->id}}</td>
                                 <td>{{$value->price}} VNĐ</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->hoadon_id}}</td>
                                 <td>{{$value->products->title}}</td>
 
                                 <td>
-                                    <a href="{{url('update_cthoadon', $value->id)}}" class="btn btn-inverse-warning">Edit</a>
+                                    <a href="{{url('update_cthoadon', $value->id)}}"
+                                        class="btn btn-inverse-warning">Edit</a>
                                     @if(auth::user()->usertype == 1)
-                                    <a onclick="return confirm('Are you sure to delete this')" href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
+                                    <a onclick="return confirm('Are you sure to delete this')"
+                                        href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
                                     @else
                                     @endif
                                 </td>
                             </tr>
-                            @php
-                            $i++;
-                            @endphp
                             @endforeach
 
                         </tbody>

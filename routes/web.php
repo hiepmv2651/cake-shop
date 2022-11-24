@@ -142,13 +142,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart']);
 
-    Route::delete('/delete_select', [HomeController::class, 'delete_select']);
+    Route::put('/delete_select', [HomeController::class, 'delete_select']);
 
-    Route::delete('/cash_order', [HomeController::class, 'cash_order']);
+    Route::put('/cash_order', [HomeController::class, 'cash_order']);
 
-    Route::delete('/stripe', [HomeController::class, 'stripe']);
+    Route::put('/stripe', [HomeController::class, 'stripe']);
 
-    Route::delete('/capnhat_cart/{id}', [HomeController::class, 'capnhat_cart']);
+    Route::put('/capnhat_cart/{id}/{quantity}', [HomeController::class, 'capnhat_cart']);
 
     Route::post('/stripe/{totalprice}', [HomeController::class, 'stripePost'])->name('stripe.post');
 

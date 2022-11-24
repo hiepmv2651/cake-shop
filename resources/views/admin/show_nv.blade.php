@@ -31,7 +31,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -44,6 +45,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã NV</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>SĐT</th>
@@ -58,44 +60,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
                             @foreach ($data as $value)
-                            @php
-
-                            if($value->gender == 1)
-                            $gt = 'Nam';
-                            else {
-                            $gt = 'Nữ';
-                            }
-                            if($value->usertype == 1)
-                            $pq = 'Admin';
-                            else
-                            $pq = 'Nhân Viên';
-                            @endphp
                             <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$value->id}}</td>
                                 <td>{{$value->name}}</td>
                                 <td>{{$value->email}}</td>
                                 <td>{{$value->phone}}</td>
                                 <td>{{$value->address}}</td>
-                                <td>{{$pq}}</td>
+                                <td>@if($value->usertype == 1) {{_('Admin')}} @else {{_('Nhân Viên')}} @endif</td>
 
-                                <td>{{$gt}}</td>
+                                <td>@if($value->gender == 1) {{_('Nam')}} @else {{_('Nữ')}} @endif</td>
                                 <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
                                 @if(auth::user()->usertype == 1)
                                 <td>
                                     <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
 
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
                                 </td>
                                 @else
                                 @endif
                             </tr>
-                            @php
-                            $i++;
-                            @endphp
+
                             @endforeach
 
                         </tbody>

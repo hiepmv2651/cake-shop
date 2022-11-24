@@ -37,22 +37,37 @@ Install npm and run dev
   .env
 ```
 
+Chỉnh sửa file .env
+
+```bash
+  APP_URL=http://127.0.0.1:8000
+  
+  MAIL_MAILER=smtp
+  MAIL_HOST=smtp.gmail.com
+  MAIL_PORT=...(thay bằng cổng muốn sử dụng)
+  MAIL_USERNAME=...(thay bằng gmail đang sử dụng)
+  MAIL_PASSWORD=...(thay bằng mật khẩu ứng dụng gmail)
+  MAIL_ENCRYPTION=...(thay bằng giao thức gmail muốn sử dụng)
+  MAIL_FROM_ADDRESS="hello@example.com"
+  MAIL_FROM_NAME=...(thay bằng tên gmail muốn hiển thị)
+```
+
 Tạo APP_KEY
 
 ```bash
   php artisan key:generate
 ```
 
-Tạo database trong xampp giống với DB_DATABASE
+Tạo liên kết và copy 2 folder trong thư mục images vào public\storage
 
 ```bash
-  cake_shop
+  php artisan storage:link
 ```
 
-Tạo bảng
+Vào PHP Myadmin tạo cơ sở dữ liệu có tên là cake_memory, sau đó nhập file sql trong thư mục sql vào
 
 ```bash
-  php artisan migrate
+  cake_memory
 ```
 
 Chạy server

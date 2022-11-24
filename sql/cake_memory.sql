@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 15, 2022 lúc 08:54 AM
+-- Thời gian đã tạo: Th10 16, 2022 lúc 01:53 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -282,31 +282,36 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `category`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'Bánh Mousse Chocolate', '', 'logos/\r\nMousseChocolate.jpg', 'Bánh kem', '380000', '2022-10-13 02:25:14', '2022-11-08 02:25:14'),
-(2, 'Bánh Kem Blue Ocean', NULL, 'logos/BlueOcean.jpg', 'Bánh Kem', '350000', '2022-10-12 02:25:52', '2022-11-17 02:25:52'),
-(3, 'Bánh Kem Romantic', NULL, 'logos/Romantic.jpg', 'Bánh Kem', '350000', '2022-10-12 02:26:10', '2022-12-10 02:26:10'),
-(4, 'Bánh Kem Mousse Hawaii', NULL, 'logos/MousseHawaii.jpg', 'Bánh Kem', '380000', '2022-10-11 02:26:35', '2022-11-09 02:26:35'),
-(5, 'Bánh Kem Chocolate Fruit', NULL, 'logos/ChocolateFruit.jpg', 'Bánh Kem', '300000', '2022-10-06 02:27:08', '2022-11-12 02:27:08'),
-(6, 'Bánh Mì Kẹp Gà Teriyaki', NULL, 'logos/Teriyaki.jpg', 'Bánh mì', '33000', '2022-10-14 02:27:24', '2022-11-12 02:27:24'),
-(7, 'Bánh Mì Kẹp Pa Tê', NULL, 'logos/MiPaTe.jpg', 'Bánh mì', '33000', '2022-10-19 02:27:36', '2022-11-12 02:27:24'),
-(8, 'Bánh Mì Kẹp Thập Cẩm', '', 'logos/MiThapCam.jpg', 'Bánh mì', '33000', '2022-10-26 02:27:46', '2022-11-09 02:26:35'),
-(9, 'Bánh Mì Kẹp Xá Xíu', NULL, 'logos/MiXaXiu.jpg', 'Bánh mì', '33000', '2022-10-31 02:28:05', '2022-11-12 02:27:08'),
-(10, 'Bánh Sandwich Cá Ngừ Phô Mai', NULL, 'logos/SandwichCaNgu.jpg', 'Bánh mì', '33000', '2022-10-24 02:28:16', '2022-11-08 02:25:14'),
-(11, 'Bánh Chiffon 3 Vị', NULL, 'logos/Chiffon3Vi.jpg', 'Bánh ngọt', '20000', '2022-10-14 02:27:24', '2022-11-10 02:26:10'),
-(12, 'Bánh Chiffon Trà Xanh ', NULL, 'logos/ChiffonTraXanh.jpg', 'Bánh ngọt', '35000', '2022-10-11 02:26:35', '2022-11-17 02:25:52'),
-(13, 'Bánh Chiffon Vani', NULL, 'logos/ChiffonVani.jpg', 'Bánh ngọt', '30000', '2022-10-14 02:27:24', '2022-11-12 02:27:08'),
-(14, 'Bánh Cuộn Nho Miếng ', NULL, 'logos/BanhCuonNhoMieng.jpg', 'Bánh ngọt', '20000', '2022-10-06 02:27:08', '2022-11-12 02:27:24'),
-(15, 'Bánh Cuộn Socola Miếng', NULL, 'logos/BanhCuonSocola.jpg', 'Bánh ngọt', '30000', '2022-10-12 02:26:10', '2022-11-09 02:26:35'),
-(16, 'Bánh Opera 90G', NULL, 'logos/Opera90G.jpg', 'Bánh tráng miệng', '35000', '2022-11-13 22:29:18', '2022-11-11 22:40:24'),
-(17, 'Bánh Tiramisu 90G', NULL, 'logos/Tiramisu90G.jpg', 'Bánh tráng miệng', '50000', '2022-10-22 02:29:49', '2022-11-13 02:29:49'),
-(18, 'Mousse Chanh Leo', NULL, 'logos/MousseChanhLeo.jpg', 'Bánh tráng miệng', '25000', '2022-10-06 02:27:08', '2022-11-10 02:26:10'),
-(19, 'Mousse Trà Xanh', NULL, 'logos/MousseTraXanh.jpg', 'Bánh tráng miệng', '25000', '2022-11-13 02:30:32', '2022-11-17 02:25:52'),
-(20, 'Mousse Xoài ', NULL, 'logos/MousseXoai.jpg', 'Bánh tráng miệng', '25000', '2022-10-11 02:26:35', '2022-11-08 02:25:14'),
-(21, 'Bánh Quy Hạt Dẻ Cười', NULL, 'logos/BanhQuyHatDeCuoi.jpg', 'Bánh theo mùa', '80000', '2022-10-13 02:25:14', '2022-11-12 02:27:08'),
-(22, 'Bánh Quy Hạt Mắc Ca ', NULL, 'logos/BanhQuyHatMacCa.jpg', 'Bánh theo mua', '80000', '2022-10-11 02:26:35', '2022-11-17 02:25:52'),
-(23, 'Bánh Nướng Nhân Đậu Xanh Trứng', NULL, 'logos/BanhNuongDauXanh.jpg', 'Bánh theo mùa', '65000', '2022-10-06 02:27:08', '2022-11-12 02:27:24'),
-(24, 'Bánh Dẻo Nhân Hạt Sen Trứng', NULL, 'logos/BanhDeoHatSen.jpg', 'Bánh theo mùa', '65000', '2022-10-06 02:27:08', '2022-11-12 02:27:08'),
-(25, 'Bánh Lady Finger ', NULL, 'logos/LadyFinger.jpg', 'Bánh khô', '39000', '2022-10-14 02:27:24', '2022-11-08 02:25:14');
+(1, 'Bánh Mousse Chocolate', 'Mousse là dòng bánh ngọt được sử dụng làm món tráng miệng hoặc ăn vặt đến từ kinh đô Pháp. Bánh gồm có 2 lớp, lớp kem ở trên là lớp kem mịn, khi ăn sẽ có vị ngọt, mát và thấm nhanh vào đầu lưỡi của người thưởng thức.', 'logos/\r\nMousseChocolate.jpg', 'Bánh kem', '380000', '2022-10-13 02:25:14', '2022-11-08 02:25:14'),
+(2, 'Bánh Kem Blue Ocean', 'Bánh kem Blue Ocean Fresh Garden với cốt bánh vani 3 lớp nhân kem vani, trang trí chủ đề đại dương với hình kẹo đường ngộ nghĩnh có heo xanh, rùa biển,...', 'logos/BlueOcean.jpg', 'Bánh Kem', '350000', '2022-10-12 02:25:52', '2022-11-17 02:25:52'),
+(3, 'Bánh Kem Romantic', 'Bánh sinh nhật tặng người yêu với những kiểu tạo hình lãng mạn và độc đáo sẽ là món quà vô cùng quý giá để dành tặng cho một nửa yêu thương của bạn nhân dịp sinh nhật hay kỷ niệm ngày yêu nhau. Bánh kem tiền tặng gấu yêu Romantic sẽ mang đến cho cặp đôi s', 'logos/Romantic.jpg', 'Bánh Kem', '350000', '2022-10-12 02:26:10', '2022-12-10 02:26:10'),
+(4, 'Bánh Kem Mousse Hawaii', 'Hawaii mousse thuộc loại bánh đặc biệt nhất trong dòng mousse. Bánh làm từ kem tươi với phần trên là caramen dừa,đế bánh bạt gato dừa, mặt bánh phủ lớp sốt caramel. Từng lớp bánh xốp, mềm mịn, tan ngay trong miệng cùng hương vị thơm ngon của caramen rất t', 'logos/MousseHawaii.jpg', 'Bánh Kem', '380000', '2022-10-11 02:26:35', '2022-11-09 02:26:35'),
+(5, 'Bánh Kem Chocolate Fruit', 'Passion fruit & chocolate cake hiện nay tại Nguyễn Sơn Bakery đang là dòng bánh được khách hàng yêu thích nhất. Không chỉ bắt bắt về ngoại hình, hương vị bánh còn vô cùng đặc biệt.', 'logos/ChocolateFruit.jpg', 'Bánh Kem', '300000', '2022-10-06 02:27:08', '2022-11-12 02:27:08'),
+(6, 'Bánh Mì Kẹp Gà Teriyaki', 'Bánh mì kẹp gà nướng Tereyaki với hương vị mới lạ rất phù hợp cho bữa ăn sáng hoặc ăn nhẹ buổi tối, đây là món ăn của Nhật nhưng rất phù hợp với khẩu vị của người Việt.', 'logos/Teriyaki.jpg', 'Bánh mì', '33000', '2022-10-14 02:27:24', '2022-11-12 02:27:24'),
+(7, 'Bánh Mì Kẹp Pa Tê', 'Bánh mì patê hay nhiều hàng còn viết là bánh mì paté là bánh mì nướng có kẹp một hay vài lát patê kèm theo các loại rau như rau mùi, dưa chuột, củ cải, cà rốt, xúc xích, bơ, ruốc, những người ăn được cay thường cho thêm ớt. ', 'logos/MiPaTe.jpg', 'Bánh mì', '33000', '2022-10-19 02:27:36', '2022-11-12 02:27:24'),
+(8, 'Bánh Mì Kẹp Thập Cẩm', 'Bánh mì kẹp luôn có mặt trong bữa sáng của nhiều gia đình. Bánh mì kẹp có thể kẹp với nhiều loại nhân khác nhau tùy theo sở thích. Đây là món ăn đầy đủ dinh dưỡng mà lại hợp khẩu vị tất cả mọi người.', 'logos/MiThapCam.jpg', 'Bánh mì', '33000', '2022-10-26 02:27:46', '2022-11-09 02:26:35'),
+(9, 'Bánh Mì Kẹp Xá Xíu', 'Bánh mì chính là linh hồn của ẩm thực đường phố Sài Gòn nói riêng và Việt Nam nói chung, là món ăn mà không một người Việt Nam nào chối từ, bởi ngoài cái ngon được tạo nên bởi sự hòa quyện bằng những nguyên liệu thơm ngon đậm chất Việt mà bánh mì còn giữ ', 'logos/MiXaXiu.jpg', 'Bánh mì', '33000', '2022-10-31 02:28:05', '2022-11-12 02:27:08'),
+(10, 'Bánh Sandwich Cá Ngừ Phô Mai', 'Thưởng thức bánh mì sandwich cá ngừ phô mai thơm ngon hấp dẫn cho bữa sáng đầy dinh dưỡng chắc chắn sẽ giúp bạn nạp đầy năng lượng cho cả ngày dài đấy.', 'logos/SandwichCaNgu.jpg', 'Bánh mì', '33000', '2022-10-24 02:28:16', '2022-11-08 02:25:14'),
+(11, 'Bánh Chiffon 3 Vị', 'Bánh chiffon là một loại bánh ngọt thuộc nhóm Foam Cake (các loại bánh với trứng được đánh bông tạo thành các bọt khí), kết hợp với các nguyên liệu như: bột mì, bột nở, dầu thực vật,... ', 'logos/Chiffon3Vi.jpg', 'Bánh ngọt', '20000', '2022-10-14 02:27:24', '2022-11-10 02:26:10'),
+(12, 'Bánh Chiffon Trà Xanh ', 'Bánh bông lan chiffon trà xanh có vị ngọt thanh, ít béo có mùi thơm đặc trưng của bột trà xanh, tạo nên một món bánh ngon ngất ngây khó cưỡng. ', 'logos/ChiffonTraXanh.jpg', 'Bánh ngọt', '35000', '2022-10-11 02:26:35', '2022-11-17 02:25:52'),
+(13, 'Bánh Chiffon Vani', 'Bánh chiffon rất khó làm, khó từ cách cân đo nguyên liệu rồi đánh trứng, trộn bột, đặc biệt là nướng. Nhưng từ khi chuyển sang “nấu” bằng nồi cơm điện thì lại khác, bánh không lõm, thắt eo, nứt mặt, mà vẫn mềm, mịn, xốp và đặc biệt không khô như nướng bằn', 'logos/ChiffonVani.jpg', 'Bánh ngọt', '30000', '2022-10-14 02:27:24', '2022-11-12 02:27:08'),
+(14, 'Bánh Cuộn Nho Miếng ', 'Trời lạnh rồi. Với không khí này mà trong bếp có mùi quế trộn với mùi bơ đường thì thích lắm lắm. Mùa này có táo và bí đỏ, là những món rất hợp với vị quế. Nhưng còn một món nữa mà đã rất lâu rồi mình chưa làm: bánh mì cuộn đường quế (khuyến mại thêm rất ', 'logos/BanhCuonNhoMieng.jpg', 'Bánh ngọt', '20000', '2022-10-06 02:27:08', '2022-11-12 02:27:24'),
+(15, 'Bánh Cuộn Socola Miếng', 'Savoury Days đã có khá nhiều loại bánh cuộn khác nhau rồi. Nhiều nhất có lẽ là Gateau Nhật Bản. Mình cũng hay dùng công thức Gateau Nhật Bản nhất, vì mềm, xốp và dai, rất dễ cuộn, kể cả khi bánh nguội cũng không sợ nứt. Nhưng vì ăn nhiều Gateau Nhật Bản í', 'logos/BanhCuonSocola.jpg', 'Bánh ngọt', '30000', '2022-10-12 02:26:10', '2022-11-09 02:26:35'),
+(16, 'Bánh Opera 90G', 'Theo nhà phát triển công thức, Jessica Morone, bánh Opera là một món tráng miệng của Pháp bao gồm ba lớp bánh bông lan hạnh nhân ngâm xi-rô cà phê tinh tế, xen kẽ với các lớp kem bơ hương cà phê và ganache sô cô la, theo nhà phát triển công thức, Jessica ', 'logos/Opera90G.jpg', 'Bánh tráng miệng', '35000', '2022-11-13 22:29:18', '2022-11-11 22:40:24'),
+(17, 'Bánh Tiramisu 90G', 'Bánh Quy Chic Choc Tiramisu Lotte 90g với cốt bánh cookie mềm xốp cùng ruột ẩm đặc trưng, nay lại đậm vị tiramisu, mix thêm chút cà phê, socola trắng và phô mai nhuyễn làm topping phủ trên mặt bánh. Khi thưởng thức cho bạn cảm giác thơm nồng ngất ngây khó', 'logos/Tiramisu90G.jpg', 'Bánh tráng miệng', '50000', '2022-10-22 02:29:49', '2022-11-13 02:29:49'),
+(18, 'Mousse Chanh Leo', 'Bánh Mousse chanh leo thơm ngon mát lạnh là món tráng miệng mà tín đồ bánh lạnh không thể bỏ qua.', 'logos/MousseChanhLeo.jpg', 'Bánh tráng miệng', '25000', '2022-10-06 02:27:08', '2022-11-10 02:26:10'),
+(19, 'Mousse Trà Xanh', 'Bánh Mousse Trà Xanh thơm ngon mát lạnh là món tráng miệng mà tín đồ bánh lạnh không thể bỏ qua.', 'logos/MousseTraXanh.jpg', 'Bánh tráng miệng', '25000', '2022-11-13 02:30:32', '2022-11-17 02:25:52'),
+(20, 'Mousse Xoài ', 'Bánh Mousse xoài thơm ngon mát lạnh là món tráng miệng mà tín đồ bánh lạnh không thể bỏ qua.', 'logos/MousseXoai.jpg', 'Bánh tráng miệng', '25000', '2022-10-11 02:26:35', '2022-11-08 02:25:14'),
+(21, 'Bánh Quy Hạt Dẻ Cười', 'Những miếng bánh hạt dẻ cười mềm mại như tan ngay trong miệng bạn, lan tỏa hương thơm đặc trưng, độc đáo của bạch đậu khấu. Phần phủ streusel của bánh thơm thơm, giòn giòn hương vị hạt dẻ cười.', 'logos/BanhQuyHatDeCuoi.jpg', 'Bánh theo mùa', '80000', '2022-10-13 02:25:14', '2022-11-12 02:27:08'),
+(22, 'Bánh Quy Hạt Mắc Ca ', 'Macca có thể sử dụng để chế biến các món ăn như salad, bánh, làm sữa hạt... Cách thức này góp phần làm tăng giá trị sử dụng cũng như độ thơm ngon của món ăn.', 'logos/BanhQuyHatMacCa.jpg', 'Bánh theo mua', '80000', '2022-10-11 02:26:35', '2022-11-17 02:25:52'),
+(23, 'Bánh Nướng Nhân Đậu Xanh Trứng', 'Bánh trung thu nhân đậu xanh được nhiều người yêu thích bởi mùi vị thơm ngon. Ngày nay, chị em nội trợ có thể dễ dàng làm món bánh này ngay tại nhà.', 'logos/BanhNuongDauXanh.jpg', 'Bánh theo mùa', '65000', '2022-10-06 02:27:08', '2022-11-12 02:27:24'),
+(24, 'Bánh Dẻo Nhân Hạt Sen Trứng', 'Bánh Dẻo Nhân Hạt Sen Trứng là loại bánh nướng quen thuộc trong mỗi dịp Tết Trung Thu. Bánh truyền thống có hình tròn, hình vuông với nhân ngọt từ đậu xanh', 'logos/BanhDeoHatSen.jpg', 'Bánh theo mùa', '65000', '2022-10-06 02:27:08', '2022-11-12 02:27:08'),
+(25, 'Bánh Lady Finger ', 'Được dịch từ tiếng Anh-Ladyfingers, hoặc trong tiếng Anh Anh là ngón tay xốp, còn được gọi trong cộng đồng người Do Thái Haredi là ngón tay em bé, là loại bánh quy làm bánh xốp ngọt có mật độ thấp, khô, làm từ trứng, có hình dạng gần giống một ngón tay lớ', 'logos/LadyFinger.jpg', 'Bánh khô', '39000', '2022-10-14 02:27:24', '2022-11-08 02:25:14'),
+(26, 'Bánh Mì Nướng Bơ Tỏi', 'Thành phần: Bột mì, nước, bơ (17%), kem sữa, tỏi (1,8%), đường, men, muối, chất ổn định (E516), chất nhũ hóa (E322i), chất xử lý bột (E300, E1100i) Túi 52g ', 'logos/botoi.jpg', 'Bánh khô', '20000', '2022-10-13 19:27:25', '2022-11-07 19:25:15'),
+(27, 'Bánh Mì Nướng Caramen', 'Thành phần: Bột mì, nước, sữa tươi, bơ, đường, đường caramen (9,5%), men, muối, chất ổn định (E516), chất nhũ hóa (E322i), chất xử lý bột (E300, E1100i) Túi 52g ', 'logos/caramen.jpg', 'Bánh khô', '20000', '2022-10-13 19:27:26', '2022-11-07 19:25:16'),
+(28, 'Bánh Mì Nướng Phô Mai Que ', 'Thành phần: Bột mì, nước, phô mai bột (4%), dầu, thực vật, men, bánh, muối, chất ổn định (E516), chất nhũ hóa (E322i), chất xử lý bột (E300, E1100i) Túi 52g ', 'logos/phomaique.jpg', 'Bánh khô', '20000', '2022-10-13 19:27:27', '2022-11-07 19:25:17'),
+(29, 'Bánh Mì Nướng Rong Biển ', 'Thành phần: Bột mì, nước, bơ (17%), kem sữa, đường, rong biển (0.3%), men, muối, bột canh tôm, chất ổn định (E516), chất nhũ hóa (E322i), chất xử lý bột (E300, E1100i) Túi 52g', 'logos/rongbien.jpg', 'Bánh khô', '20000', '2022-10-13 19:27:28', '2022-11-07 19:25:18'),
+(30, 'Bánh Mì Nướng Sốt Pizza', 'Thành phần: Bột mì, nước, bơ, kem sữa, sốt pizza (7%), hành tây, đường, phô mai bột, lá kinh giới khô, ớt bột, men, muối, bột canh tôm, chất ổn định (E516), chất nhũ hóa (E322i), chất xử lý bột (E300, E1100i) Túi 52g ', 'logos/sotpiza.jpg', 'Bánh khô', '20000', '2022-10-13 19:27:29', '2022-11-07 19:25:19');
 
 -- --------------------------------------------------------
 
@@ -539,7 +544,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `trang_thais`

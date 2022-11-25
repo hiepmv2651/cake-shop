@@ -42,43 +42,6 @@
                 </div>
                 @endif
 
-                @if ($item->count() > 0)
-                <h2 class="h2_font">In Hóa Đơn</h2>
-                <div class="div_center">
-                    @php
-                    $id = 0;
-                    @endphp
-                    <form action="{{url('/baocao')}}" method="get">
-                        @csrf
-                        <select name="baocao"
-                            class="border-gray-300 text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                            required>
-                            @isset($oldvalue)
-                            <option value="{{$oldvalue}}">{{$oldvalue}}</option>
-                            @endisset
-                            @foreach ($item as $item)
-                            <option value="{{$item->id}}">
-                                {{$item->id}}
-                            </option>
-
-                            @endforeach
-
-                        </select>
-
-                        @error('baocao')
-                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                            <li>{{$message}}</li>
-                        </ul>
-                        @enderror
-                        <input type="submit" class="btn btn-primary" value="In Hóa Đơn" name="submit">
-
-                    </form>
-                </div>
-                @else
-                <h2 class="h2_font">Không có hóa đơn</h2>
-                @endif
-
-                @isset($data)
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
                     <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
@@ -105,8 +68,8 @@
                                 <td>{{$value->address}}</td>
                                 <td>{{$value->description}}</td>
 
-                                <td>{{$value->user->name}}</td>
-                                <td>{{$value->trangthais->name}}</td>
+                                <td>{{$value->user_id}}</td>
+                                <td>{{$value->trangthai_id}}</td>
                                 <td>{{$value->payment_status}}</td>
                                 <td>{{number_format($value->tongtien)}} VNĐ</td>
                             </tr>
@@ -117,10 +80,12 @@
 
                 </div>
 
-                <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                @for ($i = 0; $i < count($item); $i++) <div
+                    class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <table id="example2" class="table is-striped" style="width:100%" style="background-color: white"
-                        data-rowonetitle="Chi Tiết Hóa Đơn" data-sheetname="Chi Tiết Hóa Đơn">
+                    <table id="example{{_($i+2)}}" class="table is-striped" style="width:100%"
+                        style="background-color: white" data-rowonetitle="Chi Tiết Hóa Đơn {{_($data[$i])}}"
+                        data-sheetname="Chi Tiết Hóa Đơn {{_($data[$i])}}">
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -133,7 +98,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $value)
+                            @foreach ($item[$i] as $value)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$value->id}}</td>
@@ -147,26 +112,26 @@
                         </tbody>
                     </table>
 
-                </div>
-                @endisset
             </div>
+            @endfor
         </div>
+    </div>
 
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js">
-        </script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">
-        </script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-        <script>
-            $(document).ready(function() {
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script>
+        $(document).ready(function() {
                 function getHeaderNames(table) {
                     // Gets header names.
                     //params:
@@ -394,53 +359,28 @@
 
 
                 });
-                $('#example2').DataTable({
-                    "language": {
-                        "lengthMenu": " _MENU_ ",
-                        "zeroRecords": "Không tìm thấy",
-                        "info": "Hiển thị trang _PAGE_ / _PAGES_",
-                        "infoEmpty": "Không có dữ liệu",
-                        "infoFiltered": "(Được lọc từ _MAX_ mục)",
-                        "search": "Tìm kiếm:",
-                        "paginate": {
-                            "first": "Trang đầu",
-                            "last": "Trang cuối",
-                            "next": "Sau",
-                            "previous": "Trước",
-                        },
-                        buttons: {
-                            colvis: 'Chọn mục không xuất',
-                        },
-                        select: {
-                            rows: " (%d dòng được chọn)"
-                        }
-                    },
-                    "lengthMenu": [
-                        [10, 25, 50, -1],
-                        [10, 25, 50, "All"]
-                    ],
-                });
+
             });
-        </script>
-        <script src="//unpkg.com/alpinejs" defer></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page -->
-        <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
-        <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
-        <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-        <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-        <!-- End plugin js for this page -->
-        <!-- inject:js -->
-        <script src="admin/assets/js/off-canvas.js"></script>
-        <script src="admin/assets/js/hoverable-collapse.js"></script>
-        <script src="admin/assets/js/misc.js"></script>
-        <script src="admin/assets/js/settings.js"></script>
-        <script src="admin/assets/js/todolist.js"></script>
-        <!-- endinject -->
-        <!-- Custom js for this page -->
-        <script src="admin/assets/js/dashboard.js"></script>
-        <!-- End custom js for this page -->
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="admin/assets/js/off-canvas.js"></script>
+    <script src="admin/assets/js/hoverable-collapse.js"></script>
+    <script src="admin/assets/js/misc.js"></script>
+    <script src="admin/assets/js/settings.js"></script>
+    <script src="admin/assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="admin/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
 </body>
 
 </html>

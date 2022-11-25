@@ -96,8 +96,6 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::post('/edit_user/{id}', [AdminController::class, 'edit_user']);
 
-
-
     Route::post('/add_cthoadon', [AdminController::class, 'add_cthoadon']);
 
     Route::get('/update_cthoadon/{id}', [AdminController::class, 'update_cthoadon']);
@@ -106,10 +104,11 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::post('/add_product', [AdminController::class, 'add_product']);
 
+    Route::post('/excel', [AdminController::class, 'excel']);
+
     Route::get('/show_product', [AdminController::class, 'show_product']);
 
     Route::get('/update_product/{id}', [AdminController::class, 'update_product']);
-
 
     Route::post('/edit_product/{id}', [AdminController::class, 'edit_product']);
 
@@ -125,8 +124,6 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
     Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email']);
 
-
-
     Route::get('/khue', [AdminController::class, 'khue']);
 
     Route::get('/thongtincanhan', [AdminController::class, 'thongtincanhan']);
@@ -134,7 +131,6 @@ Route::middleware(['auth', 'usertype'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/redirect', [HomeController::class, 'redirect']);
-
 
     Route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
 

@@ -58,7 +58,7 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->price}} VNĐ</td>
+                                <td>{{number_format($value->price)}} VNĐ</td>
                                 <td>{{$value->quantity}}</td>
                                 <td>{{$value->hoadon_id}}</td>
                                 <td>{{$value->products->title}}</td>

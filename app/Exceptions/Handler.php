@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof MethodNotAllowedHttpException) {
             return redirect('redirect');
         }
-        if($e instanceof TypeError)
+        if ($e instanceof TypeError)
             return redirect('show_cart')->with('message', 'Đã xảy ra lỗi, xin quý khách vui lòng thao tác lại!');
 
         return parent::render($request, $e);

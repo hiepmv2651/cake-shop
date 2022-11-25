@@ -4,7 +4,8 @@
 <head>
 
     <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="images/favicon.png" type="">
     <title>Famms - Fashion HTML Template</title>
@@ -44,7 +45,9 @@
                             </div>
                             @endif
 
-                            <form role="form" action="{{ route('stripe.post', $totalprice ?? 0) }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                            <form role="form" action="{{ route('stripe.post', $totalprice ?? 0) }}" method="post"
+                                class="require-validation" data-cc-on-file="false"
+                                data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
 
                                 @csrf
 
@@ -53,25 +56,32 @@
                                 <input type="hidden" name="phone" value="{{$phone ?? ''}}">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
-                                        <label class='control-label'>Name on Card</label> <input class='form-control' size='4' type='text'>
+                                        <label class='control-label'>Name on Card</label> <input class='form-control'
+                                            size='4' type='text'>
                                     </div>
                                 </div>
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label'>Card Number</label> <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                                        <label class='control-label'>Card Number</label> <input autocomplete='off'
+                                            class='form-control card-number' size='20' type='text'>
                                     </div>
                                 </div>
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                        <label class='control-label'>CVC</label> <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                                        <label class='control-label'>CVC</label> <input autocomplete='off'
+                                            class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Expiration Month</label> <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                                        <label class='control-label'>Expiration Month</label> <input
+                                            class='form-control card-expiry-month' placeholder='MM' size='2'
+                                            type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Expiration Year</label> <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                                        <label class='control-label'>Expiration Year</label> <input
+                                            class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                            type='text'>
                                     </div>
                                 </div>
 

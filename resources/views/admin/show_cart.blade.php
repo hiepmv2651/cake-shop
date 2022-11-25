@@ -64,7 +64,7 @@
                                 <td>{{$value->user->name}}</td>
                                 <td>{{$value->products->title}}</td>
                                 <td>{{$value->quantity}}</td>
-                                <td>{{$value->price}} VNĐ</td>
+                                <td>{{number_format($value->price)}} VNĐ</td>
                                 @if(auth::user()->usertype == 1)
                                 <td>
                                     <a onclick="return confirm('Are you sure to delete this')"

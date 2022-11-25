@@ -65,7 +65,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             $user = Auth::user();
             $userId = $user->id;
-            if(Cart::where('user_id', $userId)->count() > 10) {
+            if (Cart::where('user_id', $userId)->count() > 10) {
                 Alert::warning('Đã đạt giới hạn của giỏ hàng!', 'Hãy xóa để thêm sản phẩm mới.');
                 return redirect()->back();
             }
@@ -147,20 +147,22 @@ class HomeController extends Controller
 
     public function cash_order(Request $request)
     {
+        if (is_null($request->address) || is_null($request->phone)) {
+            Alert::warning('Thiếu thông tin', 'Vui lòng nhập đủ số điện thoại và địa chỉ.');
+            return redirect()->back();
+        }
+
         $value = $request->get('ids');
+
         $user = Auth::user();
 
         $userId = $user->id;
         $data = DB::select('select * from carts where id in (' . implode(",", $value) . ') and user_id = ' . $userId);
 
         $order = new Order;
-        $order->phone = $request->validate([
-            'phone' => 'required',
-        ]);
+        $order->phone = $request->phone;
 
-        $order->address = $request->validate([
-            'address' => 'required',
-        ]);
+        $order->address = $request->address;
         $order->ngaydat = Carbon::now();
 
         $order->description = '';
@@ -197,8 +199,12 @@ class HomeController extends Controller
         return redirect('show_order')->with('message', 'Cảm ơn bạn, chúng tôi sẽ liên hệ đến bạn trong thời gian sớm nhất');
     }
 
-    public function stripe(Request $request, \Exception $e)
+    public function stripe(Request $request)
     {
+        if (is_null($request->address) || is_null($request->phone)) {
+            Alert::warning('Thiếu thông tin', 'Vui lòng nhập đủ số điện thoại và địa chỉ.');
+            return redirect()->back();
+        }
         $totalprice = $request->thanhtoan;
         $data = implode(',', $request->get('ids'));
         $address = $request->address;

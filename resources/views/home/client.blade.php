@@ -49,7 +49,8 @@
                                 Khách Hàng
                             </h6>
                             <p>
-                                Bánh ngon ăn có vị hơi đắng nhẹ, nhưng khi nuốt hậu có vị ngọt, bánh dễ ăn thích hợp cho người đang ăn kiêng.
+                                Bánh ngon ăn có vị hơi đắng nhẹ, nhưng khi nuốt hậu có vị ngọt, bánh dễ ăn thích hợp cho
+                                người đang ăn kiêng.
                                 Được đựng trong túi zip giấy, có ghi rõ thông tin kcal, thành phần và hsd. 👍👍👍
                             </p>
                         </div>
@@ -72,7 +73,8 @@
                                 Khách Hàng
                             </h6>
                             <p>
-                                Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của shop ❤️
+                                Đóng gói cẩn thận, mừ đỉm cho sự chỉnh chu ghi thiệp bằng tay ở ngoài cho shipper của
+                                shop ❤️
                                 mình ăn rồi và đợt này mua 2 hộp để nhâm nhi.
                                 Ít calo nên thích hợp cho những bạn sợ mập nhưng miệng vẫn nhai giống mình.
                             </p>

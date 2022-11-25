@@ -61,7 +61,7 @@
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->title}}</td>
                                 <td>{{$value->description}}</td>
-                                <td>{{$value->price}} VNĐ</td>
+                                <td>{{number_format($value->price)}} VNĐ</td>
 
                                 <td>{{$value->category}}</td>
                                 <td><img src="{{asset('storage/'.$value->image)}}" alt=""></td>

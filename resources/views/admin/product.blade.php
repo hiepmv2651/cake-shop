@@ -39,7 +39,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
                     {{session('message')}}
                 </div>
                 @endif
@@ -53,7 +54,8 @@
 
                             <div>
                                 <x-jet-label for="title" value="{{ __('Tên') }}" />
-                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                                <x-jet-input id="title" class="block mt-1 w-full input_color" type="text" name="title"
+                                    :value="old('title')" required autofocus autocomplete="title" />
                                 @error('title')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -64,7 +66,8 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="description" value="{{ __('Mô Tả') }}" />
-                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text" name="description" :value="old('description')" required />
+                                <x-jet-input id="description" class="block mt-1 w-full input_color" type="text"
+                                    name="description" :value="old('description')" required />
                                 @error('description')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -74,7 +77,8 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="image" value="{{ __('Hình') }}" />
-                                <x-jet-input id="image" class="block mt-1 w-full input_color" type="file" name="image" :value="old('image')" required />
+                                <x-jet-input id="image" class="block mt-1 w-full input_color" type="file" name="image"
+                                    :value="old('image')" required />
                                 <img src="#" id="category-img-tag" width="200px" />
                                 @error('image')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
@@ -85,7 +89,8 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="price" value="{{ __('Giá') }}" />
-                                <x-jet-input id="price" class="block mt-1 w-full input_color" type="number" name="price" :value="old('price')" required />
+                                <x-jet-input id="price" class="block mt-1 w-full input_color" type="number" name="price"
+                                    :value="old('price')" required />
                                 @error('price')
                                 <p class="mt-3 list-disc list-inside text-sm text-red-600">
                                     {{$message}}
@@ -96,7 +101,9 @@
                             <div class="mt-4">
                                 <x-jet-label for="category" value="{{ __('Loại Bánh') }}" />
 
-                                <select name="category" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
+                                <select name="category"
+                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
+                                    required>
                                     @foreach ($data as $value)
                                     <option value="{{$value->category_name}}">
                                         {{$value->category_name}}

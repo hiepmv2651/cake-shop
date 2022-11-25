@@ -41,7 +41,8 @@
             <div class="content-wrapper">
                 <div class="div_center">
                     @if(session()->has('message'))
-                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}" x-init="setTimeout(() => show=false, 3000)" x-show="show">
+                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
+                        x-init="setTimeout(() => show=false, 3000)" x-show="show">
                         {{session('message')}}
                     </div>
                     @endif
@@ -57,7 +58,8 @@
 
                             <div>
                                 <x-jet-label for="quantity" value="{{ __('Số Lượng') }}" />
-                                <x-jet-input id="quantity" class="block mt-1 w-full input_color" type="number" name="quantity" value="{{$data->quantity}}" required autocomplete="quantity" />
+                                <x-jet-input id="quantity" class="block mt-1 w-full input_color" type="number"
+                                    name="quantity" value="{{$data->quantity}}" required autocomplete="quantity" />
                                 @error('quantity')
                                 <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                                     <li>{{$message}}</li>
@@ -70,7 +72,9 @@
                             <div class="mt-4">
                                 <x-jet-label for="hoadon_id" value="{{ __('Mã Hóa Đơn') }}" />
 
-                                <select name="hoadon_id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
+                                <select name="hoadon_id"
+                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
+                                    required>
                                     <option value="{{$data->hoadon_id}}">{{$data->hoadon_id}}</option>
                                     @foreach ($value as $item)
                                     <option value="{{$item->id}}">
@@ -90,7 +94,9 @@
                             <div class="mt-4">
                                 <x-jet-label for="Product_id" value="{{ __('Tên Sản Phẩm') }}" />
 
-                                <select name="Product_id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color" required>
+                                <select name="Product_id"
+                                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
+                                    required>
                                     <option value="{{$data->Product_id}}">{{$data->products->title}}</option>
                                     @foreach ($index as $item)
                                     <option value="{{$item->id}}">

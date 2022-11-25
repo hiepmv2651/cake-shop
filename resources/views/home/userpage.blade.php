@@ -11,7 +11,7 @@
     <div class="">
         <!-- header section strats -->
         @include('home.header')
-     
+
         <!-- end header section -->
         <!-- slider section -->
         @include('home.slider')
@@ -22,7 +22,7 @@
     <!-- end why section -->
 
     <!-- arrival section -->
-   
+
     @include('home.subscribe')
     <!-- end arrival section -->
 

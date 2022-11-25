@@ -7,6 +7,7 @@ use Carbon\Carbon;
 
 use App\Models\Cart;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
@@ -561,5 +562,17 @@ class AdminController extends Controller
             'now_processing',
             'previous_1processing'
         ));
+    }
+
+    public function excel(Request $request)
+    {
+        $data = $request->get('ids');
+        $value = DB::select('select * from orders where id in (' . implode(",", $data) . ')');
+        $item = array();
+        for ($i = 0; $i < count($data); $i++) {
+            $item[$i] = chiTietHD::where('hoadon_id', $data[$i])->get();
+        }
+
+        return view('admin.excel', compact('value', 'item', 'data'));
     }
 }

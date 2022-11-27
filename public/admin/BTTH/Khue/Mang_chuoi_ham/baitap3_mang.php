@@ -45,16 +45,21 @@
 
     function xuatmang($arr){ 
         if(isset($arr)) {print implode("   ", $arr);}
-        // return implode("    ",$arr);
     }
 
     $mang = array();
+    $thongBao = "";
     if(isset($_POST['submit'])){
         $n=$_POST['n'];
-        $mang = tao_mang($n);
-        $maxa=max_array($mang);
-        $mina=min_array($mang);
-        $suma=sum_array($mang);
+        if ((strval($n) === strval(intval($n))) and ($n > 1)){
+            $mang = tao_mang($n);
+            $maxa=max_array($mang);
+            $mina=min_array($mang);
+            $suma=sum_array($mang);
+        }else{
+            $thongBao = 'Nhập lại';
+        }
+       
     }
 ?>
 <body>
@@ -66,7 +71,7 @@
             <tr>
                 <td>Nhập số phần tử</td>
                 <td>
-                <input type="text" name="n" value="<?php if(isset($n)) echo $n; ?>" require>
+                <input type="text" name="n" value="<?php if(isset($n)) echo $n; ?>" placeholder="<?php if(isset($thongBao)) echo $thongBao;?>" require>
                 </td>
             </tr>
             <tr>

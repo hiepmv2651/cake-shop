@@ -18,15 +18,19 @@ function thaythe($mangso,$canthaythe,$thaythe)
     return $mangso;
 }
 
+$thongBao = "";
 if(isset($_POST['submit']))
 {
     $dayso=$_POST['dayso'];
     $mangso=explode(",",$dayso);
     $canthaythe=$_POST['canthaythe'];
     $thaythe=$_POST['thaythe'];
-    $mangmoi=thaythe($mangso,$canthaythe,$thaythe);
+    if ((strval($canthaythe) === strval(intval($canthaythe))) and (strval($thaythe) === strval(intval($thaythe)))){
+        $mangmoi=thaythe($mangso,$canthaythe,$thaythe);
+    }else{
+        $thongBao = 'Nhập lại';
+    }
 }
-
 ?>
 
 <body>
@@ -44,13 +48,13 @@ if(isset($_POST['submit']))
             <tr>
                 <td>Giá trị cần thay thế:</td>
                 <td>
-                    <input type="text" name="canthaythe" value="<?php if (isset($canthaythe)) { echo $canthaythe;} ?>">
+                    <input type="text" name="canthaythe" value="<?php if (isset($canthaythe)) { echo $canthaythe;} ?>" placeholder="<?php if(isset($thongBao)) echo $thongBao;?>">
                 </td>
             </tr>
             <tr>
                 <td>Giá trị thay thế</td>
                 <td>
-                     <input type="text" name="thaythe" value="<?php if (isset($thaythe)) { echo $thaythe; } ?>">
+                     <input type="text" name="thaythe" value="<?php if (isset($thaythe)) { echo $thaythe; } ?>" placeholder="<?php if(isset($thongBao)) echo $thongBao;?>">
                 </td>
             </tr>
             <tr>

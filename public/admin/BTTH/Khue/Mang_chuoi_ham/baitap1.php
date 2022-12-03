@@ -98,7 +98,6 @@ function sapxep($mang)
                 }
             }
         }
-        #var_dump($mangsx);
         return $mangsx;
 }
 

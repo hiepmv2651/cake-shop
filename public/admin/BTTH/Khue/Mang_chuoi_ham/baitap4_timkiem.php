@@ -24,12 +24,18 @@ function xuatmang($mang)
     if(isset($mang)) {print implode(", ", $mang);}
 }
 
+$thongBao = "";
 if(isset($_POST["submit"]))
 {
     $dayso = $_POST["dayso"];
     $so = $_POST["so"];
-    $mangso = explode(",", $dayso);
-    $ketqua = timkiem($mangso,$so);
+    if ((strval($so) === strval(intval($so))) ){
+        $mangso = explode(",", $dayso);
+        $ketqua = timkiem($mangso,$so);
+    }else{
+        $thongBao = 'Nhập lại';
+    }
+   
 }
 
 ?>
@@ -49,7 +55,7 @@ if(isset($_POST["submit"]))
             <tr>
                 <td>Nhập số cần tìm:</td>
                 <td>
-                <input type="text" width="30px" name="so" value="<?php if (isset($_POST["so"])) echo $_POST["so"]?>">
+                <input type="text" width="30px" name="so" value="<?php if (isset($_POST["so"])) echo $_POST["so"]?>" placeholder="<?php if(isset($thongBao)) echo $thongBao;?>">
                 </td>
             </tr>
             <tr>

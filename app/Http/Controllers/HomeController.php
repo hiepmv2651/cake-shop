@@ -39,7 +39,7 @@ class HomeController extends Controller
 
             $now_sum_orders = Order::where([['created_at', '>=', $lastDayofMonth], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
 
-            $now_don_duyet = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '2'], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');;
+            $now_don_duyet = Order::where([['created_at', '>=', $lastDayofMonth], ['trangthai_id', '2'], ['payment_status', 'like', '%đã thanh toán%']])->sum('tongtien');
 
             return view('admin.home', compact(
                 'dtngay',

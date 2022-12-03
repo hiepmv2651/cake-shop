@@ -23,7 +23,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Sản phẩm tháng trước:
-                                                {{ $previous_products }}
+                                                {{ $previous_1products }}
                                             </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_products }}
                                             </p>
@@ -44,7 +44,7 @@
                                     @endif
                                 </div>
                                 <br>
-                                <h6 class="text-muted font-weight-normal">Sản phẩm trước đây: {{ $previous_1products }}
+                                <h6 class="text-muted font-weight-normal">Sản phẩm trước đây: {{ $previous_products }}
                                 </h6>
                                 <h6 class="text-muted font-weight-normal">Tổng sản phẩm: {{ $total_products }}</h6>
                             </div>
@@ -58,7 +58,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Người dùng tháng trước:
-                                                {{ $previous_users }}
+                                                {{ $previous_1users }}
                                             </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_users }}
                                             </p>
@@ -79,7 +79,7 @@
                                     @endif
                                 </div>
                                 <br>
-                                <h6 class="text-muted font-weight-normal">Người dùng trước đây: {{ $previous_1users }}
+                                <h6 class="text-muted font-weight-normal">Người dùng trước đây: {{ $previous_users }}
                                 </h6>
                                 <h6 class="text-muted font-weight-normal">Tổng người dùng: {{ $total_users }}</h6>
                             </div>
@@ -93,7 +93,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Hóa đơn tháng trước:
-                                                {{ $previous_orders }}
+                                                {{ $previous_1orders }}
                                             </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_orders }}
                                             </p>
@@ -113,7 +113,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                <h6 class="text-muted font-weight-normal">Hóa đơn trước đây: {{ $previous_1orders }}
+                                <h6 class="text-muted font-weight-normal">Hóa đơn trước đây: {{ $previous_orders }}
                                 </h6>
                                 <h6 class="text-muted font-weight-normal">Tổng hóa đơn: {{ $total_orders }}</h6>
                             </div>
@@ -127,7 +127,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Đơn hàng đã giao tháng trước:
-                                                {{ $previous_devivered }}
+                                                {{ $previous_1devivered }}
                                             </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_devivered }}
                                             </p>
@@ -148,7 +148,7 @@
                                     @endif
                                 </div>
                                 <h6 class="text-muted font-weight-normal">Đơn hàng đã giao trước đây:
-                                    {{ $previous_1devivered }}
+                                    {{ $previous_devivered }}
                                 </h6>
                                 <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã giao: {{ $total_devivered }}
                                 </h6>
@@ -163,7 +163,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Đơn hàng đã hủy tháng
-                                                trước: {{ $previous_processing }}</h3>
+                                                trước: {{ $previous_1processing }}</h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_processing }}
                                             </p>
                                         </div>
@@ -183,7 +183,7 @@
                                     @endif
                                 </div>
                                 <h6 class="text-muted font-weight-normal">Đơn hàng đã hủy trước đây:
-                                    {{ $previous_1processing }}
+                                    {{ $previous_processing }}
                                 </h6>
                                 <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã hủy: {{ $total_processing }}
                                 </h6>
@@ -198,7 +198,7 @@
                                     <div class="col-9">
                                         <div class="d-flex align-items-center align-self-start">
                                             <h3 class="text-muted font-weight-normal">Tổng tiền tháng trước:
-                                                {{ $previous_sum_orders }}
+                                                {{ number_format($previous_1sum_orders) }}
                                             </h3>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+{{ $now_sum_orders }}
                                             </p>
@@ -219,10 +219,11 @@
                                     @endif
                                 </div>
                                 <h6 class="text-muted font-weight-normal">Tổng tiền trước đây:
-                                    {{ $previous_1sum_orders }}
+                                    {{ number_format($previous_1sum_orders) }}
                                     VNĐ
                                 </h6>
-                                <h6 class="text-muted font-weight-normal">Tổng tiền kiếm được: {{ $sum_orders }} VNĐ
+                                <h6 class="text-muted font-weight-normal">Tổng tiền kiếm được:
+                                    {{ number_format($sum_orders) }} VNĐ
                                 </h6>
                             </div>
                         </div>

@@ -4,19 +4,18 @@
 <head>
 
     <title></title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="images/favicon.png" type="">
     <title>Famms - Fashion HTML Template</title>
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
     <!-- font awesome style -->
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="{{asset('css/responsive.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -27,7 +26,7 @@
         <div class="container">
             <h1 style="text-align: center; font-size:24px; padding-bottom:20px">
                 Thanh toán bằng thẻ của bạn - Tổng số tiền
-                {{$totalprice ?? 0}} VNĐ
+                {{ $totalprice ?? 0 }} VNĐ
             </h1>
 
             <div class="row">
@@ -39,10 +38,10 @@
                         <div class="panel-body">
 
                             @if (Session::has('success'))
-                            <div class="alert alert-success text-center">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                <p>{{ Session::get('success') }}</p>
-                            </div>
+                                <div class="alert alert-success text-center">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                    <p>{{ Session::get('success') }}</p>
+                                </div>
                             @endif
 
                             <form role="form" action="{{ route('stripe.post', $totalprice ?? 0) }}" method="post"
@@ -51,9 +50,9 @@
 
                                 @csrf
 
-                                <input type="hidden" name="data" value="{{$data ?? ''}}">
-                                <input type="hidden" name="address" value="{{$address ?? ''}}">
-                                <input type="hidden" name="phone" value="{{$phone ?? ''}}">
+                                <input type="hidden" name="data" value="{{ $data ?? '' }}">
+                                <input type="hidden" name="address" value="{{ $address ?? '' }}">
+                                <input type="hidden" name="phone" value="{{ $phone ?? '' }}">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label class='control-label'>Name on Card</label> <input class='form-control'
@@ -71,7 +70,8 @@
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
                                         <label class='control-label'>CVC</label> <input autocomplete='off'
-                                            class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                                            class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                            type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-4 form-group expiration required'>
                                         <label class='control-label'>Expiration Month</label> <input

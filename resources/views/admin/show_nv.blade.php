@@ -30,11 +30,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <h2 class="h2_font">Danh Sách Nhân Viên</h2>
@@ -53,36 +53,50 @@
                                 <th>Phân Quyền</th>
                                 <th>Giới Tính</th>
                                 <th>Ảnh Đại Diện</th>
-                                @if(auth::user()->usertype == 1)
-                                <th>Hành Động</th>
+                                @if (auth::user()->usertype == 1)
+                                    <th>Hành Động</th>
                                 @else
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->name}}</td>
-                                <td>{{$value->email}}</td>
-                                <td>{{$value->phone}}</td>
-                                <td>{{$value->address}}</td>
-                                <td>@if($value->usertype == 1) {{_('Admin')}} @else {{_('Nhân Viên')}} @endif</td>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->email }}</td>
+                                    <td>{{ $value->phone }}</td>
+                                    <td>{{ $value->address }}</td>
+                                    <td>
+                                        @if ($value->usertype == 1)
+                                            {{ _('Admin') }}
+                                        @else
+                                            {{ _('Nhân Viên') }}
+                                        @endif
+                                    </td>
 
-                                <td>@if($value->gender == 1) {{_('Nam')}} @else {{_('Nữ')}} @endif</td>
-                                <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
-                                @if(auth::user()->usertype == 1)
-                                <td>
-                                    <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
+                                    <td>
+                                        @if ($value->gender == 1)
+                                            {{ _('Nam') }}
+                                        @else
+                                            {{ _('Nữ') }}
+                                        @endif
+                                    </td>
+                                    <td><img src="{{ asset('storage/' . $value->profile_photo_path) }}" alt="">
+                                    </td>
+                                    @if (auth::user()->usertype == 1)
+                                        <td>
+                                            <a href="{{ url('update_user', $value->id) }}"
+                                                class="btn btn-inverse-warning">Sửa</a>
 
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
-                                </td>
-                                @else
-                                @endif
-                            </tr>
-
+                                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                                href="{{ url('delete_user', $value->id) }}"
+                                                class="btn btn-danger">Xóa</a>
+                                        </td>
+                                    @else
+                                    @endif
+                                </tr>
                             @endforeach
 
                         </tbody>

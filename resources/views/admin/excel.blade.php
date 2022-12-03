@@ -35,11 +35,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
@@ -61,18 +61,18 @@
                         </thead>
                         <tbody>
                             @foreach ($value as $value)
-                            <tr>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->ngaydat}}</td>
-                                <td>{{$value->phone}}</td>
-                                <td>{{$value->address}}</td>
-                                <td>{{$value->description}}</td>
+                                <tr>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->ngaydat }}</td>
+                                    <td>{{ $value->phone }}</td>
+                                    <td>{{ $value->address }}</td>
+                                    <td>{{ $value->description }}</td>
 
-                                <td>{{$value->user_id}}</td>
-                                <td>{{$value->trangthai_id}}</td>
-                                <td>{{$value->payment_status}}</td>
-                                <td>{{number_format($value->tongtien)}} VNĐ</td>
-                            </tr>
+                                    <td>{{ $value->user_id }}</td>
+                                    <td>{{ $value->trangthai_id }}</td>
+                                    <td>{{ $value->payment_status }}</td>
+                                    <td>{{ number_format($value->tongtien) }} VNĐ</td>
+                                </tr>
                             @endforeach
 
                         </tbody>
@@ -80,58 +80,56 @@
 
                 </div>
 
-                @for ($i = 0; $i < count($item); $i++) <div
-                    class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                @for ($i = 0; $i < count($item); $i++)
+                    <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <table id="example{{_($i+2)}}" class="table is-striped" style="width:100%"
-                        style="background-color: white" data-rowonetitle="Chi Tiết Hóa Đơn {{_($data[$i])}}"
-                        data-sheetname="Chi Tiết Hóa Đơn {{_($data[$i])}}">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã CTHĐ</th>
-                                <th>Giá Tiền</th>
-                                <th>Số Lượng</th>
-                                <th>Mã Hóa Đơn</th>
-                                <th>Tên Sản Phẩm</th>
+                        <table id="example{{ _($i + 2) }}" class="table is-striped" style="width:100%"
+                            style="background-color: white" data-rowonetitle="Chi Tiết Hóa Đơn {{ _($data[$i]) }}"
+                            data-sheetname="Chi Tiết Hóa Đơn {{ _($data[$i]) }}">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã CTHĐ</th>
+                                    <th>Giá Tiền</th>
+                                    <th>Số Lượng</th>
+                                    <th>Mã Hóa Đơn</th>
+                                    <th>Tên Sản Phẩm</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($item[$i] as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{number_format($value->price)}} VNĐ</td>
-                                <td>{{$value->quantity}}</td>
-                                <td>{{$value->orders->id}}</td>
-                                <td>{{$value->products->title}}</td>
-                            </tr>
-                            @endforeach
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($item[$i] as $value)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ number_format($value->price) }} VNĐ</td>
+                                        <td>{{ $value->quantity }}</td>
+                                        <td>{{ $value->orders->id }}</td>
+                                        <td>{{ $value->products->title }}</td>
+                                    </tr>
+                                @endforeach
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
 
+                    </div>
+                @endfor
             </div>
-            @endfor
         </div>
-    </div>
 
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js">
-    </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">
-    </script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-    <script>
-        $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script>
+            $(document).ready(function() {
                 function getHeaderNames(table) {
                     // Gets header names.
                     //params:
@@ -297,8 +295,8 @@
                     //Add sheet2.xml to xl/worksheets
                     //===============================
                     var newSheet = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-                    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" mc:Ignorable="x14ac">' +
-                    getTableData(table, title) +
+                        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" mc:Ignorable="x14ac">' +
+                        getTableData(table, title) +
 
                         '</worksheet>';
 
@@ -347,7 +345,8 @@
                                     var rowOneTitle = $(this).attr('data-rowonetitle');
                                     var sheetName = $(this).attr('data-sheetname');
                                     var sheetID = index + 1;
-                                    addSheet(xlsx, tableID, rowOneTitle, sheetName, sheetID);
+                                    addSheet(xlsx, tableID, rowOneTitle, sheetName,
+                                    sheetID);
                                 }
                             });
 
@@ -361,26 +360,26 @@
                 });
 
             });
-    </script>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="admin/assets/js/off-canvas.js"></script>
-    <script src="admin/assets/js/hoverable-collapse.js"></script>
-    <script src="admin/assets/js/misc.js"></script>
-    <script src="admin/assets/js/settings.js"></script>
-    <script src="admin/assets/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="admin/assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+        </script>
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="admin/assets/vendors/chart.js/Chart.min.js"></script>
+        <script src="admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
+        <script src="admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+        <script src="admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="admin/assets/js/off-canvas.js"></script>
+        <script src="admin/assets/js/hoverable-collapse.js"></script>
+        <script src="admin/assets/js/misc.js"></script>
+        <script src="admin/assets/js/settings.js"></script>
+        <script src="admin/assets/js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="admin/assets/js/dashboard.js"></script>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

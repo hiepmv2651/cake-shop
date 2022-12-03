@@ -21,7 +21,7 @@
 
                         </div>
                         <br>
-                        <h6 class="text-muted font-weight-normal">{{$dtngay}} VNĐ</h6>
+                        <h6 class="text-muted font-weight-normal">{{ $dtngay }} VNĐ</h6>
                         <h6 class="text-muted font-weight-normal">Doanh thu trong ngày</h6>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
 
                         </div>
                         <br>
-                        <h6 class="text-muted font-weight-normal">{{$dhngay}}</h6>
+                        <h6 class="text-muted font-weight-normal">{{ $dhngay }}</h6>
                         <h6 class="text-muted font-weight-normal">Đơn hàng chưa duyệt trong ngày</h6>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                             </div>
 
                         </div>
-                        <h6 class="text-muted font-weight-normal">{{$now_sum_orders}} VNĐ</h6>
+                        <h6 class="text-muted font-weight-normal">{{ $now_sum_orders }} VNĐ</h6>
                         <h6 class="text-muted font-weight-normal">Tổng doanh thu tháng</h6>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             </div>
 
                         </div>
-                        <h6 class="text-muted font-weight-normal">{{$now_don_duyet}} VNĐ
+                        <h6 class="text-muted font-weight-normal">{{ $now_don_duyet }} VNĐ
                         </h6>
                         <h6 class="text-muted font-weight-normal">Tổng đơn hàng đã duyệt và thanh toán trong tháng</h6>
                     </div>

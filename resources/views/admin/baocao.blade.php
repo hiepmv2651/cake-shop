@@ -35,119 +35,118 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 @if ($item->count() > 0)
-                <h2 class="h2_font">In Hóa Đơn</h2>
-                <div class="div_center">
-                    @php
-                    $id = 0;
-                    @endphp
-                    <form action="{{url('/baocao')}}" method="get">
-                        @csrf
-                        <select name="baocao"
-                            class="border-gray-300 text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
-                            required>
-                            @isset($oldvalue)
-                            <option value="{{$oldvalue}}">{{$oldvalue}}</option>
-                            @endisset
-                            @foreach ($item as $item)
-                            <option value="{{$item->id}}">
-                                {{$item->id}}
-                            </option>
+                    <h2 class="h2_font">In Hóa Đơn</h2>
+                    <div class="div_center">
+                        @php
+                            $id = 0;
+                        @endphp
+                        <form action="{{ url('/baocao') }}" method="get">
+                            @csrf
+                            <select name="baocao"
+                                class="border-gray-300 text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm input_color"
+                                required>
+                                @isset($oldvalue)
+                                    <option value="{{ $oldvalue }}">{{ $oldvalue }}</option>
+                                @endisset
+                                @foreach ($item as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->id }}
+                                    </option>
+                                @endforeach
 
-                            @endforeach
+                            </select>
 
-                        </select>
+                            @error('baocao')
+                                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    <li>{{ $message }}</li>
+                                </ul>
+                            @enderror
+                            <input type="submit" class="btn btn-primary" value="In Hóa Đơn" name="submit">
 
-                        @error('baocao')
-                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                            <li>{{$message}}</li>
-                        </ul>
-                        @enderror
-                        <input type="submit" class="btn btn-primary" value="In Hóa Đơn" name="submit">
-
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 @else
-                <h2 class="h2_font">Không có hóa đơn</h2>
+                    <h2 class="h2_font">Không có hóa đơn</h2>
                 @endif
 
                 @isset($data)
-                <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                    <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
-                        <thead>
-                            <tr>
-                                <th>Mã HĐ</th>
-                                <th>Ngày Đặt</th>
-                                <th>SĐT</th>
-                                <th>Địa Chỉ</th>
-                                <th>Ghi Chú</th>
-                                <th>Tên Khách Hàng</th>
-                                <th>Trạng Thái</th>
-                                <th>Thanh Toán</th>
-                                <th>Tổng Tiền</th>
+                        <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
+                            <thead>
+                                <tr>
+                                    <th>Mã HĐ</th>
+                                    <th>Ngày Đặt</th>
+                                    <th>SĐT</th>
+                                    <th>Địa Chỉ</th>
+                                    <th>Ghi Chú</th>
+                                    <th>Tên Khách Hàng</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thanh Toán</th>
+                                    <th>Tổng Tiền</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($value as $value)
-                            <tr>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->ngaydat}}</td>
-                                <td>{{$value->phone}}</td>
-                                <td>{{$value->address}}</td>
-                                <td>{{$value->description}}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($value as $value)
+                                    <tr>
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ $value->ngaydat }}</td>
+                                        <td>{{ $value->phone }}</td>
+                                        <td>{{ $value->address }}</td>
+                                        <td>{{ $value->description }}</td>
 
-                                <td>{{$value->user->name}}</td>
-                                <td>{{$value->trangthais->name}}</td>
-                                <td>{{$value->payment_status}}</td>
-                                <td>{{number_format($value->tongtien)}} VNĐ</td>
-                            </tr>
-                            @endforeach
+                                        <td>{{ $value->user->name }}</td>
+                                        <td>{{ $value->trangthais->name }}</td>
+                                        <td>{{ $value->payment_status }}</td>
+                                        <td>{{ number_format($value->tongtien) }} VNĐ</td>
+                                    </tr>
+                                @endforeach
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
 
-                </div>
+                    </div>
 
-                <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                    <div class="w-full px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-                    <table id="example2" class="table is-striped" style="width:100%" style="background-color: white"
-                        data-rowonetitle="Chi Tiết Hóa Đơn" data-sheetname="Chi Tiết Hóa Đơn">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Mã CTHĐ</th>
-                                <th>Giá Tiền</th>
-                                <th>Số Lượng</th>
-                                <th>Mã Hóa Đơn</th>
-                                <th>Tên Sản Phẩm</th>
+                        <table id="example2" class="table is-striped" style="width:100%" style="background-color: white"
+                            data-rowonetitle="Chi Tiết Hóa Đơn" data-sheetname="Chi Tiết Hóa Đơn">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã CTHĐ</th>
+                                    <th>Giá Tiền</th>
+                                    <th>Số Lượng</th>
+                                    <th>Mã Hóa Đơn</th>
+                                    <th>Tên Sản Phẩm</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{number_format($value->price)}} VNĐ</td>
-                                <td>{{$value->quantity}}</td>
-                                <td>{{$value->orders->id}}</td>
-                                <td>{{$value->products->title}}</td>
-                            </tr>
-                            @endforeach
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $value)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ number_format($value->price) }} VNĐ</td>
+                                        <td>{{ $value->quantity }}</td>
+                                        <td>{{ $value->orders->id }}</td>
+                                        <td>{{ $value->products->title }}</td>
+                                    </tr>
+                                @endforeach
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
 
-                </div>
+                    </div>
                 @endisset
             </div>
         </div>
@@ -159,11 +158,9 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bulma.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js">
-        </script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js">
-        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -332,8 +329,8 @@
                     //Add sheet2.xml to xl/worksheets
                     //===============================
                     var newSheet = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-                    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" mc:Ignorable="x14ac">' +
-                    getTableData(table, title) +
+                        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" mc:Ignorable="x14ac">' +
+                        getTableData(table, title) +
 
                         '</worksheet>';
 
@@ -382,7 +379,8 @@
                                     var rowOneTitle = $(this).attr('data-rowonetitle');
                                     var sheetName = $(this).attr('data-sheetname');
                                     var sheetID = index + 1;
-                                    addSheet(xlsx, tableID, rowOneTitle, sheetName, sheetID);
+                                    addSheet(xlsx, tableID, rowOneTitle, sheetName,
+                                    sheetID);
                                 }
                             });
 

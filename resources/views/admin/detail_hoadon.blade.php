@@ -27,11 +27,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <h2 class="h2_font">Xem Chi Tiết Hóa Đơn</h2>
@@ -53,29 +53,30 @@
                         </thead>
                         <tbody>
                             @php
-                            $i = 1;
+                                $i = 1;
                             @endphp
                             @foreach ($data as $value)
-                            <tr>
-                                <td>{{$i}}</td>
-                                <td>{{$value->price}}</td>
-                                <td>{{$value->quantity}}</td>
-                                <td>{{$value->orders->id}}</td>
-                                <td>{{$value->products->title}}</td>
+                                <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ $value->price }}</td>
+                                    <td>{{ $value->quantity }}</td>
+                                    <td>{{ $value->orders->id }}</td>
+                                    <td>{{ $value->products->title }}</td>
 
-                                <td>
-                                    <a href="{{url('update_cthoadon', $value->id)}}"
-                                        class="btn btn-inverse-warning">Edit</a>
-                                    @if(auth::user()->usertype == 1)
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_cthd', $value->id)}}" class="btn btn-danger">Delete</a>
-                                    @else
-                                    @endif
-                                </td>
-                            </tr>
-                            @php
-                            $i++;
-                            @endphp
+                                    <td>
+                                        <a href="{{ url('update_cthoadon', $value->id) }}"
+                                            class="btn btn-inverse-warning">Edit</a>
+                                        @if (auth::user()->usertype == 1)
+                                            <a onclick="return confirm('Are you sure to delete this')"
+                                                href="{{ url('delete_cthd', $value->id) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        @else
+                                        @endif
+                                    </td>
+                                </tr>
+                                @php
+                                    $i++;
+                                @endphp
                             @endforeach
 
                         </tbody>

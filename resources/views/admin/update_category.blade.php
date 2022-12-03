@@ -40,11 +40,11 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="div_center">
-                    @if(session()->has('message'))
-                    <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                        x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                        {{session('message')}}
-                    </div>
+                    @if (session()->has('message'))
+                        <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                            x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                            {{ session('message') }}
+                        </div>
                     @endif
 
                     <h2 class="h2_font">Sửa Thông Tin Danh Mục</h2>
@@ -53,18 +53,19 @@
                 </div>
                 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-1 sm:pt-0 bg-gray-100">
                     <div class="w-full sm:max-w-md px-6 py-4 my-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                        <form action="{{url('/edit_category', $data->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('/edit_category', $data->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div>
                                 <x-jet-label for="title" value="{{ __('Tên') }}" />
                                 <x-jet-input id="title" class="block mt-1 w-full input_color" type="text"
-                                    name="category_name" value="{{$data->category_name}}" required
+                                    name="category_name" value="{{ $data->category_name }}" required
                                     autocomplete="title" />
                                 @error('category_name')
-                                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                                    <li>{{$message}}</li>
-                                </ul>
+                                    <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                        <li>{{ $message }}</li>
+                                    </ul>
                                 @enderror
                             </div>
 

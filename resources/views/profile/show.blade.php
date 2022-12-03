@@ -10,66 +10,67 @@
 <link rel="shortcut icon" href="images/favicon.png" type="">
 <title>Cake Shop</title>
 <!-- bootstrap core css -->
-<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
 <!-- font awesome style -->
-<link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" />
+<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
 <!-- Custom styles for this template -->
-<link href="{{asset('css/style.css')}}" rel="stylesheet" />
+<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 <!-- responsive style -->
-<link href="{{asset('css/responsive.css')}}" rel="stylesheet" />
+<link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
 
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{url('/')}}"><img width="250" src="/images/cakeshop.png" alt="#" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{ url('/') }}"><img width="250" src="/images/cakeshop.png"
+                    alt="#" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{url('/')}}">Trang Chủ <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url('/') }}">Trang Chủ <span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('product')}}">Sản Phẩm</a>
+                        <a class="nav-link" href="{{ url('product') }}">Sản Phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('lienhe')}}">Liên Hệ</a>
+                        <a class="nav-link" href="{{ url('lienhe') }}">Liên Hệ</a>
                     </li>
                     @if (Route::has('login'))
+                        @auth
 
-                    @auth
-
-                    <li class="nav-item">
-                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Giỏ Hàng [
-                            <span style="color: green;">{{App\Models\cart::where('user_id','=',Auth::user()->id)->count()}}]</span></a>
-                    </li>
-
-                    @else
-
-                    <li class="nav-item">
-                        <a class="nav-link" style="background-color: skyblue; " href="{{url('show_cart')}}">Giỏ Hàng [ 0
-                            ]</a>
-                    </li>
-                    @endauth
-
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color: skyblue; " href="{{ url('show_cart') }}">Giỏ
+                                    Hàng [
+                                    <span
+                                        style="color: green;">{{ App\Models\cart::where('user_id', '=', Auth::user()->id)->count() }}]</span></a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color: skyblue; " href="{{ url('show_cart') }}">Giỏ
+                                    Hàng [ 0
+                                    ]</a>
+                            </li>
+                        @endauth
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('show_order')}}">Đơn Hàng</a>
+                        <a class="nav-link" href="{{ url('show_order') }}">Đơn Hàng</a>
                     </li>
                     @if (Route::has('login'))
-
-                    @auth
-                    <x-app-layout>
-                    </x-app-layout>
-                    @else
-                    <li class="nav-item">
-                        <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class=" nav-item">
-                        <a class="btn btn-success" href="{{ route('register') }}">Register</a>
-                    </li>
-                    @endauth
+                        @auth
+                            <x-app-layout>
+                            </x-app-layout>
+                        @else
+                            <li class="nav-item">
+                                <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class=" nav-item">
+                                <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                            </li>
+                        @endauth
                     @endif
                 </ul>
             </div>
@@ -83,25 +84,25 @@
 <div>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-        @livewire('profile.update-profile-information-form')
+            @livewire('profile.update-profile-information-form')
 
-        <x-jet-section-border />
+            <x-jet-section-border />
         @endif
 
         @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-        <div class="mt-10 sm:mt-0">
-            @livewire('profile.update-password-form')
-        </div>
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.update-password-form')
+            </div>
 
-        <x-jet-section-border />
+            <x-jet-section-border />
         @endif
 
         @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-        <div class="mt-10 sm:mt-0">
-            @livewire('profile.two-factor-authentication-form')
-        </div>
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.two-factor-authentication-form')
+            </div>
 
-        <x-jet-section-border />
+            <x-jet-section-border />
         @endif
 
         <div class="mt-10 sm:mt-0">
@@ -109,11 +110,11 @@
         </div>
 
         @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-        <x-jet-section-border />
+            <x-jet-section-border />
 
-        <div class="mt-10 sm:mt-0">
-            @livewire('profile.delete-user-form')
-        </div>
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.delete-user-form')
+            </div>
         @endif
     </div>
 
@@ -145,11 +146,11 @@
                                 <div class="widget_menu">
                                     <h3>Menu</h3>
                                     <ul>
-                                        <li><a href="{{url('/')}}">Trang Chủ</a></li>
-                                        <li><a href="{{url('product')}}">Sản Phẩm</a></li>
+                                        <li><a href="{{ url('/') }}">Trang Chủ</a></li>
+                                        <li><a href="{{ url('product') }}">Sản Phẩm</a></li>
                                         <li><a href="#">Danh Mục</a></li>
                                         <li><a href="#">Giới Thiệu</a></li>
-                                        <li><a href="{{url('lienhe')}}">Liên Hệ</a></li>
+                                        <li><a href="{{ url('lienhe') }}">Liên Hệ</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -160,8 +161,8 @@
                                         <li><a href="#">Thông Tin</a></li>
                                         <li><a href="{{ route('register') }}">Đăng Xuất</a></li>
                                         <li><a href="{{ route('login') }}">Đăng Nhập</a></li>
-                                        <li><a href="{{url('show_cart')}}">Giỏ Hàng</a></li>
-                                        <li><a href="{{url('show_order')}}">Đơn Hàng</a></li>
+                                        <li><a href="{{ url('show_cart') }}">Giỏ Hàng</a></li>
+                                        <li><a href="{{ url('show_order') }}">Đơn Hàng</a></li>
                                     </ul>
                                 </div>
                             </div>

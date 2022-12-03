@@ -39,24 +39,24 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <div class="div_center">
                     <h2 class="h2_font">Thêm Danh Mục Bánh</h2>
 
-                    <form action="{{url('/add_category')}}" method="POST">
+                    <form action="{{ url('/add_category') }}" method="POST">
                         @csrf
                         <input type="text" class="input_color" name="category_name" placeholder="Viết tên...">
                         <input type="submit" class="btn btn-primary" value="Thêm" name="submit">
                         @error('category_name')
-                        <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                            {{$message}}
-                        </p>
+                            <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                {{ $message }}
+                            </p>
                         @enderror
                     </form>
                 </div>
@@ -75,22 +75,22 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->category_name }}</td>
 
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->category_name}}</td>
-
-                                <td>
-                                    <a href="{{url('update_category', $value->id)}}"
-                                        class="btn btn-inverse-warning">Sửa</a>
-                                    @if(auth::user()->usertype == 1)
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_category', $value->id)}}" class="btn btn-danger">Xóa</a>
-                                    @else
-                                    @endif
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="{{ url('update_category', $value->id) }}"
+                                            class="btn btn-inverse-warning">Sửa</a>
+                                        @if (auth::user()->usertype == 1)
+                                            <a onclick="return confirm('Are you sure to delete this')"
+                                                href="{{ url('delete_category', $value->id) }}"
+                                                class="btn btn-danger">Xóa</a>
+                                        @else
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

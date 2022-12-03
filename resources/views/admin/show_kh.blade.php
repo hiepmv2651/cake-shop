@@ -30,11 +30,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <h2 class="h2_font">Danh Sách Khách Hàng</h2>
@@ -58,28 +58,37 @@
                         <tbody>
 
                             @foreach ($data as $value)
-                            @endphp
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->name}}</td>
-                                <td>{{$value->email}}</td>
-                                <td>{{$value->phone}}</td>
-                                <td>{{$value->address}}</td>
-                                <td>@if($value->gender == 1) {{_('Nam')}} @else {{_('Nữ')}} @endif</td>
-                                <td><img src="{{asset('storage/'.$value->profile_photo_path)}}" alt=""></td>
+                                @endphp
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->email }}</td>
+                                    <td>{{ $value->phone }}</td>
+                                    <td>{{ $value->address }}</td>
+                                    <td>
+                                        @if ($value->gender == 1)
+                                            {{ _('Nam') }}
+                                        @else
+                                            {{ _('Nữ') }}
+                                        @endif
+                                    </td>
+                                    <td><img src="{{ asset('storage/' . $value->profile_photo_path) }}" alt="">
+                                    </td>
 
-                                <td>
-                                    <a href="{{url('send_email', $value->id)}}" class="btn btn-primary">Gửi email</a>
-                                    @if(auth::user()->usertype == 1)
-                                    <a href="{{url('update_user', $value->id)}}" class="btn btn-inverse-warning">Sửa</a>
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                                        href="{{url('delete_user', $value->id)}}" class="btn btn-danger">Xóa</a>
-                                    @else
-                                    @endif
-                                </td>
-                            </tr>
-
+                                    <td>
+                                        <a href="{{ url('send_email', $value->id) }}" class="btn btn-primary">Gửi
+                                            email</a>
+                                        @if (auth::user()->usertype == 1)
+                                            <a href="{{ url('update_user', $value->id) }}"
+                                                class="btn btn-inverse-warning">Sửa</a>
+                                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                                href="{{ url('delete_user', $value->id) }}"
+                                                class="btn btn-danger">Xóa</a>
+                                        @else
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

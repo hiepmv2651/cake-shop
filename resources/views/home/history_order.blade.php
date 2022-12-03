@@ -32,22 +32,22 @@
                 </thead>
                 <tbody>
                     @foreach ($history as $value)
-                    <tr>
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->ngaydat}}</td>
-                        <td>{{$value->phone}}</td>
-                        <td>{{$value->address}}</td>
-                        <td>{{$value->description}}</td>
-                        <td>{{$value->user->name}}</td>
-                        <td>{{$value->trangthais->name}}</td>
-                        <td>{{$value->payment_status}}</td>
-                        <td>{{$value->tongtien}}</td>
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->ngaydat }}</td>
+                            <td>{{ $value->phone }}</td>
+                            <td>{{ $value->address }}</td>
+                            <td>{{ $value->description }}</td>
+                            <td>{{ $value->user->name }}</td>
+                            <td>{{ $value->trangthais->name }}</td>
+                            <td>{{ $value->payment_status }}</td>
+                            <td>{{ $value->tongtien }}</td>
 
-                        <td>
+                            <td>
 
-                            <a href="{{url('order_details', $value->id)}}" class="btn btn-danger">Xem Chi Tiết</a>
-                        </td>
-                    </tr>
+                                <a href="{{ url('order_details', $value->id) }}" class="btn btn-danger">Xem Chi Tiết</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
 

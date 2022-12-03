@@ -39,24 +39,24 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <div class="div_center">
                     <h2 class="h2_font">Thêm Trạng Thái Đơn Hàng</h2>
 
-                    <form action="{{url('/add_status')}}" method="POST">
+                    <form action="{{ url('/add_status') }}" method="POST">
                         @csrf
                         <input type="text" class="input_color" name="name" placeholder="Nhập tên...">
                         <input type="submit" class="btn btn-primary" value="Thêm" name="submit">
                         @error('name')
-                        <p class="mt-3 list-disc list-inside text-sm text-red-600">
-                            {{$message}}
-                        </p>
+                            <p class="mt-3 list-disc list-inside text-sm text-red-600">
+                                {{ $message }}
+                            </p>
                         @enderror
                     </form>
                 </div>
@@ -74,21 +74,21 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->name}}</td>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
 
-                                <td>
+                                    <td>
 
-                                    <a href="{{url('update_status', $value->id)}}"
-                                        class="btn btn-inverse-warning">Sửa</a>
+                                        <a href="{{ url('update_status', $value->id) }}"
+                                            class="btn btn-inverse-warning">Sửa</a>
 
 
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_status', $value->id)}}" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
+                                        <a onclick="return confirm('Are you sure to delete this')"
+                                            href="{{ url('delete_status', $value->id) }}" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
                             @endforeach
 
                         </tbody>

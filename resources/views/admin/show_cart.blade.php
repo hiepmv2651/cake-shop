@@ -30,11 +30,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <h2 class="h2_font">Danh Sách Giỏ Hàng</h2>
@@ -50,29 +50,29 @@
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Giá</th>
-                                @if(auth::user()->usertype == 1)
-                                <th>Hành Động</th>
+                                @if (auth::user()->usertype == 1)
+                                    <th>Hành Động</th>
                                 @else
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id}}</td>
-                                <td>{{$value->user->name}}</td>
-                                <td>{{$value->products->title}}</td>
-                                <td>{{$value->quantity}}</td>
-                                <td>{{number_format($value->price)}} VNĐ</td>
-                                @if(auth::user()->usertype == 1)
-                                <td>
-                                    <a onclick="return confirm('Are you sure to delete this')"
-                                        href="{{url('delete_gh', $value->id)}}" class="btn btn-danger">Xóa</a>
-                                </td>
-                                @else
-                                @endif
-                            </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->user->name }}</td>
+                                    <td>{{ $value->products->title }}</td>
+                                    <td>{{ $value->quantity }}</td>
+                                    <td>{{ number_format($value->price) }} VNĐ</td>
+                                    @if (auth::user()->usertype == 1)
+                                        <td>
+                                            <a onclick="return confirm('Are you sure to delete this')"
+                                                href="{{ url('delete_gh', $value->id) }}" class="btn btn-danger">Xóa</a>
+                                        </td>
+                                    @else
+                                    @endif
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

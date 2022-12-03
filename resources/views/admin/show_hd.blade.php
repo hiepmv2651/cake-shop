@@ -51,11 +51,11 @@
         @include('admin.header')
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
-                <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-                    x-init="setTimeout(() => show=false, 3000)" x-show="show">
-                    {{session('message')}}
-                </div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success" style="text-align: center" x-data="{ show: true }"
+                        x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <h2 class="h2_font">Xem Hóa Đơn</h2>
@@ -65,7 +65,8 @@
                         <tbody>
                             <tr>
                                 <td style="color: black">Ngày bắt đầu:</td>
-                                <td><input style="color: black; margin-bottom: 10px" type="text" id="min" name="min">
+                                <td><input style="color: black; margin-bottom: 10px" type="text" id="min"
+                                        name="min">
                                 </td>
                             </tr>
                             <tr>
@@ -78,10 +79,11 @@
                     <form method="POST">
                         @csrf
                         <button class="btn btn-primary" style="background-color: blue" type="submit"
-                            formaction="{{url('/excel')}}">Xuất Excel</button>
+                            formaction="{{ url('/excel') }}">Xuất Excel</button>
 
 
-                        <table id="example" class="table is-striped" style="width:100%" style="background-color: white">
+                        <table id="example" class="table is-striped" style="width:100%"
+                            style="background-color: white">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" id="checkAll"></th>
@@ -101,32 +103,33 @@
                             </thead>
                             <tbody>
                                 @foreach ($data as $value)
-                                <tr>
-                                    <td><input type="checkbox" value="{{$value->id}}" name="ids[]" id=""></td>
-                                    <td>{{$loop->iteration}}</td>\
-                                    <td>{{$value->id}}</td>
-                                    <td>{{$value->ngaydat}}</td>
-                                    <td>{{$value->phone}}</td>
-                                    <td>{{$value->address}}</td>
-                                    <td>{{$value->description}}</td>
+                                    <tr>
+                                        <td><input type="checkbox" value="{{ $value->id }}" name="ids[]"
+                                                id=""></td>
+                                        <td>{{ $loop->iteration }}</td>\
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ $value->ngaydat }}</td>
+                                        <td>{{ $value->phone }}</td>
+                                        <td>{{ $value->address }}</td>
+                                        <td>{{ $value->description }}</td>
 
-                                    <td>{{$value->user->name}}</td>
-                                    <td>{{$value->trangthais->name}}</td>
-                                    <td>{{$value->payment_status}}</td>
-                                    <td>{{number_format($value->tongtien)}} VNĐ</td>
-                                    <td>
-                                        <a href="{{url('detail_hoadon', $value->id)}}"
-                                            class="btn btn-primary">Detail</a>
-                                        <a href="{{url('update_hoadon', $value->id)}}"
-                                            class="btn btn-inverse-warning">Edit</a>
-                                        @if(auth::user()->usertype == 1)
-                                        <a onclick="return confirm('Are you sure to delete this')"
-                                            href="{{url('delete_hd', $value->id)}}" class="btn btn-danger">Delete</a>
-                                        @else
-                                        @endif
-                                    </td>
-                                </tr>
-
+                                        <td>{{ $value->user->name }}</td>
+                                        <td>{{ $value->trangthais->name }}</td>
+                                        <td>{{ $value->payment_status }}</td>
+                                        <td>{{ number_format($value->tongtien) }} VNĐ</td>
+                                        <td>
+                                            <a href="{{ url('detail_hoadon', $value->id) }}"
+                                                class="btn btn-primary">Detail</a>
+                                            <a href="{{ url('update_hoadon', $value->id) }}"
+                                                class="btn btn-inverse-warning">Edit</a>
+                                            @if (auth::user()->usertype == 1)
+                                                <a onclick="return confirm('Are you sure to delete this')"
+                                                    href="{{ url('delete_hd', $value->id) }}"
+                                                    class="btn btn-danger">Delete</a>
+                                            @else
+                                            @endif
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                             </tbody>
@@ -189,7 +192,9 @@
             $(document).ready(function() {
                 minDate = new DateTime($('#min'), {
                     i18n: {
-                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7',
+                            'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                        ],
                         weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
                     },
                     buttons: {
@@ -200,7 +205,9 @@
                 });
                 maxDate = new DateTime($('#max'), {
                     i18n: {
-                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7',
+                            'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                        ],
                         weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
                     },
                     buttons: {
@@ -242,47 +249,52 @@
 
                     }, ],
 
-                    createdRow: function (row, data, index) {
+                    createdRow: function(row, data, index) {
                         if (data[10].replace(/[\VNĐ,]/g, '') * 1 > 3000000) {
                             $('td', row).eq(10).addClass('highlight');
                         }
                     },
                     stateSave: true,
-                    order: [[ 1, 'asc' ]],
+                    order: [
+                        [1, 'asc']
+                    ],
 
-                    initComplete: function () {
-            this.api()
-                .columns([8, 9])
-                .every(function () {
-                    var column = this;
-                    var select = $('<select><option value="">Show all</option></select>')
-                        .appendTo($(column.footer()).empty())
-                        .on('change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                    initComplete: function() {
+                        this.api()
+                            .columns([8, 9])
+                            .every(function() {
+                                var column = this;
+                                var select = $('<select><option value="">Show all</option></select>')
+                                    .appendTo($(column.footer()).empty())
+                                    .on('change', function() {
+                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                            column.search(val ? '^' + val + '$' : '', true, false).draw();
-                        });
+                                        column.search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                    });
 
-                    column
-                        .data()
-                        .unique()
-                        .sort()
-                        .each(function(d, j) {
-    var val = $.fn.dataTable.util.escapeRegex(d);
-    if (column.search() === "^" + val + "$") {
-      select.append(
-        '<option value="' + d + '" selected="selected">' + d + "</option>"
-      );
-    } else {
-      select.append('<option value="' + d + '">' + d + "</option>");
-    }
-  });
+                                column
+                                    .data()
+                                    .unique()
+                                    .sort()
+                                    .each(function(d, j) {
+                                        var val = $.fn.dataTable.util.escapeRegex(d);
+                                        if (column.search() === "^" + val + "$") {
+                                            select.append(
+                                                '<option value="' + d +
+                                                '" selected="selected">' + d + "</option>"
+                                            );
+                                        } else {
+                                            select.append('<option value="' + d + '">' + d +
+                                                "</option>");
+                                        }
+                                    });
+                            });
+                    },
+
                 });
-        },
 
-                });
-
-                $('#example tbody').on('mouseenter', 'td', function () {
+                $('#example tbody').on('mouseenter', 'td', function() {
                     var colIdx = table.cell(this).index().column;
 
                     $(table.cells().nodes()).removeClass('back');
@@ -295,9 +307,9 @@
             });
         </script>
         <script>
-            $("#checkAll").change(function () {
-    $("input:checkbox").prop('checked', $(this).prop("checked"));
-});
+            $("#checkAll").change(function() {
+                $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
         </script>
         <script src="//unpkg.com/alpinejs" defer></script>
         <!-- endinject -->

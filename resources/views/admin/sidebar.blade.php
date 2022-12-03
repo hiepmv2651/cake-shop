@@ -1,8 +1,8 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png"
+        <a class="sidebar-brand brand-logo" href="{{ url('/redirect') }}"><img src="admin/assets/images/logo.png"
                 alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="{{url('/redirect')}}"><img src="admin/assets/images/logo.png"
+        <a class="sidebar-brand brand-logo-mini" href="{{ url('/redirect') }}"><img src="admin/assets/images/logo.png"
                 alt="logo" /></a>
     </div>
     <ul class="nav">
@@ -10,12 +10,12 @@
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle " src="{{asset('storage/'.Auth::user()->profile_photo_path)}}"
-                            alt="">
+                        <img class="img-xs rounded-circle "
+                            src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt="">
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">{{Auth::user()->name}}</h5>
+                        <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
 
                     </div>
                 </div>
@@ -25,7 +25,7 @@
         </li>
 
         <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('/redirect')}}">
+            <a class="nav-link" href="{{ url('/redirect') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-speedometer"></i>
                 </span>
@@ -43,9 +43,9 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <!-- view_product = product.balde.php -->
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Thêm Sản Phẩm</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/view_product') }}">Thêm Sản Phẩm</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_product')}}">Xem Sản Phẩm</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/show_product') }}">Xem Sản Phẩm</a></li>
                 </ul>
             </div>
         </li>
@@ -53,7 +53,7 @@
 
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('view_category')}}">
+            <a class="nav-link" href="{{ url('view_category') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
@@ -62,7 +62,7 @@
         </li>
 
         <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('view_status')}}">
+            <a class="nav-link" href="{{ url('view_status') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-account-box"></i>
                 </span>
@@ -81,9 +81,9 @@
             </a>
             <div class="collapse" id="ui-basic1">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_hd')}}">Thêm Hóa Đơn</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/add_hd') }}">Thêm Hóa Đơn</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_hd')}}">Xem Hóa Đơn</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/show_hd') }}">Xem Hóa Đơn</a></li>
                 </ul>
             </div>
         </li>
@@ -98,9 +98,9 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_kh')}}"> Khách Hàng</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_nv')}}"> Nhân Viên </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_user')}}">Thêm User</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/show_kh') }}"> Khách Hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/show_nv') }}"> Nhân Viên </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/add_user') }}">Thêm User</a></li>
                 </ul>
             </div>
         </li>
@@ -116,16 +116,18 @@
             </a>
             <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/add_cthd')}}">Thêm Chi Tiết Hóa Đơn</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/add_cthd') }}">Thêm Chi Tiết Hóa
+                            Đơn</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/show_cthd')}}">Xem Chi Tiết Hóa Đơn</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/show_cthd') }}">Xem Chi Tiết Hóa
+                            Đơn</a></li>
                 </ul>
             </div>
         </li>
 
         <li class="nav-item menu-items">
             <!-- view_cart = show_cart.balde.php -->
-            <a class="nav-link" href="{{url('view_cart')}}">
+            <a class="nav-link" href="{{ url('view_cart') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-cart"></i>
                 </span>
@@ -143,9 +145,9 @@
             </a>
             <div class="collapse" id="auth1">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/baocao')}}"> In Hóa Đơn
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/baocao') }}"> In Hóa Đơn
                         </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{url('/thongke')}}"> Thống Kê </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/thongke') }}"> Thống Kê </a></li>
 
                 </ul>
             </div>

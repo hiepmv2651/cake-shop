@@ -13,16 +13,16 @@
         <!-- header section strats -->
         @include('home.header')
         @include('home.new_arrival')
-        @if(session()->has('message'))
-        <div class="alert alert-success" style="text-align: center" x-data="{show:true}"
-            x-init="setTimeout(() => show=false, 3000)" x-show="show">
-            {{session('message')}}
-        </div>
+        @if (session()->has('message'))
+            <div class="alert alert-success" style="text-align: center" x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)"
+                x-show="show">
+                {{ session('message') }}
+            </div>
         @endif
         <br>
         <!-- end header section -->
         <div style="width: 15%; margin-left: 50px;">
-            <a class="btn btn-danger" href="{{url('history_order')}}">Lịch Sử Mua Hàng</a>
+            <a class="btn btn-danger" href="{{ url('history_order') }}">Lịch Sử Mua Hàng</a>
         </div>
         <br>
 
@@ -45,22 +45,23 @@
                 </thead>
                 <tbody>
                     @foreach ($order as $value)
-                    <tr>
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->ngaydat}}</td>
-                        <td>{{$value->phone}}</td>
-                        <td>{{$value->address}}</td>
-                        <td>{{$value->description}}</td>
-                        <td>{{$value->user->name}}</td>
-                        <td>{{$value->trangthais->name}}</td>
-                        <td>{{$value->payment_status}}</td>
-                        <td>{{$value->tongtien}}</td>
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->ngaydat }}</td>
+                            <td>{{ $value->phone }}</td>
+                            <td>{{ $value->address }}</td>
+                            <td>{{ $value->description }}</td>
+                            <td>{{ $value->user->name }}</td>
+                            <td>{{ $value->trangthais->name }}</td>
+                            <td>{{ $value->payment_status }}</td>
+                            <td>{{ $value->tongtien }}</td>
 
-                        <td>
+                            <td>
 
-                            <a href="{{url('order_details', $value->id)}}" class="btn btn-danger">Xem Chi Tiết</a>
-                        </td>
-                    </tr>
+                                <a href="{{ url('order_details', $value->id) }}" class="btn btn-danger">Xem Chi
+                                    Tiết</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
 

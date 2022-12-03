@@ -27,13 +27,14 @@
                 </thead>
                 <tbody>
                     @foreach ($orderde as $value)
-                    <tr>
-                        <td>{{$value->products->title}}</td>
-                        <td><img src="{{asset('storage/'.$value->products->image)}}" height="80px" width="150" alt="">
-                        </td>
-                        <td>{{$value->quantity}}</td>
-                        <td>{{$value->price}}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ $value->products->title }}</td>
+                            <td><img src="{{ asset('storage/' . $value->products->image) }}" height="80px" width="150"
+                                    alt="">
+                            </td>
+                            <td>{{ $value->quantity }}</td>
+                            <td>{{ $value->price }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

@@ -17,7 +17,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
-    public $show = false;
     //TODO: Trang chu
     public function index()
     {
@@ -110,10 +109,9 @@ class HomeController extends Controller
     public function show_cart()
     {
         if (Auth::id()) {
-            $show = $this->show;
             $id = Auth::user()->id;
             $cart = Cart::orderBy('id', 'ASC')->where('user_id', '=', $id)->get();
-            return view('home.showcart', compact('cart', 'show'));
+            return view('home.showcart', compact('cart'));
         } else {
             return redirect('login');
         }

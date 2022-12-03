@@ -2,7 +2,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="{{url('/redirect')}}"><img
+            <a class="navbar-brand brand-logo-mini" href="{{ url('/redirect') }}"><img
                     src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -19,7 +19,7 @@
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown d-none d-lg-block">
                     <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" target="_blank"
-                        href="{{url('/thongtincanhan')}}">Thông Tin Nhóm</a>
+                        href="{{ url('/thongtincanhan') }}">Thông Tin Nhóm</a>
                 </li>
                 <li class="nav-item dropdown d-none d-lg-block">
                     <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
@@ -28,7 +28,7 @@
                         aria-labelledby="createbuttonDropdown">
                         <h6 class="p-3 mb-0">Bài Tập</h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item" href="{{url('/khue')}}" target="_blank">
+                        <a class="dropdown-item preview-item" href="{{ url('/khue') }}" target="_blank">
                             <div class="preview-thumbnail">
                                 <div class="preview-icon bg-dark rounded-circle">
                                     <i class="mdi mdi-file-outline text-primary"></i>

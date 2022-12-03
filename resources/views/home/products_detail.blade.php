@@ -25,8 +25,10 @@
                     <div class="col-md-6">
                         <div id="slider" class="owl-carousel product-slider">
                             <div class="item">
-                                <img src="{{asset('storage/'.$value->image)}}" style="margin-left: auto;
-								margin-right: auto;width: 50%;display: block;" alt="">
+                                <img src="{{ asset('storage/' . $value->image) }}"
+                                    style="margin-left: auto;
+								margin-right: auto;width: 50%;display: block;"
+                                    alt="">
                             </div>
 
                         </div>
@@ -35,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="product-dtl">
                             <div class="product-info">
-                                <div class="product-name">{{$value->title}}</div>
+                                <div class="product-name">{{ $value->title }}</div>
                                 <div class="reviews-counter">
                                     <div class="rate">
                                         <input type="radio" id="star5" name="rate" value="5" checked />
@@ -53,17 +55,17 @@
                                 </div>
                                 <div class="product-price-discount"><span>
 
-                                        {{$value->price}} VNĐ
+                                        {{ $value->price }} VNĐ
                                     </span><span class="line-through"></span></div>
                             </div>
 
                             <p>
-                                Danh mục: {{$value->category}}
+                                Danh mục: {{ $value->category }}
                             </p>
 
                             <div class="product-count">
 
-                                <form action="{{url('add_cart', $value->id)}}" method="POST">
+                                <form action="{{ url('add_cart', $value->id) }}" method="POST">
                                     @csrf
                                     <label for="size">Số Lượng</label>
                                     <input type="number" name="quantity" min="1" max="20" value="1">
@@ -87,7 +89,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="description" role="tabpanel"
                             aria-labelledby="description-tab">
-                            {{$value->description}}
+                            {{ $value->description }}
                         </div>
                         <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                             <div class="review-heading">Bình Luận</div>
@@ -117,12 +119,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="" class="form-control" placeholder="Họ Và Tên*">
+                                            <input type="text" name="" class="form-control"
+                                                placeholder="Họ Và Tên*">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="" class="form-control" placeholder="Email*">
+                                            <input type="text" name="" class="form-control"
+                                                placeholder="Email*">
                                         </div>
                                     </div>
                                 </div>
@@ -140,8 +144,8 @@
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
         </script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+            integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
 
         <!-- footer start -->
         @include('home.footer')
